@@ -10,12 +10,12 @@ export default class FormAd extends Component {
       state = {
         msg: "",
         title: "",
-        author: CurrentUser,
+        // author: CurrentUser._id,
         recipient: "",
         categories: ["Bricolage", "Ménage", "Visites de courtoisie", "Courses"],
         category: "",
         description: "",
-        addType: "",
+        adType: "",
         street: "",
         zipCode: 0,
         city: "",
@@ -24,7 +24,7 @@ export default class FormAd extends Component {
     }
 
     handleState = e => {
-      e.preventDefault();
+      // e.preventDefault();
       console.log(e.target.value)
       this.setState({ [e.target.name]: e.target.value });
     }
@@ -32,24 +32,24 @@ export default class FormAd extends Component {
     submitForm = e => {
       e.preventDefault();
       console.log("submit ok");
-      APIHandler.post(`/ads/5e5919804ed7bd29add8aac4`, {
+      APIHandler.post("/ads", {
         title: this.state.title,
-        author: this.state.author,
+        // author: this.state.author,
         category: this.state.category,
         description: this.state.description,
         availability: this.state.availability,
-        addType: this.state.addType,
-        adress: {
+        adType: this.state.adType,
+        address: {
             street: this.state.street,
             zipCode: this.state.zipCode,
             city: this.state.city,
         },
-        image: this.state.image,
-        availability: this.state.availability
+        // image: this.state.image,
       })
-      .then(apiRes => console.log({msg: <div className="msg">OK</div> })
-      .catch(apiErr => this.setState({msg: <div className="msg-fail">An error occured, try again!</div>}))
-    )};
+      .then(apiRes => this.setState({msg: <div className="msg">OK</div> }))
+      .catch(apiErr => console.log(apiErr))
+      // .catch(apiErr => this.setState({msg: <div className="msg-fail">An error occured, try again!</div>}))
+    };
 
     //this.props.history.push(`/profil/${this.state.author._id}/annonces`)
     //${this.state.author._id}
@@ -81,9 +81,9 @@ export default class FormAd extends Component {
 
                     <label className="label">Type</label>
                     <label className="label" htmlFor="demande">Je demande de l'aide</label>
-                    <input className="input" type="radio" name="addType" value="demande"/>
+                    <input className="input" type="radio" name="adType" value="demande" defaultChecked/>
                     <label className="label" htmlFor="demande">Je propose mon aide</label>
-                    <input className="input" type="radio" name="addType" value="service"/>
+                    <input className="input" type="radio" name="adType" value="service"/>
 
                     <label className="label">Adresse</label>
                     <input className="input" type="text" name="street" placeholder="Adresse"/>
