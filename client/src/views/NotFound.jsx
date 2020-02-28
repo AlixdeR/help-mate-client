@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default function Home() {
+const NotFound = () => {
     return (
         <div>
-            YO
+            
         </div>
     )
 }
+
+export default NotFound
