@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Route, Switch } from "react-router-dom";
+import 'bulma/css/bulma.css';
 
 import Home from "./views/Home";
 import UserPublicProfile from "./views/UserPublicProfile";
@@ -26,13 +27,13 @@ function App() {
               <Route path="/profil/:id/modifier-mon-compte" component={UserEditProfile} />
               <Route path="/profil/:id/annonces" component={UserAds} /> */}
               <Route exact path="/mon-annonce" component={CreateAd} />
-              {/* <Route exact path="/annonces" component={AdList} />
+              <Route exact path="/annonces" component={AdList} />
               <Route exact path="/annonces/:id" component={Ad} />
               <Route path="/signin" component={SignIn} />
               <Route path="/signup" component={SignUp} />
               <Route exact path="/messagerie" component={Inbox} />
               <Route exact path="/admin" component={Admin} />
-              <Route path="*" component={NotFound} /> */}
+              <Route path="*" component={NotFound} />
             </Switch>
           </main>
           {/* <FooterMain /> */}

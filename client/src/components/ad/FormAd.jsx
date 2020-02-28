@@ -78,9 +78,9 @@ export default class FormAd extends Component {
 
                     <label className="label">Type</label>
                     <label className="label" htmlFor="demande">Je demande de l'aide</label>
-                    <input className="input" type="radio" name="addType" value="demande"/>
+                    <input className="" type="radio" name="addType" value="demande"/>
                     <label className="label" htmlFor="demande">Je propose mon aide</label>
-                    <input className="input" type="radio" name="addType" value="service"/>
+                    <input className="" type="radio" name="addType" value="service"/>
 
                     <label className="label">Adresse</label>
                     <input className="input" type="text" name="street" placeholder="Adresse"/>
