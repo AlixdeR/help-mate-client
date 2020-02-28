@@ -27,18 +27,13 @@ function App() {
               <Route path="/profil/:id/modifier-mon-compte" component={UserEditProfile} />
               <Route path="/profil/:id/annonces" component={UserAds} /> */}
               <Route exact path="/mon-annonce" component={CreateAd} />
-<<<<<<< HEAD
-              <Route exact path="/annonces" component={AdList} />
+              {/* <Route exact path="/annonces" component={AdList} />
               <Route exact path="/annonces/:id" component={Ad} />
-=======
-              <Route exact path="/annonces" component={AdsDisplayed} />
-              {/* <Route exact path="/annonces/:id" component={Ad} />
->>>>>>> c2b77b42f66eb30850c09f356899a3ff74073cf6
               <Route path="/signin" component={SignIn} />
               <Route path="/signup" component={SignUp} />
               <Route exact path="/messagerie" component={Inbox} />
               <Route exact path="/admin" component={Admin} />
-              <Route path="*" component={NotFound} />
+              <Route path="*" component={NotFound} /> */}
             </Switch>
           </main>
           {/* <FooterMain /> */}

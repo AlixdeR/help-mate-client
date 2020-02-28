@@ -10,7 +10,6 @@ export default class FormAd extends Component {
       state = {
         msg: "",
         title: "",
-        // author: CurrentUser._id,
         recipient: "",
         categories: ["Bricolage", "Ménage", "Visites de courtoisie", "Courses"],
         category: "",
@@ -24,17 +23,15 @@ export default class FormAd extends Component {
     }
 
     handleState = e => {
-      // e.preventDefault();
-      console.log(e.target.value)
-      this.setState({ [e.target.name]: e.target.value });
+      if (e.target.type === 'radio') this.setState({adType: e.target.value},()=>(console.log(this.state.adType)))
+      this.setState({ [e.target.name]: e.target.value }, ()=>(console.log(this.state.adType)));
     }
 
     submitForm = e => {
       e.preventDefault();
-      console.log("submit ok");
+      console.log('adType', this.state.adType==="");
       APIHandler.post("/ads", {
         title: this.state.title,
-        // author: this.state.author,
         category: this.state.category,
         description: this.state.description,
         availability: this.state.availability,
@@ -81,15 +78,9 @@ export default class FormAd extends Component {
 
                     <label className="label">Type</label>
                     <label className="label" htmlFor="demande">Je demande de l'aide</label>
-<<<<<<< HEAD
-                    <input className="" type="radio" name="addType" value="demande"/>
+                    <input  type="radio" name="addType" value="demande"/>
                     <label className="label" htmlFor="demande">Je propose mon aide</label>
-                    <input className="" type="radio" name="addType" value="service"/>
-=======
-                    <input className="input" type="radio" name="adType" value="demande" defaultChecked/>
-                    <label className="label" htmlFor="demande">Je propose mon aide</label>
-                    <input className="input" type="radio" name="adType" value="service"/>
->>>>>>> c2b77b42f66eb30850c09f356899a3ff74073cf6
+                    <input type="radio" name="addType" value="service"/>
 
                     <label className="label">Adresse</label>
                     <input className="input" type="text" name="street" placeholder="Adresse"/>
