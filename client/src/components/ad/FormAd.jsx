@@ -31,7 +31,8 @@ export default class FormAd extends Component {
 
     submitForm = e => {
       e.preventDefault();
-      APIHandler.post(`/ads/${this.state.author._id}`, {
+      console.log("submit ok");
+      APIHandler.post(`/ads/5e5919804ed7bd29add8aac4`, {
         title: this.state.title,
         author: this.state.author,
         category: this.state.category,
@@ -46,10 +47,12 @@ export default class FormAd extends Component {
         image: this.state.image,
         availability: this.state.availability
       })
-      .then(apiRes => this.props.history.push(`/profil/${this.state.author._id}/annonces`)
+      .then(apiRes => console.log({msg: <div className="msg">OK</div> })
       .catch(apiErr => this.setState({msg: <div className="msg-fail">An error occured, try again!</div>}))
     )};
 
+    //this.props.history.push(`/profil/${this.state.author._id}/annonces`)
+    //${this.state.author._id}
 
     render() {
 
@@ -87,8 +90,8 @@ export default class FormAd extends Component {
                     <input className="input" type="number" name="zipCode" placeholder="Code Postal"/>
                     <input className="input" type="text" name="city" placeholder="Ville"/>
 
-                    <label className="label">Image</label>
-                    <input className="input" type="file" name="image" accept="image/png, image/jpeg"/>
+                    {/* <label className="label">Image</label>
+                    <input className="input" type="file" name="image" accept="image/png, image/jpeg"/> */}
 
                     <button className="btn" type="submit">Poster mon annonce</button>
 

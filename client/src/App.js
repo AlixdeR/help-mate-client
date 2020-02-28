@@ -6,7 +6,7 @@ import UserPublicProfile from "./views/UserPublicProfile";
 import UserEditProfile from "./views/UserEditProfile";
 import UserAds from "./views/UserAds";
 import CreateAd from "./views/CreateAd";
-import AdList from "./views/AdList";
+import AdsDisplayed from "./views/AdsDisplayed";
 import Ad from "./views/Ad";
 import SignIn from "./views/SignIn";
 import SignUp from "./views/SignUp";
@@ -26,8 +26,8 @@ function App() {
               <Route path="/profil/:id/modifier-mon-compte" component={UserEditProfile} />
               <Route path="/profil/:id/annonces" component={UserAds} /> */}
               <Route exact path="/mon-annonce" component={CreateAd} />
-              {/* <Route exact path="/annonces" component={AdList} />
-              <Route exact path="/annonces/:id" component={Ad} />
+              <Route exact path="/annonces" component={AdsDisplayed} />
+              {/* <Route exact path="/annonces/:id" component={Ad} />
               <Route path="/signin" component={SignIn} />
               <Route path="/signup" component={SignUp} />
               <Route exact path="/messagerie" component={Inbox} />
