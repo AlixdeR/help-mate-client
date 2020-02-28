@@ -12,7 +12,7 @@ export default class FormAd extends Component {
         title: "",
         author: CurrentUser,
         recipient: "",
-        categories: [],
+        categories: ["Bricolage", "Ménage", "Visites de courtoisie", "Courses"],
         category: "",
         description: "",
         addType: "",
@@ -23,24 +23,10 @@ export default class FormAd extends Component {
         availability: ""
     }
 
-    componentDidMount = () => {
-      APIHandler.get("/ads")
-      .then(apiRes => {
-      console.log(apiRes.data.category.enum);
-      this.setState({categories: apiRes.data.category.enum})
-      })
-      .catch(apiErr => this.setState(apiErr));
-    }
-    
-
     handleState = e => {
       e.preventDefault();
-      console.log(e.target.value);
+      console.log(e.target.value)
       this.setState({ [e.target.name]: e.target.value });
-    }
-
-    handleCheckbox = e => {
-      this.setState({addType: e.target.checked})
     }
 
     submitForm = e => {
@@ -53,9 +39,9 @@ export default class FormAd extends Component {
         availability: this.state.availability,
         addType: this.state.addType,
         adress: {
-            street: this.state.adress.street,
-            zipCode: this.state.adress.zipCode,
-            city: this.state.adress.city,
+            street: this.state.street,
+            zipCode: this.state.zipCode,
+            city: this.state.city,
         },
         image: this.state.image,
         availability: this.state.availability
@@ -91,10 +77,10 @@ export default class FormAd extends Component {
                     <input className="input" type="text" name="availability"/>
 
                     <label className="label">Type</label>
-                    <input className="input" type="radio" name="addType" value="demande" onClick={this.handleCheckbox}/>
-                    <label htmlFor="demande">Je demande de l'aide</label>
-                    <input className="input" type="radio" name="addType" value="service" onClick={this.handleCheckbox}/>
-                    <label htmlFor="demande">Je propose mon aide</label>
+                    <label className="label" htmlFor="demande">Je demande de l'aide</label>
+                    <input className="input" type="radio" name="addType" value="demande"/>
+                    <label className="label" htmlFor="demande">Je propose mon aide</label>
+                    <input className="input" type="radio" name="addType" value="service"/>
 
                     <label className="label">Adresse</label>
                     <input className="input" type="text" name="street" placeholder="Adresse"/>
