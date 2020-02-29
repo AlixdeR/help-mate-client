@@ -26,9 +26,16 @@ export default function NavBar() {
     <div className="navbar-end">
       <div className="navbar-item">
         <div className="buttons">
-          <div className="button is-primary">
-            <Link  to='/signup'><strong >S'inscrire</strong></Link>
-          </div>
+        <Link  to='/mon-annonce'><div className="button is-rounded is-warning">
+            <strong >Créer une annonce</strong>
+          </div></Link>
+        </div>
+      </div>
+      <div className="navbar-item">
+        <div className="buttons">
+        <Link  to='/signup'><div className="button is-primary">
+            <strong >S'inscrire</strong>
+          </div></Link>
           <div className="button is-light">
             Se connecter
           </div>
