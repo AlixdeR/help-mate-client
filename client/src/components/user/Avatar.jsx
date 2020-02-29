@@ -2,9 +2,8 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog, faEdit } from "@fortawesome/free-solid-svg-icons";
 
-export default function Avatar({ clbk, avatar= ""}) {
+export default function Avatar({ clbk, avatar}) {
   const fileInput = React.createRef();
-
   const handleClick = () => {
     fileInput.current.click();
   };
@@ -21,6 +20,7 @@ export default function Avatar({ clbk, avatar= ""}) {
       <input
         ref={fileInput}
         type="file"
+        name='avatar'
         className="is-hidden"
         onChange={clbk}/>
     </div>

@@ -1,7 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useAuth } from "../auth/useAuth";
+
 
 export default function NavBar() {
+
+    const { isLoading, currentUser } = useAuth();
+  
+    if (isLoading) return null;
+  
     return (
         <div>
             <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
@@ -27,14 +34,13 @@ export default function NavBar() {
           </div>
         </div>
       </div>
-      <div className="navbar-item has-dropdown is-hoverable">
+      {currentUser && <div className="navbar-item has-dropdown is-hoverable">
         <div className="navbar-link">
           Mon Compte
         </div>
-
-        <div className="navbar-dropdown">
+         <div className="navbar-dropdown">
           <div className="navbar-item">
-          <Link  to='/profil/5e59a0be97cce596a4fa6b0e/modifier-mon-compte'>Mon profil</Link>
+          <Link  to={`/profil/${currentUser._id}/modifier-mon-compte`}>Mon profil</Link>
           </div>
           <div className="navbar-item">
             Mes annonces
@@ -47,7 +53,7 @@ export default function NavBar() {
             Se déconnecter
           </div>
         </div>
-      </div>
+      </div>}
     </div>
   </div>
 </nav>

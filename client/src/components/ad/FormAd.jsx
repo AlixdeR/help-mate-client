@@ -4,7 +4,7 @@ import APIHandler from "../../api/APIHandler";
 
 import "../../styles/form-ad.css";
 
-import CurrentUser from "../user/CurrentUser";
+import UserContext from '../../auth/UserContext';
 
 export default class FormAd extends Component {
       state = {

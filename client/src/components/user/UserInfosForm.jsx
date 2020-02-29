@@ -3,16 +3,20 @@ import { withRouter } from "react-router-dom";
 import Avatar from './Avatar'
 import apiHandler from '../../api/APIHandler'
 
-function UserInfosForm({mode = 'create', user, history, match}) {
-    console.log(url)
-    let url;
-     user ? url = user.avatar : url='https://www.bitgab.com/uploads/profile/files/default.png'
+function UserInfosForm({mode , user, history, match}) {
     const [formValues, setFormValues] = useState({});
-    const [avatar, setAvatar] = useState(url);
-    const [avatarPreview, setAvatarPreview] = useState(url);
+    const [avatar, setAvatar] = useState("");
+    const [avatarPreview, setAvatarPreview] = useState("");
+
+    useEffect(()=>{
+      let url;
+      user ? url = user.avatar : url='https://www.bitgab.com/uploads/profile/files/default.png';
+      setAvatar(url);
+      setAvatarPreview(url);
+      console.log(mode)
+    },[user])
   
     function handleChange(event) {
-      console.log(avatar);
         if (event.target.name === "avatar") return;
         let value =
           event.target.type === "checkbox"
@@ -24,22 +28,33 @@ function UserInfosForm({mode = 'create', user, history, match}) {
         });
       }
     
-const formHandler = e => {
+const formHandler = async  e => {
         e.preventDefault();
-        const {username, name, lastName, description, email, phone, gender, password} = formValues;
         const fd = new FormData();
+        for (const key in formValues) {
+          fd.append(key, formValues[key])
+          console.log(key)
+        }
         fd.append("avatar", avatar);
-        fd.append("username", username);
-        fd.append("description", description);
-        fd.append("name", name);
-        fd.append("lastName", lastName);
-        fd.append("password", password);
-        fd.append("phone", phone);
-        fd.append("email", email);
-        fd.append("gender", gender);
-        apiHandler.post(`/signup/`, fd)
-        .then(apiRes => history.push(`/`))
-      }
+        // fd.append("username", username);
+        // fd.append("description", description);
+        // fd.append("name", name);
+        // fd.append("lastName", lastName);
+        // fd.append("password", password);
+        // fd.append("phone", phone);
+        // fd.append("email", email);
+        // fd.append("gender", gender);
+        // fd.append("status", status);
+
+        try {
+          if (mode === "create") await apiHandler.post("/signup", fd);
+          else await apiHandler.patch(`/users/${user._id}`, fd);
+          history.push("/");
+        } catch (apiErr) {
+          console.error(apiErr);
+        }
+}
+
       const handleAvatar = e => {
         let reader = new FileReader();
         const file = e.target.files[0];
@@ -49,7 +64,6 @@ const formHandler = e => {
         };
         reader.readAsDataURL(file);
       };
- 
     return (
         <div className='center-content'>
             {/* <Avatar/> */}

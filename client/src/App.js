@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Route, Switch } from "react-router-dom";
+import { useAuth } from "./auth/useAuth";
+import UserContext from "./auth/UserContext";
 import 'bulma/css/bulma.css';
 import './App.css'
 
@@ -19,7 +21,17 @@ import NavBar from './components/NavBar'
 
 
 function App() {
+  const { isLoading } = useAuth();
+  const [currentUser, setCurrentUser] = useState({});
+  const UserContextValue = {
+    currentUser,
+    setCurrentUser
+  };
   return (
+    <UserContext.Provider value={UserContextValue}>
+      {isLoading ? (
+        null
+      ) : (
      <React.Fragment>
      <NavBar />
       <main id="content_main">
@@ -40,6 +52,8 @@ function App() {
           </main>
           {/* <FooterMain /> */}
      </React.Fragment>
+     )}
+    </UserContext.Provider>
   );
 }
 
