@@ -13,6 +13,9 @@ export default function AdDetails({ data }) {
             <p className="ad-details">{data.description}</p>
             <p className="ad-details">{data.adType}</p>
             <p className="ad-details">{data.availability}</p>
+            <p className="ad-details">{data.street}</p>
+            <p className="ad-details">{data.zipCode}</p>
+            <p className="ad-details">{data.city}</p>
         </div>
     )
 }
