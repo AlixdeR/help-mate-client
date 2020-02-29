@@ -4,10 +4,16 @@ import Avatar from './Avatar'
 import apiHandler from '../../api/APIHandler'
 
 function UserInfosForm({mode = 'create', user, history, match}) {
+    console.log(url)
+    let url;
+     user ? url = user.avatar : url='https://www.bitgab.com/uploads/profile/files/default.png'
     const [formValues, setFormValues] = useState({});
-
+    const [avatar, setAvatar] = useState(url);
+    const [avatarPreview, setAvatarPreview] = useState(url);
+  
     function handleChange(event) {
-        if (event.target.name === "image") return;
+      console.log(avatar);
+        if (event.target.name === "avatar") return;
         let value =
           event.target.type === "checkbox"
             ? event.target.checked
@@ -22,7 +28,7 @@ const formHandler = e => {
         e.preventDefault();
         const {username, name, lastName, description, email, phone, gender, password} = formValues;
         const fd = new FormData();
-        // fd.append("avatar", avatar);
+        fd.append("avatar", avatar);
         fd.append("username", username);
         fd.append("description", description);
         fd.append("name", name);
@@ -34,11 +40,21 @@ const formHandler = e => {
         apiHandler.post(`/signup/`, fd)
         .then(apiRes => history.push(`/`))
       }
+      const handleAvatar = e => {
+        let reader = new FileReader();
+        const file = e.target.files[0];
+        setAvatar(file);
+        reader.onloadend = () => {
+          setAvatarPreview(reader.result);
+        };
+        reader.readAsDataURL(file);
+      };
  
     return (
-        <div>
+        <div className='center-content'>
             {/* <Avatar/> */}
             <form  onSubmit={formHandler} onChange={handleChange} className='form' encType="multipart/form-data">
+                    <Avatar clbk={handleAvatar} avatar={avatarPreview}/>
                     <div className='field'>
                       <label className='label' htmlFor="name">Pseudo</label>
                       <input className='input' name="username" type ="text" id="username" placeholder="Ex : Jojo du 52" defaultValue={user && user.username} required/>
@@ -56,9 +72,9 @@ const formHandler = e => {
                           <div className='select'>
                             <select id="gender" name="gender" required>
                               <option value="">Choisir une option</option>
-                              <option value="homme" selected={'homme'=== user && user.gender }>Homme</option>
-                              <option value="femme" selected={'femme'=== user && user.gender}>Femme</option>
-                              <option value="autre" selected={'autre'=== user && user.gender}>Autre</option>
+                              <option value="homme" selected={user && 'homme'===  user.gender }>Homme</option>
+                              <option value="femme" selected={user && 'femme'=== user.gender}>Femme</option>
+                              <option value="autre" selected={user &&'autre'===  user.gender}>Autre</option>
                             </select>
                           </div>
                     <div>
@@ -70,10 +86,10 @@ const formHandler = e => {
                       <label className='label' htmlFor="email">Email</label>
                       <input className='input' name="email" type ="email" id="email" placeholder="" defaultValue={user && user.email} required/>
                     </div>
-                    <div className='field'>
+                    {mode==='create' && <div className='field'>
                       <label className='label' htmlFor="password">Mot de passe</label>
-                      <input className='input' name="password" type ="password" id="password" placeholder="" defaultValue={user && user.password} required/>
-                    </div>
+                      <input className='input' name="password" type ="password" id="password" required/>
+                    </div>}
                     <div className='field'>
                       <label className='label' htmlFor="phone">Téléphone</label>
                       <input className='input' name="phone" type ="phone" id="phone" placeholder="" defaultValue={user && user.phone} required/>
@@ -83,9 +99,9 @@ const formHandler = e => {
                           <div className='select'>
                             <select id="status" name="status" required>
                               <option value="">Choisir une option</option>
-                              <option value="particulier" selected={'particulier'=== user && user.status }>un particulier</option>
-                              <option value="association" selected={'association'=== user && user.status}>une association</option>
-                              <option value="entreprise" selected={'entreprise'=== user && user.status}>une entreprise</option>
+                              <option value="particulier" selected={user && 'particulier'=== user.status }>un particulier</option>
+                              <option value="association" selected={user && 'association'=== user.status}>une association</option>
+                              <option value="entreprise" selected={user && 'entreprise'=== user.status}>une entreprise</option>
                             </select>
                           </div>
                     <div>

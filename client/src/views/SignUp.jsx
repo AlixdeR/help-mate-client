@@ -7,6 +7,7 @@ export default function SignUp() {
  
     return (
         <div>
+            <h1 className='title is-3'>Créer un compte</h1>
             <UserInfosForm />
         </div>
     )
