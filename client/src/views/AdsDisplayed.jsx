@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import APIHandler from "../api/APIHandler";
+import APIHandler from "../../src/api/APIHandler";
 import PreviewAd from "../components/ad/PreviewAd";
 
 export default class Ads extends Component {
@@ -17,7 +17,6 @@ export default class Ads extends Component {
   }
 
   render() {
-    console.log(this.state.ads);
     return (
 
       <React.Fragment>

@@ -42,7 +42,7 @@ function App() {
               {/* <Route path="/profil/:id/annonces" component={UserAds} /> */}
               <Route exact path="/mon-annonce" component={CreateAd} />
               <Route exact path="/annonces" component={AdsDisplayed} />
-              {/* <Route exact path="/annonces/:id" component={Ad} /> */}
+              <Route exact path="/annonces/:id" component={Ad} />
               {/* <Route path="/signin" component={SignIn} /> */}
               <Route path="/signup" component={SignUp} />
               {/* <Route exact path="/messagerie" component={Inbox} /> */}
