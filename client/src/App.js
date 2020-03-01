@@ -18,6 +18,7 @@ import Inbox from "./views/Inbox";
 import Admin from "./views/Admin";
 import NotFound from "./views/NotFound";
 import NavBar from './components/NavBar'
+import EditAd from "./views/EditAd"
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
               <Route path="/profil/:id/modifier-mon-compte" component={UserEditProfile} />
               {/* <Route path="/profil/:id/annonces" component={UserAds} /> */}
               <Route exact path="/mon-annonce" component={CreateAd} />
+              <Route exact path="/editer-mon-annonce/:id" component={EditAd} />
               <Route exact path="/annonces" component={AdsDisplayed} />
               <Route exact path="/annonces/:id" component={Ad} />
               {/* <Route path="/signin" component={SignIn} /> */}

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { withRouter, Redirect } from "react-router-dom";
 import APIHandler from "../../api/APIHandler";
 
-import "../../styles/form-ad.css";
-
 import UserContext from '../../auth/UserContext';
 
 export default class FormEditAd extends Component {
@@ -60,38 +58,59 @@ export default class FormEditAd extends Component {
 
                 {this.state.msg && this.state.msg}
                 
-                <form className="form" onSubmit={this.submitEditForm} onChange={this.handleState}>
+                <form className="center-content" onSubmit={this.submitEditForm} onChange={this.handleState}>
                 
+                  <div className='field'>
                     <label className="label">Title</label>
                     <input className="input" type="text" name="title" value={this.state.title} />
+                  </div>
 
+                  <div className='field'>
                     <label className="label">Category</label>
+                    <div className='select'>
                     <select className="input" name="category">
                     <option defaultSelected>Choose Category</option>
                       {this.state.categories.map((category,i) => (<option key={i} value={this.state.category}>{category}</option>))};
                     </select>
+                    </div>      
+                  </div>
     
+                  <div className='field'>
                     <label className="label">Description</label>
-                    <textarea className="input" name="description" value={this.state.description}></textarea>
+                    <textarea className="textarea" name="description" value={this.state.description}></textarea>
+                  </div>
 
+                  <div className='field'>
                     <label className="label">Disponibilité(s)</label>
-                    <input className="input" type="text" name="availability" value={this.state.availability}/>
+                    <input className="textarea" type="text" name="availability" value={this.state.availability}/>
+                  </div>
 
+                  
+                  <div className='field'>
                     <label className="label">Type</label>
-                    <label className="label" htmlFor="demande">Je demande de l'aide</label>
-                    <input  type="radio" name="addType" value="demande"/>
-                    <label className="label" htmlFor="demande">Je propose mon aide</label>
-                    <input type="radio" name="addType" value="service"/>
+                    <label className="radio" htmlFor="demande">
+                      <input type="radio" name="addType" value="demande"/>
+                      Je demande de l'aide
+                    </label>
+                    <label className="radio" htmlFor="demande">
+                      <input type="radio" name="addType" value="service"/>
+                      Je propose mon aide
+                    </label>
+                  </div>
 
-                    <label className="label">Adresse</label>
+                  <div className='field'>
+                    <label className="label">Localisation</label>
                     <input className="input" type="text" name="street" placeholder="Adresse" value={this.state.address.street}/>
                     <input className="input" type="number" name="zipCode" placeholder="Code Postal" value={this.state.address.zipCode}/>
                     <input className="input" type="text" name="city" placeholder="Ville" value={this.state.address.city}/>
+                  </div>
 
+                  <div className='field'>
                     <label className="label">Image</label>
                     <input className="input" type="file" name="image" accept="image/png, image/jpeg" value={this.state.image}/>
+                  </div>
 
-                    <button className="btn" type="submit">Modifier mon annonce</button>
+                    <button className="button is-primary is-rounded" type="submit">Modifier mon annonce</button>
 
                 </form>
 
