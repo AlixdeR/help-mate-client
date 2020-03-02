@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Moment from 'react-moment';
 import EditButton from "../EditButton";
+import DeleteButton from "../DeleteButton";
 
 export default function PreviewAd ({ data, mode }) {
   
@@ -12,7 +13,7 @@ export default function PreviewAd ({ data, mode }) {
       state: {
         id: data._id
       }}}>
-    <figure class="image is-128x128">
+    <figure class="image is-96x96">
       <img src={data.image} alt="image"/>
     </figure>
     <h3>{data.title}</h3>
@@ -23,6 +24,7 @@ export default function PreviewAd ({ data, mode }) {
     </Link>
 
     {mode==="mes annonces" && <EditButton data={data}/>}
+    {mode==="mes annonces" && <DeleteButton data={data}/>}
     {/* <IconFav/> */}
   </div>
 }
