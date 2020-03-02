@@ -10,16 +10,14 @@ export default class FormEditAd extends Component {
         this.state = {
         msg: "",
         title: this.props.data.title,
-        recipient: "",
+        // recipient: "",
         categories: ["Bricolage", "Ménage", "Visites de courtoisie", "Courses"],
         category: this.props.data.category,
         description: this.props.data.description,
         adType: this.props.data.adType,
-        address: {
-            street: this.props.data.address.street,
-            zipCode: this.props.data.address.zipCode,
-            city: this.props.data.address.city},
-        image: this.props.data.image,
+        street: this.props.data.address.street,
+        zipCode: this.props.data.address.zipCode,
+        city: this.props.data.address.city,
         availability: this.props.data.availability,
         id: this.props.id
     }}
@@ -30,17 +28,19 @@ export default class FormEditAd extends Component {
     }
 
     submitEditForm = e => {
+      console.log(this.state,"this is state")
       e.preventDefault();
-      APIHandler.patch(`/ads/${this.state.id}`, {
+      APIHandler.patch(`/ads/${this.state.id}`, 
+      {
         title: this.state.title,
         category: this.state.category,
         description: this.state.description,
         availability: this.state.availability,
         adType: this.state.adType,
         address: {
-            street: this.state.address.street,
-            zipCode: this.state.address.zipCode,
-            city: this.state.address.city,
+            street: this.state.street,
+            zipCode: this.state.zipCode,
+            city: this.state.city,
         }
       })
     .then(apiRes =>   this.setState({msg: <div className="msg-fail">Annonce modifiée!</div>}))
@@ -48,7 +48,7 @@ export default class FormEditAd extends Component {
     };
 
     render() {
- 
+    
         return (
 
             <div>
@@ -110,9 +110,9 @@ export default class FormEditAd extends Component {
 
                   <div className='field'>
                     <label className="label">Localisation</label>
-                    <input className="input" type="text" name="street" placeholder="Adresse (ne sera pas rendue publique dans l'annonce)"  defaultValue={this.state.address.street}/>
-                    <input className="input" type="number" name="zipCode" placeholder="Code Postal" defaultValue={this.state.address.zipCode}/>
-                    <input className="input" type="text" name="city" placeholder="Ville" defaultValue={this.state.address.city}/>
+                    <input className="input" type="text" name="street" placeholder="Adresse (ne sera pas rendue publique dans l'annonce)"  defaultValue={this.state.street}/>
+                    <input className="input" type="number" name="zipCode" placeholder="Code Postal" defaultValue={this.state.zipCode}/>
+                    <input className="input" type="text" name="city" placeholder="Ville" defaultValue={this.state.city}/>
                   </div>
 
                   {/* <div className='field'>
