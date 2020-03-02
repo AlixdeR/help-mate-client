@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import APIHandler from "../../api/APIHandler";
+import { Redirect } from "react-router-dom";
 
 
 export default class FormAd extends Component {
       state = {
         msg: "",
+        redirect: false,
         title: "",
         recipient: "",
         categories: ["Bricolage", "Ménage", "Visites de courtoisie", "Courses"],
@@ -43,7 +45,7 @@ export default class FormAd extends Component {
 
           APIHandler
           .post("/ads", fd)
-          .then(apiRes => this.setState({msg: <div className="msg-fail">Annonce postée!</div>}))
+          .then(apiRes => this.setState({redirect: true}))
           .catch(apiErr => this.setState({msg: <div className="msg-fail">Erreur!</div>}));
           
 
@@ -70,7 +72,10 @@ export default class FormAd extends Component {
 
         return (
 
+
             <div>
+
+                {this.state.redirect===true && <Redirect to="/annonces" />}   
 
                 {this.state.msg && this.state.msg}
                 

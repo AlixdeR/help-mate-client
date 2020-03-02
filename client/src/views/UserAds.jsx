@@ -9,12 +9,14 @@ export default class UserAds extends Component {
 
   componentDidMount() {
     APIHandler.get(`/users/${this.props.match.params.id}`)
-    .then(apiRes => {
-        console.log(apiRes.data.ads);
-      this.setState({ ads: apiRes.data.ads });
-    })
+    .then(apiRes => this.setState({ ads: apiRes.data.ads }))
     .catch(err => console.error(err));
   }
+
+  componentDidUpdate(prevState) {
+    if (this.state.ads !== prevState.ads) {
+    return this.fetchData(this.state.ads);
+  }}
 
     render() {
         return (
