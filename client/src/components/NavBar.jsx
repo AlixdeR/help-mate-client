@@ -72,7 +72,7 @@ export default function NavBar() {
                     </Link>
                   </div>
                   <div className="navbar-item">
-                    <Link to={`/annonces/${currentUser._id}`}>
+                    <Link to={`/profil/${currentUser._id}/annonces`}>
                       Mes annonces
                     </Link>
                   </div>

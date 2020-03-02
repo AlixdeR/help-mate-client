@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import APIHandler from "../../api/APIHandler";
 
 import UserContext from '../../auth/UserContext';
@@ -9,6 +9,7 @@ export default class FormEditAd extends Component {
         super(props)
         this.state = {
         msg: "",
+        redirect: false,
         title: this.props.data.title,
         // recipient: "",
         categories: ["Bricolage", "Ménage", "Visites de courtoisie", "Courses"],
@@ -27,6 +28,8 @@ export default class FormEditAd extends Component {
       this.setState({ [e.target.name]: e.target.value });
     }
 
+    
+
     submitEditForm = e => {
       console.log(this.state,"this is state")
       e.preventDefault();
@@ -43,15 +46,17 @@ export default class FormEditAd extends Component {
             city: this.state.city,
         }
       })
-    .then(apiRes =>   this.setState({msg: <div className="msg-fail">Annonce modifiée!</div>}))
+    .then(apiRes => this.setState({redirect: true}))
     .catch(apiErr => this.setState({msg: <div className="msg-fail">Erreur! </div>}));
     };
 
     render() {
-    
+  
         return (
 
             <div>
+
+                {this.state.redirect===true && <Redirect to="/annonces" />}
 
                 {this.state.msg && this.state.msg}
                 

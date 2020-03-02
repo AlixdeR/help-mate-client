@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import APIHandler from "../../src/api/APIHandler";
 import AdDetails from "../components/ad/AdDetails";
-import EditButton from "../components/EditButton";
-
-
 
 export default class Ad extends Component {
     state = {
@@ -22,7 +19,6 @@ export default class Ad extends Component {
         return (
             <div>
                 <AdDetails data={this.state.ad}/>
-                <EditButton data={this.state.ad}/>
             </div>
         )
     }

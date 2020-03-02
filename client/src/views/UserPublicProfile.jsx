@@ -22,7 +22,7 @@ import DisplayAds from "../components/ad/DisplayAds";
              <DisplayAds ads={userInfos && userInfos.ads}/>
              </div>
              <DisplayComments/>
-             <AddComment/>
+             <AddComment userId={match.params.id}/>
          </div>
      )
  }
