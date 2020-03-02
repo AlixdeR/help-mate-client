@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Moment from 'react-moment';
+import EditButton from "../EditButton";
 
-export default function PreviewAd ({ data }) {
+export default function PreviewAd ({ data, mode }) {
   
   return <div>
     <div className="preview-ad"></div>
@@ -19,8 +20,9 @@ export default function PreviewAd ({ data }) {
       {data.date}
       </Moment>
     </p>
-    <p>{data.availability}</p>
     </Link>
+
+    {mode==="mes annonces" && <EditButton data={data}/>}
     {/* <IconFav/> */}
   </div>
 }

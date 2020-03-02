@@ -43,7 +43,7 @@ export default class FormEditAd extends Component {
             city: this.state.city,
         }
       })
-    .then(apiRes =>   this.setState({msg: <div className="msg-fail">Annonce modifiée!</div>}))
+    .then(apiRes => this.props.history.push(`/profil/${this.state.currentUser._id}/annonces`))
     .catch(apiErr => this.setState({msg: <div className="msg-fail">Erreur! </div>}));
     };
 

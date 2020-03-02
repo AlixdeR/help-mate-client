@@ -40,7 +40,7 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/profil/:id" component={UserPublicProfile} />
               <Route path="/profil/:id/modifier-mon-compte" component={UserEditProfile} />
-              {/* <Route path="/profil/:id/annonces" component={UserAds} /> */}
+              <Route path="/profil/:id/annonces" component={UserAds} />
               <Route exact path="/mon-annonce" component={CreateAd} />
               <Route exact path="/editer-mon-annonce/:id" component={EditAd} />
               <Route exact path="/annonces" component={AdsDisplayed} />
