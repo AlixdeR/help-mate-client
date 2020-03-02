@@ -2,6 +2,7 @@ import React, { useState, useEffect}from 'react'
 import { withRouter } from "react-router-dom";
 import Avatar from './Avatar'
 import apiHandler from '../../api/APIHandler'
+import moment from "moment"
 
 function UserInfosForm({mode , user, history, match}) {
     const [formValues, setFormValues] = useState({});
@@ -35,15 +36,6 @@ const formHandler = async  e => {
           console.log(key)
         }
         fd.append("avatar", avatar);
-        // fd.append("username", username);
-        // fd.append("description", description);
-        // fd.append("name", name);
-        // fd.append("lastName", lastName);
-        // fd.append("password", password);
-        // fd.append("phone", phone);
-        // fd.append("email", email);
-        // fd.append("gender", gender);
-        // fd.append("status", status);
 
         try {
           if (mode === "create") await apiHandler.post("/signup", fd);
@@ -63,6 +55,9 @@ const formHandler = async  e => {
         };
         reader.readAsDataURL(file);
       };
+      function convertDate(str) {
+        return moment(str, moment.ISO_8601).format("YYYY-MM-DD")
+      }
     return (
         <div className='center-content'>
             {/* <Avatar/> */}
@@ -77,8 +72,12 @@ const formHandler = async  e => {
                       <input className='input' type="text" name="lastName" id="lastName" placeholder="" defaultValue={user && user.lastName} required/>
                     </div>
                     <div className='field'>
-                      <label className='label' htmlFor="price">Prénom</label>
+                      <label className='label' htmlFor="name">Prénom</label>
                       <input className='input' type="text" name="name" id="name" placeholder="" defaultValue={user && user.name} required/>
+                    </div>
+                    <div className='field'>
+                      <label className='label' htmlFor="birthday">Date de naissance</label>
+                      <input className='input' type="date" name="birthday" id="birthday" value={user && convertDate(user.birthday)} required/>
                     </div>
                     <div className="field">
                     <label className='label' htmlFor="status">Genre</label>
