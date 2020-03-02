@@ -11,3 +11,10 @@
   margin: 0 auto;
   padding: 5vh;
 }
+
+.aside-user-infos{
+  padding : 2vh;
+  width: 25%;
+  height: 60vh;
+  box-shadow:2px 2px 2px grey;
+}

@@ -13,7 +13,6 @@ function UserInfosForm({mode , user, history, match}) {
       user ? url = user.avatar : url='https://www.bitgab.com/uploads/profile/files/default.png';
       setAvatar(url);
       setAvatarPreview(url);
-      console.log(mode)
     },[user])
   
     function handleChange(event) {
