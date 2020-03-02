@@ -19,6 +19,7 @@ import Admin from "./views/Admin";
 import NotFound from "./views/NotFound";
 import NavBar from './components/NavBar'
 import EditAd from "./views/EditAd"
+import Footer from './components/Footer'
 
 
 function App() {
@@ -52,7 +53,7 @@ function App() {
               {/* <Route path="*" component={NotFound} /> */}
             </Switch>
           </main>
-          {/* <FooterMain /> */}
+          <Footer />
      </React.Fragment>
      )}
     </UserContext.Provider>

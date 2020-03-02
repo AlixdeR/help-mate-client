@@ -16,6 +16,7 @@ export default function NavBar() {
       >
         <div className="navbar-brand">
             <div className="navbar-item">
+              <img classeName="logo-helpmate" src="/160-1608545_foster-to-adopt-is-a-burke-county-nc.png" alt=""/>
               <strong>HelpMate</strong>
           </div>
           <div
