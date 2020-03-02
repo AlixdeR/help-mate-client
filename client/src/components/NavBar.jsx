@@ -15,10 +15,10 @@ export default function NavBar() {
         aria-label="main navigation"
       >
         <div className="navbar-brand">
-            <div className="navbar-item">
-              <img classeName="logo-helpmate" src="/160-1608545_foster-to-adopt-is-a-burke-county-nc.png" alt=""/>
-              <strong>HelpMate</strong>
-          </div>
+        <Link to="/"> <div className="navbar-item">
+              <strong>HelpMate</strong> 
+              </div> </Link>
+         
           <div
             role="button"
             className="navbar-burger burger"

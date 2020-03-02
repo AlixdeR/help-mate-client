@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Moment from 'react-moment';
 
 export default function PreviewAd ({ data }) {
   
@@ -10,9 +11,14 @@ export default function PreviewAd ({ data }) {
       state: {
         id: data._id
       }}}>
-    <img src={data.image} alt="image"/>
+    <figure class="image is-128x128">
+      <img src={data.image} alt="image"/>
+    </figure>
     <h3>{data.title}</h3>
-    <p>Créé le : {data.date}</p>
+    <p>Postée le : <Moment format="DD/MM/YYYY">
+      {data.date}
+      </Moment>
+    </p>
     <p>{data.availability}</p>
     </Link>
     {/* <IconFav/> */}

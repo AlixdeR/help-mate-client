@@ -10,7 +10,6 @@ export default class Ads extends Component {
   componentDidMount() {
     APIHandler.get("/ads")
     .then(apiRes => {
-      console.log(apiRes.data);
       this.setState({ ads: apiRes.data });
     })
     .catch(err => console.error(err));
