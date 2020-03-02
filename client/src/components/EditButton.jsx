@@ -13,8 +13,8 @@ export default function EditButton({ data }) {
                       category: data.category,
                       availability: data.availability,
                       adType: data.adType,
-                      street: data.street
-                      
+                      address: data.address,
+                      image: data.image
                 }}}> 
                 <button>MODIFIER ANNONCE</button>
                 </Link>
