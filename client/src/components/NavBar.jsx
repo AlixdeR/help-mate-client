@@ -15,9 +15,10 @@ export default function NavBar() {
         aria-label="main navigation"
       >
         <div className="navbar-brand">
-            <div className="navbar-item">
-              <strong>HelpMate</strong>
-          </div>
+        <Link to="/"> <div className="navbar-item">
+              <strong>HelpMate</strong> 
+              </div> </Link>
+         
           <div
             role="button"
             className="navbar-burger burger"

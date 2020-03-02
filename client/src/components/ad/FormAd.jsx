@@ -37,11 +37,9 @@ export default class FormAd extends Component {
         fd.append("description", this.state.description);
         fd.append("availability", this.state.availability);
         fd.append("adType", this.state.adType);
-        address: {
-          fd.append("street", this.state.street);
-          fd.append("zipCode", this.state.zipCode);
-          fd.append("city", this.state.city)};
-        console.log(fd.get("image"))
+        fd.append("street", this.state.street);
+        fd.append("zipCode", this.state.zipCode);
+        fd.append("city", this.state.city);
 
           APIHandler
           .post("/ads", fd)
