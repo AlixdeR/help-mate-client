@@ -11,7 +11,7 @@ export default class Ad extends Component {
     }
 
     componentDidMount() {
-        APIHandler.get(`/ads/${this.props.location.state.id}`)
+        APIHandler.get(`/ads/${this.props.match.params.id}`)
         .then(apiRes => {
           this.setState({ ad: apiRes.data });
         })
