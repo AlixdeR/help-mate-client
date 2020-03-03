@@ -43,11 +43,11 @@
   padding : 2vh;
 }
 .profile-page{
-  padding-left: 25%;
+  padding-left: 25em;
 }
 .profile-aside {
   position: absolute;
-  width: 25%;
+  width: 20em;
   left: 0;
   z-index: 0;
 }
