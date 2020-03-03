@@ -5,24 +5,39 @@ import TabsAd from "../components/ad/TabsAds";
 import Map from "../components/map/Map";
 import { LoadScript } from "@react-google-maps/api";
 
-export default function AdsDisplayed() {
+export default function AdsDisplayed({ history, location, match, adsSearched }) {
   const [ads, setAds] = useState([]);
   const [locations, setLocations] = useState([]);
   const [toggleMap, setToggleMap] = useState(false);
- 
+  
   const displayMap = ()=> {
     setToggleMap(!toggleMap)
   }
-  useEffect(()=>{
-    APIHandler.get("/ads")
-      .then(apiRes => setAds(apiRes.data))
-      .catch(err => console.error(err))
-  }, [])
+  // useEffect(()=>{
+  //   APIHandler.get("/ads")
+  //     .then(apiRes => setAds(apiRes.data))
+  //     .catch(err => console.error(err))
+  // }, [])
+
+  useEffect(() => {
+    console.log(location.search)
+    const query = location.search.replace("?search=", "");
+    APIHandler.get(`ads/search?q=${query}`)
+    .then(apiRes => {
+      setAds(apiRes.data.dbRes)
+    })
+    .catch(err => console.error(err))
+  }, [location])
 
   useEffect(()=>{
+    console.log('rrrr', adsSearched)
+    if(adsSearched && adsSearched.length!==0) {
+      setAds(adsSearched)
+    } 
+
     const locationsArray = ads.map((ad, i)=>(ad.location.coordinates))
     setLocations(locationsArray)
-  }, [ads])
+  }, [ads, adsSearched])
  
   return (
     <div>

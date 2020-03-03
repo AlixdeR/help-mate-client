@@ -37,7 +37,7 @@ export default class UserAds extends Component {
                 <h1 className="title">Toutes mes annonces</h1>
                 {Boolean((this.state.ads).length) ? 
                 this.state.ads.map((ad, i) => (
-                    <PreviewAd  mode="mes annonces"  handleDelete={this.handleDelete}data={ad}/>
+                    <PreviewAd  mode="mes annonces"  handleDelete={this.handleDelete} data={ad}/>
                 )) : <p>Aucune annonce...</p>}
                 
             </React.Fragment>
