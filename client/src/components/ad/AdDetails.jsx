@@ -24,7 +24,7 @@ export default function AdDetails({ data }) {
         id="script-loader"
         googleMapsApiKey={process.env.REACT_APP_GOOGLE_APIKEY}
       >
-        <Map location={data.location.coordinates} />
+        <Map location={data || data.location.coordinates} />
       </LoadScript>
     </>
   );
