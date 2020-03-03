@@ -1,30 +1,33 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import APIHandler from "../../src/api/APIHandler";
 import AdDetails from "../components/ad/AdDetails";
-import EditButton from "../components/EditButton";
+import UserInfos from "../components/user/UserInfos";
+import { useAuth } from "../auth/useAuth";
 
 
+export default function Ad({match}) {
+    const { isLoading, currentUser } = useAuth();
+    const [ad, setAd] = useState(null);
+    const [userInfos, setUserInfos] = useState({});
 
-export default class Ad extends Component {
-    state = {
-        ad: []
-    }
-
-    componentDidMount() {
-        APIHandler.get(`/ads/${this.props.match.params.id}`)
+    useEffect(()=>{
+        APIHandler.get(`/ads/${match.params.id}`)
         .then(apiRes => {
-          this.setState({ ad: apiRes.data });
+            setAd(apiRes.data);
         })
         .catch(err => console.error(err));
-      }
-
-    render() {
-        return (
-            <div>
-                <AdDetails data={this.state.ad}/>
-                <EditButton data={this.state.ad}/>
+        APIHandler.get(`/users/${currentUser._id}`)
+         .then(apiRes => setUserInfos(apiRes.data))
+         .catch(apiErr => console.error(apiErr))
+    }, [])
+    return (
+        <div className='profile-page'>
+            <div className='profile-aside'>
+                {userInfos && <UserInfos userInfos={userInfos}/>}
             </div>
-        )
-    }
+            {ad && <AdDetails data={ad}/>}
+        </div>
+    )
 }
+
 

@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Moment from 'react-moment';
+import EditButton from "../EditButton";
+import DeleteButton from "../DeleteButton";
 
-export default function PreviewAd ({ data }) {
+export default function PreviewAd ({ data, mode }) {
   
   return <div>
     <div className="preview-ad"></div>
@@ -10,11 +13,18 @@ export default function PreviewAd ({ data }) {
       state: {
         id: data._id
       }}}>
-    <img src={data.image} alt="image"/>
+    <figure class="image is-96x96">
+      <img src={data.image} alt="image"/>
+    </figure>
     <h3>{data.title}</h3>
-    <p>Créé le : {data.date}</p>
-    <p>{data.availability}</p>
+    <p>Postée le : <Moment format="DD/MM/YYYY">
+      {data.date}
+      </Moment>
+    </p>
     </Link>
+
+    {mode==="mes annonces" && <EditButton data={data}/>}
+    {mode==="mes annonces" && <DeleteButton data={data}/>}
     {/* <IconFav/> */}
   </div>
 }

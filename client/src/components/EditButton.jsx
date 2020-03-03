@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 export default function EditButton({ data }) {
+
     return (
         <div>
               <Link to={{
@@ -13,8 +14,8 @@ export default function EditButton({ data }) {
                       category: data.category,
                       availability: data.availability,
                       adType: data.adType,
-                      street: data.street
-                      
+                      address: data.address,
+                      image: data.image
                 }}}> 
                 <button>MODIFIER ANNONCE</button>
                 </Link>

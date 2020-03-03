@@ -5,12 +5,12 @@ import Map from "../../components/map/Map";
 import { LoadScript } from "@react-google-maps/api";
 
 export default function AdDetails({ data }) {
-  console.log(data);
+  console.log('data', data);
   return (
     <>
-      <div>
+      <div className='ad-details'>
         <h2>{data.title}</h2>
-        <img src={data.image} alt="image-annonce" />
+        <img src={data.image} alt="image-annonce" width='300'/>
         <p className="ad-details">{data.availability}</p>
         <p className="ad-details">{data.category}</p>
         <p className="ad-details">{data.description}</p>
@@ -24,7 +24,7 @@ export default function AdDetails({ data }) {
         id="script-loader"
         googleMapsApiKey={process.env.REACT_APP_GOOGLE_APIKEY}
       >
-        <Map address={data.address} />
+        <Map location={data.location.coordinates} />
       </LoadScript>
     </>
   );
