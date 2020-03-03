@@ -7,16 +7,29 @@ export default class UserAds extends Component {
         ads: []
     };
 
-  componentDidMount() {
-    APIHandler.get(`/users/${this.props.match.params.id}`)
-    .then(apiRes => this.setState({ ads: apiRes.data.ads }))
-    .catch(err => console.error(err));
-  }
 
-  componentDidUpdate(prevState) {
-    if (this.state.ads !== prevState.ads) {
-    return this.fetchData(this.state.ads);
-  }}
+    fetchData(){
+      APIHandler.get(`/users/${this.props.match.params.id}`)
+      .then(apiRes => {
+        this.setState({ ads: apiRes.data.ads })})
+      .catch(err => console.error(err));
+    }
+
+    componentDidMount() {
+      this.fetchData();
+    }
+
+    handleDelete = id => {
+      APIHandler
+      .delete("/ads", id)
+      .then(apiRes => {
+        const updatedAds = apiRes.data.ads;
+        const result = updatedAds.filter( ad => ad != id);
+        this.setState({ads : result})
+      })
+      .catch(apiErr => console.log(apiErr))
+    }
+
 
     render() {
         return (
@@ -24,7 +37,7 @@ export default class UserAds extends Component {
                 <h1 className="title">Toutes mes annonces</h1>
                 {Boolean((this.state.ads).length) ? 
                 this.state.ads.map((ad, i) => (
-                    <PreviewAd mode="mes annonces" data={ad}/>
+                    <PreviewAd  mode="mes annonces"  handleDelete={this.handleDelete}data={ad}/>
                 )) : <p>Aucune annonce...</p>}
                 
             </React.Fragment>

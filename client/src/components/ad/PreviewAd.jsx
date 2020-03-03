@@ -4,7 +4,7 @@ import Moment from 'react-moment';
 import EditButton from "../EditButton";
 import DeleteButton from "../DeleteButton";
 
-export default function PreviewAd ({ data, mode }) {
+export default function PreviewAd ({ data, mode,handleDelete }) {
   
   return <div>
     <div className="preview-ad"></div>
@@ -24,7 +24,7 @@ export default function PreviewAd ({ data, mode }) {
     </Link>
 
     {mode==="mes annonces" && <EditButton data={data}/>}
-    {mode==="mes annonces" && <DeleteButton data={data}/>}
+    {mode==="mes annonces" && <DeleteButton handleDelete={handleDelete} data={data}/>}
     {/* <IconFav/> */}
   </div>
 }
