@@ -1,6 +1,52 @@
-.hero-body {
-    background-image: url('/Best-Online-Masters-in-Human-Services-Degrees-654x427.jpg');
+
+.hero.is-large .hero-body {
+    /* min-width: 769px; */
+    padding-bottom: 5rem;
+    padding-top: 8rem;
+}
+
+.tabs {
+    padding-bottom: 5em;
+    /* margin: 1px; */
+}
+
+.tabs li {
+    background-color: #00d1b2;
+    color: #dfe7ec;
+}
+
+.hero.is-info {
+    background-image: url('/blue-green-orange-and-red-rainbow-design-decoration-673648.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+}
+
+.hero.is-info .title,
+.hero.is-info .subtitle {
+    color: rgba(0, 0, 0, 0.705);
+    text-shadow: white;
+}
+
+.hero-body > .container {
+    backdrop-filter: brightness(110%) blur(10px) opacity(100%);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.hero.is-info .tabs.is-boxed ul li:first-child {
+    margin-right: 30px;
+    background-color: white;
+}
+.hero.is-info .tabs.is-boxed ul li:first-child:hover {
+    opacity: 0.8;
+}
+
+.hero.is-info .tabs.is-boxed ul li:first-child a,
+.hero.is-info .tabs.is-boxed ul li:first-child a:hover {
+    color: #00d1b2;
+}
+
+.tile.is-ancestor {
+    padding: 25px 15px;
 }

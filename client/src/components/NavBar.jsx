@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../auth/useAuth";
 
+import '../styles/navBar.css'
+
 export default function NavBar() {
   const { isLoading, currentUser } = useAuth();
 
@@ -15,10 +17,12 @@ export default function NavBar() {
         aria-label="main navigation"
       >
         <div className="navbar-brand">
-        <Link to="/"> <div className="navbar-item">
-              <strong>HelpMate</strong> 
-              </div> </Link>
-         
+          <Link to="/">
+            <div className="navbar-item">
+              <img className="logo-helpmate" src="/e500e06b-daaa-45ae-ae0a-1f4f2a3ed090_200x200.png" alt="" width=""/>
+            </div>
+          </Link>
+
           <div
             role="button"
             className="navbar-burger burger"

@@ -1,0 +1,12 @@
+footer.footer .content {
+    font-size: 1.1rem;
+}
+
+footer.footer a,
+footer.footer a:hover {
+    color: #3273dc;
+}
+
+footer.footer a:hover {
+    text-decoration: underline;
+}

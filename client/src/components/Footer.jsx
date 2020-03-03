@@ -1,18 +1,36 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import "../styles/footer.css";
 
-export default function Footer() {
-    return (
-        <div>
-            <footer className="footer">
-  <div className="content has-text-centered">
-    <p>
-      <strong>HelpMate</strong> by <a href="https://jgthms.com">Alix, Camille, Pauline & Wendy</a>. The source code is licensed
-      <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-      is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-    </p>
+const LinkedinIcon = <FontAwesomeIcon icon={faLinkedin} />;
+
+const Footer = () => (
+  <div>
+    <footer className="footer">
+      <div className="content has-text-centered">
+        <p>
+          <strong>HelpMate</strong>
+          { ' by ' }
+          <a href="https://www.linkedin.com/in/alix-de-ribet-237a48119/">
+              Alix { LinkedinIcon }
+          </a>
+          {', '}
+          <a href="https://www.linkedin.com/in/camille-de-l%C3%A9pine-robinel-326925158/">
+              Camille { LinkedinIcon }
+          </a>
+          {', '}
+          <a href="https://www.linkedin.com/in/pauline-morsli/">
+              Pauline { LinkedinIcon }
+          </a>
+          {' & '} 
+          <a href="https://www.linkedin.com/in/wendy-evora-978653142/">
+              Wendy { LinkedinIcon }
+          </a>.
+        </p>
+      </div>
+    </footer>
   </div>
-</footer>
-        </div>
-    )
-}
+)
+
+export default Footer

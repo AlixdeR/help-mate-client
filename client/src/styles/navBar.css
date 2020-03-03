@@ -1,3 +1,21 @@
-.logo-helpmate {
-    background-image: none;
+.navbar-item .logo-helpmate {
+    width: 110px;
+    max-height: none;
 }
+
+.navbar.is-primary {
+    background: white;
+}
+
+.button.is-rounded.is-warning {
+    background-color: #00d1b2;
+    color: white;
+}
+
+.navbar.is-primary .navbar-end .navbar-link,
+.navbar.is-primary .navbar-end a {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+
+

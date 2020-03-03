@@ -1,4 +1,5 @@
 import React from 'react'
+import AdsDisplayed from "../views/AdsDisplayed";
 import { Link } from "react-router-dom";
 import '../styles/home.css'
 
@@ -34,7 +35,6 @@ export default function Home() {
 
             </section>
 
-        <hr/>
             {/* <div className="hero-about-container">
                     <div>
                         <h1>About HelpMate</h1>
@@ -51,8 +51,10 @@ export default function Home() {
     <div className="tile">
       <div className="tile is-parent is-vertical">
         <article className="tile is-child notification is-primary">
-          <p className="title">Toutes les annonces</p>
-          <p className="subtitle">Top tile</p>
+          {/* <p className="title">Toutes les annonces</p>
+          <p className="subtitle">Top tile</p> */}
+          <AdsDisplayed />
+
         </article>
         {/* <article className="tile is-child notification is-warning">
           <p className="title">...tiles</p>
@@ -61,17 +63,18 @@ export default function Home() {
       </div>
       <div className="tile is-parent">
         <article className="tile is-child notification is-info">
-          <p className="title">Middle tile</p>
-          <p className="subtitle">With an image</p>
+          <p className="title">La visite de courtoisie</p>
+          <p className="subtitle">Pour aider les personnes âgées en perte d'autonomie ou tout simplement les aider à lutter contre la solitude et l'isolement...</p>
+          <p></p>
           <figure className="image is-4by3">
-            <img src="https://bulma.io/images/placeholders/640x480.png" />
+            <img src="/blurred-retirement-home-concept_23-2147788024.jpg" />
           </figure>
         </article>
       </div>
     </div>
     <div className="tile is-parent">
       <article className="tile is-child notification is-danger">
-        <p className="title">Wide tile</p>
+        <p className="title">Comment ça marche ?</p>
         <p className="subtitle">Aligned with the right tile</p>
         <div className="content">
             content ........
@@ -82,10 +85,14 @@ export default function Home() {
   <div className="tile is-parent">
     <article className="tile is-child notification is-success">
       <div className="content">
-        <p className="title">Tall tile</p>
-        <p className="subtitle">With even more content</p>
+        <p className="title">A propos</p>
+        {/* <p className="subtitle"></p> */}
         <div className="content">
-            content ........
+        Nous avons tous déjà eu recours à l'entraide dans notre vie, et cette notion est bien plus présente dans notre quotidien que nous le pensons. En effet, elle entre en jeu dans notre vie de tous les jours, dans notre vie privée, au sein de notre famille, au travail, etc..
+        L'entraide ne date pas d'hier, l'être humain était autrefois l’espèce la plus coopérative du monde vivant, cela à cause de (ou grâce à) toutes les contraintes auxquelles il était exposé. C’est notre vulnérabilité qui nous a rendu forts, qui nous a obligé à prendre soin des autres, à nous réunir en clans, à coopérer.
+        L’entraide est profondément ancrée en nous. Nous sommes une espèce "ultrasociale".
+        Sauf que cette fois, la possibilité même d’entraide semble nous filer entre les doigts ! 
+        C'est pourquoi nous avons pensé à développer HelpMate afin de mobilier les citoyens...
         </div>
       </div>
     </article>
