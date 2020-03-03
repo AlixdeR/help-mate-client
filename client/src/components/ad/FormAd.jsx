@@ -1,6 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { withRouter, Redirect } from "react-router-dom";
+import { GoogleMap } from "@react-google-maps/api";
 import APIHandler from "../../api/APIHandler";
-import { Redirect } from "react-router-dom";
+import GooglePlacesAutocomplete from "react-google-places-autocomplete";
+import { geocodeByAddress } from "react-google-places-autocomplete";
+import UserContext from "../../auth/UserContext";
 
 
 export default class FormAd extends Component {
@@ -17,7 +21,9 @@ export default class FormAd extends Component {
         zipCode: 0,
         city: "",
         image: "",
-        availability: ""
+        availability: "",
+        lng:null,
+        lat:null,
     }
 
     handleState = e => {
@@ -32,47 +38,42 @@ export default class FormAd extends Component {
 
     submitForm = e => {
       e.preventDefault();
-      const fd = new FormData();
-        fd.append("image", this.state.image);
-        fd.append("title", this.state.title);
-        fd.append("category", this.state.category);
-        fd.append("description", this.state.description);
-        fd.append("availability", this.state.availability);
-        fd.append("adType", this.state.adType);
-        fd.append("street", this.state.street);
-        fd.append("zipCode", this.state.zipCode);
-        fd.append("city", this.state.city);
-
-          APIHandler
-          .post("/ads", fd)
-          .then(apiRes => this.setState({redirect: true}))
-          .catch(apiErr => this.setState({msg: <div className="msg-fail">Erreur!</div>}));
-          
-
-        
-
-      // APIHandler.post("/ads", {
-      //   title: this.state.title,
-      //   category: this.state.category,
-      //   description: this.state.description,
-      //   availability: this.state.availability,
-      //   adType: this.state.adType,
-      //   address: {
-      //       street: this.state.street,
-      //       zipCode: this.state.zipCode,
-      //       city: this.state.city,
-      //   },
-      //   image: this.state.image
-      // })
-      // .then(apiRes => this.setState({msg: <div className="msg-fail">Annonce créée!</div>}))
-      // .catch(apiErr => this.setState({msg: <div className="msg-fail">An error occured, try again!</div>}));
+      const {street, zipCode, city} = this.state
+      const addressStr = street + ", " + zipCode + ", " + city;
+      const geocoder = new window.google.maps.Geocoder();
+      geocoder.geocode({ address: addressStr }, (results, status)=> {
+        if (status == "OK") {
+          console.log(results, "this is results");
+          const lat = results[0].geometry.location.lat();
+          const lng = results[0].geometry.location.lng();
+          this.setState({lng : lng, lat : lat})
+          console.log(lat, lng);
+          const fd = new FormData();
+          fd.append("image", this.state.image);
+          fd.append("title", this.state.title);
+          fd.append("category", this.state.category);
+          fd.append("description", this.state.description);
+          fd.append("availability", this.state.availability);
+          fd.append("adType", this.state.adType);
+          fd.append("street", this.state.street);
+          fd.append("zipCode", this.state.zipCode);
+          fd.append("city", this.state.city);
+          fd.append("lng", this.state.lng);
+          fd.append("lat", this.state.lat);
+            APIHandler
+            .post("/ads", fd)
+            .then(apiRes => this.setState({redirect: true}))
+            .catch(apiErr => this.setState({msg: <div className="msg-fail">Erreur!</div>}));
+        } else {
+          alert(
+            "Geocode was not successful for the following reason: " + status
+          );
+        }
+    })
     };
 
     render() {
-
         return (
-
-
             <div>
 
                 {this.state.redirect===true && <Redirect to="/annonces" />}   
