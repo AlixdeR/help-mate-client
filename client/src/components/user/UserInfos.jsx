@@ -24,7 +24,7 @@ export default function UserInfos({userInfos}) {
             <div>{userInfos.username}</div>
             <div>{userInfos.gender}</div>
             <div>Membre depuis <strong>{moment(userInfos.account_creation, moment.ISO_8601).lang("fr").fromNow(true)}</strong></div>
-            <div>Age : {moment(userInfos.birthday, moment.ISO_8601).lang("fr").fromNow(true)}</div>
+            <div>Age : {moment(userInfos.birthday, moment.ISO_8601).fromNow(true)}</div>
             {userInfos.ads && <div> A posté <strong>{userInfos.ads.length}</strong> annnonce(s)</div>}
         </div>
     )

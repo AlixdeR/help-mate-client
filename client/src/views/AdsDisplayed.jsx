@@ -21,7 +21,7 @@ export default function AdsDisplayed() {
   }, [])
 
   useEffect(()=>{
-    const locationsArray = ads.map((ad, i)=>( ad || ad.location.coordinates))
+    const locationsArray = ads.map((ad, i)=>(ad.location.coordinates))
     setLocations(locationsArray)
   }, [ads])
  
