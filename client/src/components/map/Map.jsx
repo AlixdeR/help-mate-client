@@ -6,9 +6,10 @@ import Geocode from "react-geocode";
 class Map extends Component {
 
   render() {
-  const mapCenter = this.props.locations ? {lat:this.props.locations[0][1],
-    lng: this.props.locations[0][0]} : {lat:this.props.location[1],
-    lng: this.props.location[0]}
+  const mapCenter = 
+  this.props.locations && this.props.locations.length !== 0?  {lat:this.props.locations[0][1],
+    lng: this.props.locations[0][0]} : this.props.location ? {lat:this.props.location[1],
+    lng: this.props.location[0]} : {lat : 0, lng: 0}
     return (
       <div>
         <GoogleMap
