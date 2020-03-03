@@ -11,8 +11,12 @@
 }
 
 .tabs li {
-    background-color: #00d1b2;
+    background-color: none;
     color: #dfe7ec;
+}
+.tabs .button {
+    background-color: transparent;
+
 }
 
 .hero.is-info {
