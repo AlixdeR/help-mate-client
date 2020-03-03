@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../auth/useAuth";
+import AdsDisplayed from "../views/AdsDisplayed"
 
 import '../styles/navBar.css'
 
-export default function NavBar() {
+export default function NavBar({ props, filterAds }) {
   const { isLoading, currentUser } = useAuth();
 
   if (isLoading) return null;
@@ -22,6 +23,8 @@ export default function NavBar() {
               <img className="logo-helpmate" src="/e500e06b-daaa-45ae-ae0a-1f4f2a3ed090_200x200.png" alt="" width=""/>
             </div>
           </Link>
+
+  
 
           <div
             role="button"
