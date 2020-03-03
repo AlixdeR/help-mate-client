@@ -17,6 +17,8 @@
     "moment": "^2.24.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-geocode": "^0.2.1",
+    "react-google-places-autocomplete": "^1.6.2",
     "react-moment": "^0.9.7",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0"
