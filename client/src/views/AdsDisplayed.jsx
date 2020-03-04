@@ -21,19 +21,32 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
   // }, [])
 
   useEffect(() => {
+    if (max) {
+      const adsFiltered = ads.filter((ad,i) => i < max )
+      console.log(adsFiltered)
+      setAds(adsFiltered)
+    }
     const query = location.search.replace("?search=", "");
     APIHandler.get(`ads/search?q=${query}`)
     .then(apiRes => {
-      setAds(apiRes.data.dbRes)
+      if (max) {
+        const adsFiltered = apiRes.data.dbRes.filter((ad,i) => i < max )
+        console.log(adsFiltered)
+        setAds(adsFiltered)
+      } else {
+        setAds(apiRes.data.dbRes)
+      }
+      
     })
     .catch(err => console.error(err))
   }, [location])
 
   useEffect(()=>{
-    console.log('rrrr', adsSearched)
+
     if(adsSearched && adsSearched.length!==0) {
       setAds(adsSearched)
-    } 
+    }
+  
 
     const locationsArray = ads.map((ad, i)=>(ad.location.coordinates))
     setLocations(locationsArray)
