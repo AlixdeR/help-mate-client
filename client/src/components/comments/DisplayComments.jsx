@@ -1,16 +1,12 @@
-import React from 'react'
-import OneComment from '../comments/OneComment'
+import React from "react";
+import OneComment from "../comments/OneComment";
 
-export default function DisplayComments({comments, clbk}) {
-    console.log(comments,"this is comments")
-    return (
-        <div className='display-comments'>
-            {!comments && <p> <strong>PAS ENCORE DE COMMENTAIRE !</strong></p>}
-            {comments && comments.map((comment, i)=>(
-                <div key={i}>
-                <OneComment comment={comment} clbk={clbk}/>
-                </div>
-            ))}
-        </div>
-    )
+export default function DisplayComments({ comments, clbk }) {
+  return (
+    <div className="display-comments">
+      {comments.map(c => {
+        return !c.isResponse && <OneComment comment={c} clbk={clbk} />;
+      })}
+    </div>
+  );
 }

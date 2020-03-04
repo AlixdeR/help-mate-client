@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkedAlt} from "@fortawesome/free-solid-svg-icons";
 // import '../styles/adsPreview.css'
 
-;export default function AdsDisplayed() {
 import {withRouter} from "react-router-dom";
 
 

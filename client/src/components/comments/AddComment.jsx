@@ -8,8 +8,6 @@ export default class AddComment extends Component {
   };
 
   handleState = e => {
-    // if (e.target.name === "image") return;
-    // if (e.target.type === "radio") this.setState({ adType: e.target.value });
     this.setState({ [e.target.name]: e.target.value });
   };
 
@@ -24,22 +22,6 @@ export default class AddComment extends Component {
       .catch(apiErr =>
         this.setState({ msg: <div className="msg-fail">Erreur!</div> })
       );
-
-    // APIHandler.post("/ads", {
-    //   title: this.state.title,
-    //   category: this.state.category,
-    //   description: this.state.description,
-    //   availability: this.state.availability,
-    //   adType: this.state.adType,
-    //   address: {
-    //       street: this.state.street,
-    //       zipCode: this.state.zipCode,
-    //       city: this.state.city,
-    //   },
-    //   image: this.state.image
-    // })
-    // .then(apiRes => this.setState({msg: <div className="msg-fail">Annonce créée!</div>}))
-    // .catch(apiErr => this.setState({msg: <div className="msg-fail">An error occured, try again!</div>}));
   };
 
   render() {
