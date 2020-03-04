@@ -5,9 +5,15 @@ import UserInfos from "../components/user/UserInfos";
 import AddComment from "../components/comments/AddComment";
 import DisplayComments from "../components/comments/DisplayComments";
 import DisplayAds from "../components/ad/DisplayAds";
-
+import AddResponseToComments from "../components/comments/AddResponseToComments";
 export default function UserPublicProfile({ match }) {
   const [userInfos, setUserInfos] = useState(null);
+  const [currentResponseId, setCurrentResponseId] = useState(null);
+
+  const handleResponse = (e, id) => {
+    setCurrentResponseId(id);
+  };
+
   useEffect(() => {
     apiHandler
       .get(`/users/${match.params.id}`)
@@ -26,8 +32,13 @@ export default function UserPublicProfile({ match }) {
         <UserInfos userInfos={userInfos} />
         <DisplayAds ads={userInfos && userInfos.ads} />
       </div>
-      {userInfos && <DisplayComments comments={userInfos.comments}/>}
-      <AddComment userId={match.params.id} />
+      {userInfos && (
+        <DisplayComments clbk={handleResponse} comments={userInfos.comments} />
+      )}
+      {!currentResponseId && <AddComment userId={match.params.id} />}
+      {currentResponseId && (
+        <AddResponseToComments userId={match.params.id} currentResponseId={currentResponseId} />
+      )}
     </div>
   );
 }

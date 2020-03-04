@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Moment from 'react-moment';
 import EditButton from "../EditButton";
 import DeleteButton from "../DeleteButton";
+// import '../styles/adsPreview.css'
+
 
 export default function PreviewAd ({ data, mode,handleDelete }) {
   
