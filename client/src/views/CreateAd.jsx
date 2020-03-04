@@ -2,10 +2,13 @@ import React, { Component } from "react";
 import FormAd from "../components/ad/FormAd";
 import { LoadScript } from "@react-google-maps/api";
 
+import '../styles/adForm.css'
+
+
 
 export default function CreateAd() {
     return (
-        <div>
+        <div className="form-container">
         <h1 className='title is-3 center-content'>Créer une annonce</h1>
         <LoadScript
         id="script-loader"

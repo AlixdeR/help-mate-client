@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Acme|Nunito|Open+Sans+Condensed:300|Oswald|PT+Sans+Narrow|Patua+One|Paytone+One|Philosopher|Press+Start+2P|Quattrocento+Sans&display=swap');
 .App {
   text-align: center;
 }
@@ -52,6 +53,12 @@
   z-index: 0;
 }
 .comment {
-  background-color: rgb(49, 10, 49);
+  background-color: rgb(104, 29, 104);
   height: 10vh;
 }
+
+.buttons .button {
+  font-weight: bolder;
+}
+
+

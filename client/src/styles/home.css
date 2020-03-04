@@ -1,3 +1,8 @@
+body {
+    font-family: 'Quattrocento Sans', sans-serif;
+}
+
+
 
 .hero.is-large .hero-body {
     /* min-width: 769px; */
@@ -13,6 +18,7 @@
 .tabs li {
     background-color: #00d1b2;
     color: #dfe7ec;
+    font-weight: bolder;
 }
 
 .hero.is-info {
@@ -26,6 +32,10 @@
 .hero.is-info .subtitle {
     color: rgba(0, 0, 0, 0.705);
     text-shadow: white;
+}
+
+.subtitle {
+font-size: 1em;
 }
 
 .hero-body > .container {

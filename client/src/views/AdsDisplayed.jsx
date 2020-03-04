@@ -5,8 +5,9 @@ import Map from "../components/map/Map";
 import { LoadScript } from "@react-google-maps/api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkedAlt} from "@fortawesome/free-solid-svg-icons";
+// import '../styles/adsPreview.css'
 
-export default function AdsDisplayed() {
+;export default function AdsDisplayed() {
   const [ads, setAds] = useState([]);
   const [locations, setLocations] = useState([]);
   const [toggleMap, setToggleMap] = useState(false);
