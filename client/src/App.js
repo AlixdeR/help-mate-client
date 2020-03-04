@@ -29,13 +29,26 @@ function App() {
     currentUser,
     setCurrentUser
   };
+  const [searchResults, setSearchResults] = useState([]);
+
+  const handleSearchResults = results => {
+    console.log("R", results)
+    if (!results) return setSearchResults([]);
+    if (results) return setSearchResults(results.dbRes);
+    console.log("SR", searchResults)
+  };
+
+
+
   return (
     <UserContext.Provider value={UserContextValue}>
       {isLoading ? (
         null
       ) : (
      <React.Fragment>
-     <NavBar />
+     <NavBar 
+       searchClbk={handleSearchResults}
+     />
       <main id="content_main">
          <Switch>
               <Route exact path="/" component={Home} />
@@ -44,7 +57,7 @@ function App() {
               <Route path="/profil/:id/annonces" component={UserAds} />
               <Route exact path="/mon-annonce" component={CreateAd} />
               <Route exact path="/editer-mon-annonce/:id" component={EditAd} />
-              <Route exact path="/annonces" component={AdsDisplayed} />
+              <Route exact path="/annonces" render={(routeProps)=>(<AdsDisplayed {...routeProps} adsSearched={searchResults}/>)} />
               <Route exact path="/annonces/:id" component={Ad} />
               {/* <Route path="/signin" component={SignIn} /> */}
               <Route path="/signup" component={SignUp} />

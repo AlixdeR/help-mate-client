@@ -1,16 +1,16 @@
 import React, { useEffect, useState} from "react";
 import APIHandler from "../../src/api/APIHandler";
 import PreviewAd from "../components/ad/PreviewAd";
+import TabsAd from "../components/ad/TabsAds";
 import Map from "../components/map/Map";
 import { LoadScript } from "@react-google-maps/api";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkedAlt} from "@fortawesome/free-solid-svg-icons";
+import {withRouter} from "react-router-dom";
 
-export default function AdsDisplayed() {
+
+export default withRouter(function AdsDisplayed({ history, location, match, adsSearched, max }) {
   const [ads, setAds] = useState([]);
   const [locations, setLocations] = useState([]);
   const [toggleMap, setToggleMap] = useState(false);
- 
   const displayMap = ()=> {
     setToggleMap(!toggleMap)
   }
@@ -48,36 +48,13 @@ export default function AdsDisplayed() {
     }
   
 
-  useEffect(()=>{
     const locationsArray = ads.map((ad, i)=>(ad.location.coordinates))
     setLocations(locationsArray)
-  }, [ads])
+  }, [ads, adsSearched])
  
   return (
     <div>
-      <h1 className="title">Toutes les annonces</h1>
-        <div class="tabs is-centered">
-          <ul>
-            <li class="is-active">
-              <a>Bricolage</a>
-            </li>
-            <li>
-              <a>Visites</a>
-            </li>
-            <li>
-              <a>Courses</a>
-            </li>
-            <li>
-              <a>Free Hugs</a>
-            </li>
-            <li>
-            <FontAwesomeIcon
-        onClick={displayMap}
-        className="is-hoverable"
-        icon={faMapMarkedAlt}/>
-            </li>
-          </ul>
-        </div>
+        <TabsAd mapActive={toggleMap} toggle= {displayMap}/>
         <LoadScript
         id="script-loader"
         googleMapsApiKey={process.env.REACT_APP_GOOGLE_APIKEY}
@@ -91,5 +68,4 @@ export default function AdsDisplayed() {
         )}
     </div>
   )
-}
-
+})
