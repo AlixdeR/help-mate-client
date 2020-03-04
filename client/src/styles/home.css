@@ -54,3 +54,11 @@
 .tile.is-ancestor {
     padding: 25px 15px;
 }
+
+.panel {
+    width: 50vh;
+    padding: 2vh;
+    background-color: white;
+    position: absolute;
+    bottom: 18vh;
+}
