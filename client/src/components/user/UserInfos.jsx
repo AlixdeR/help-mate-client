@@ -20,7 +20,7 @@ export default function UserInfos({userInfos}) {
     return (
         <div className='aside-user-infos'>
             <img alt='avatar' src={userInfos.avatar} width='200' />
-            {userInfos.rates && <StarsRating n={ratesAverage(userInfos.rates)}/>}
+            {/* {userInfos.rates && <StarsRating n={ratesAverage(userInfos.rates)}/>} */}
             <div>{userInfos.username}</div>
             <div>{userInfos.gender}</div>
             <div>Membre depuis <strong>{moment(userInfos.account_creation, moment.ISO_8601).lang("fr").fromNow(true)}</strong></div>

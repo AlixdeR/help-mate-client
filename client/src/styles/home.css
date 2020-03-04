@@ -11,12 +11,8 @@
 }
 
 .tabs li {
-    background-color: none;
+    background-color: #00d1b2;
     color: #dfe7ec;
-}
-.tabs .button {
-    background-color: transparent;
-
 }
 
 .hero.is-info {
@@ -53,12 +49,4 @@
 
 .tile.is-ancestor {
     padding: 25px 15px;
-}
-
-.panel {
-    width: 50vh;
-    padding: 2vh;
-    background-color: white;
-    position: absolute;
-    bottom: 18vh;
 }

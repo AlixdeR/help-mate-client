@@ -5,7 +5,7 @@ export default function DisplayAds({ads}) {
     
     return (
         <div className='display-ads'>
-            {!ads && <p><strong>PAS D'ANNONCE À AFFICHER</strong></p>}
+            {!ads && <p><strong>Pas encore d'annonce postée</strong></p>}
             {ads && ads.map((ad, i)=>(
                 <div key={i}>
                 <PreviewAd data={ad}/>
