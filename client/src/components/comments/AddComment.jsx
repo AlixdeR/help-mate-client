@@ -15,7 +15,6 @@ export default class AddComment extends Component {
 
   submitForm = e => {
     e.preventDefault();
-    console.log("this is state",this.state)
     APIHandler.post(`/comments/${this.props.userId}`, this.state)
       .then(apiRes =>
         this.setState({
