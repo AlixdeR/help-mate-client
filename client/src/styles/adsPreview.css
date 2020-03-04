@@ -5,3 +5,13 @@
     align-items: flex-end;
     border: 1px solid red;
 }
+
+/* .withfilters .nofilter {
+    display: flex;
+    align-self: center;
+    border: 1px solid red;
+} */
+
+.preview-ad {
+    border: 1px solid darkslategrey;
+}

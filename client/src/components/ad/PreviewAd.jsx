@@ -8,8 +8,8 @@ import DeleteButton from "../DeleteButton";
 
 export default function PreviewAd ({ data, mode,handleDelete }) {
   
-  return <div>
-    <div className="preview-ad"></div>
+  return <div className="preview-ad">
+    <div></div>
     <Link to={{
       pathname: `/annonces/${data._id}`,
       state: {
