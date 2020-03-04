@@ -3,11 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkedAlt} from "@fortawesome/free-solid-svg-icons";
 import { faThList} from "@fortawesome/free-solid-svg-icons";
 import { faSliders} from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom"
 
 export default function TabsAds({toggle, mapActive}) {
   return (
     <div>
-      <h1 className="title">Toutes les annonces</h1>
+      <Link to="/annonces"><h1 className="title">Toutes les annonces</h1></Link>
       <div className="tabs is-centered">
         <ul>
           <li className="is-active">

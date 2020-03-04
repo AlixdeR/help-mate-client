@@ -4,12 +4,13 @@ import PreviewAd from "../components/ad/PreviewAd";
 import TabsAd from "../components/ad/TabsAds";
 import Map from "../components/map/Map";
 import { LoadScript } from "@react-google-maps/api";
+import {withRouter} from "react-router-dom";
 
-export default function AdsDisplayed({ history, location, match, adsSearched }) {
+
+export default withRouter(function AdsDisplayed({ history, location, match, adsSearched, max }) {
   const [ads, setAds] = useState([]);
   const [locations, setLocations] = useState([]);
   const [toggleMap, setToggleMap] = useState(false);
-  
   const displayMap = ()=> {
     setToggleMap(!toggleMap)
   }
@@ -20,7 +21,6 @@ export default function AdsDisplayed({ history, location, match, adsSearched }) 
   // }, [])
 
   useEffect(() => {
-    console.log(location.search)
     const query = location.search.replace("?search=", "");
     APIHandler.get(`ads/search?q=${query}`)
     .then(apiRes => {
@@ -55,5 +55,5 @@ export default function AdsDisplayed({ history, location, match, adsSearched }) 
         )}
     </div>
   )
-}
+})
 
