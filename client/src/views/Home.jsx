@@ -53,7 +53,7 @@ export default function Home() {
         <article className="tile is-child notification is-primary">
           {/* <p className="title">Toutes les annonces</p>
           <p className="subtitle">Top tile</p> */}
-          <AdsDisplayed max={3}/>
+          <AdsDisplayed />
 
         </article>
         {/* <article className="tile is-child notification is-warning">

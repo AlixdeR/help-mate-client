@@ -4,9 +4,8 @@ import { useAuth } from "../auth/useAuth";
 import AdsDisplayed from "../views/AdsDisplayed"
 
 import '../styles/navBar.css'
-import SearchBar from "./SearchBar";
 
-export default function NavBar({ searchClbk }) {
+export default function NavBar({ props, filterAds }) {
   const { isLoading, currentUser } = useAuth();
 
   if (isLoading) return null;
@@ -25,7 +24,7 @@ export default function NavBar({ searchClbk }) {
             </div>
           </Link>
 
-          <SearchBar searchClbk={searchClbk}/>
+  
 
           <div
             role="button"
