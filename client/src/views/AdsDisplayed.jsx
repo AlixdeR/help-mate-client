@@ -62,13 +62,14 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
   return (
     <div>
         <TabsAd mapActive={toggleMap} filtersActive={toggleFilters} toggleFilters={displayFilters} toggle={displayMap}/>
+        <div className={toggleFilters?"withfilters": "nofilter"}>
         <LoadScript
         id="script-loader"
         googleMapsApiKey={process.env.REACT_APP_GOOGLE_APIKEY}
         >
         {toggleMap && <Map locations={locations} />}
         </LoadScript>
-        <div className={toggleFilters?"withfilters ads-preview-container": "nofilter ads-preview-container"}>
+        
         {Boolean(ads.length) ? (
           ads.map((ad, i) => <PreviewAd data={ad} />)
         ) : (
