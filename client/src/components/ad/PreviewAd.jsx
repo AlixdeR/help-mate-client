@@ -18,10 +18,11 @@ export default function PreviewAd ({ data, mode,handleDelete }) {
     <figure class="image is-96x96">
       <img src={data.image} alt="image"/>
     </figure>
-    <h3>{data.title}</h3>
-    <p>Postée le : <Moment format="DD/MM/YYYY">
+    <h3 className="ad-title">" {data.title}"</h3>
+    <p className="ad-date">Postée le : <Moment format="DD/MM/YYYY">
       {data.date}
-      </Moment>
+      </Moment> 
+      {/* par : {data.author} */}
     </p>
     </Link>
 
