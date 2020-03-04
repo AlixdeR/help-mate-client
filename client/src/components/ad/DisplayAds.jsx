@@ -2,6 +2,7 @@ import React from 'react'
 import PreviewAd from '../ad/PreviewAd'
 
 export default function DisplayAds({ads}) {
+    console.log("display", ads)
     
     return (
         <div className='display-ads'>
