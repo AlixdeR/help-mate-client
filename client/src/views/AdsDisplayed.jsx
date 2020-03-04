@@ -11,10 +11,14 @@ import {withRouter} from "react-router-dom";
 
 
 export default withRouter(function AdsDisplayed({ history, location, match, adsSearched, max }) {
+
   const [ads, setAds] = useState([]);
   const [locations, setLocations] = useState([]);
   const [toggleMap, setToggleMap] = useState(false);
-  const [toggleFilters, setToggleFilters] = useState(false)
+  const [toggleFilters, setToggleFilters] = useState(false);
+
+ console.log('ads', ads)
+
   const displayMap = ()=> {
     setToggleMap(!toggleMap)
   }
@@ -22,25 +26,20 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
     setToggleFilters(!toggleFilters)
   }
   
-  useEffect(()=>{
-    APIHandler.get("/ads")
-      .then(apiRes => setAds(apiRes.data))
-      .catch(err => console.error(err))
-  }, [])
-
-  
   useEffect(() => {
     if (max) {
       const adsFiltered = ads.filter((ad,i) => i < max )
       console.log(adsFiltered)
       setAds(adsFiltered)
     }
-    
+
     const query = location.search.replace("?search=", "");
     APIHandler.get(`ads/search?q=${query}`)
     .then(apiRes => {
+      console.log("apiRes", apiRes.data)
       if (max) {
         const adsFiltered = apiRes.data.dbRes.filter((ad,i) => i < max )
+        console.log(adsFiltered)
         setAds(adsFiltered)
       } else {
         setAds(apiRes.data.dbRes)
@@ -60,19 +59,21 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
     setLocations(locationsArray)
   }, [ads, adsSearched])
 
-  const handleCategories = e => {
-          let catSelected = e.target.id;
-          console.log(catSelected)
-          let loc = location.search;
-          history.push({
-              pathname: "/annonces",
-              search: `${loc}&category=${catSelected}`
-          });
-  }
+  // const handleCategories = e => {
+  //         let catSelected = e.target.id;
+  //         console.log(catSelected)
+  //         let loc = location.search;
+  //         history.push({
+  //             pathname: "/annonces",
+  //             search: `${loc}&category=${catSelected}`
+  //         });
+  // }
+
+  console.log(ads)
  
   return (
     <div>
-        <TabsAd handleCategories={handleCategories} mapActive={toggleMap} filtersActive={toggleFilters} toggleFilters={displayFilters} toggle={displayMap}/>
+        <TabsAd  mapActive={toggleMap} filtersActive={toggleFilters} toggleFilters={displayFilters} toggle={displayMap}/>
         <div className={toggleFilters?"withfilters": "nofilter"}>
         <LoadScript
         id="script-loader"
@@ -82,7 +83,7 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
         </LoadScript>
         
         <div className="ads-preview-container">
-        {ads.length ? (
+        {Boolean(ads.length) ? (
           ads.map((ad, i) => <PreviewAd data={ad} />)
         ) : (
           <p>Aucune annonce à afficher...</p>
