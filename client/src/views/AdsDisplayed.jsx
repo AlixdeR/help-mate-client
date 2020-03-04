@@ -47,7 +47,6 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
       setAds(adsSearched)
     }
   
-
     const locationsArray = ads.map((ad, i)=>(ad.location.coordinates))
     setLocations(locationsArray)
   }, [ads, adsSearched])
@@ -64,7 +63,7 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
         {Boolean(ads.length) ? (
           ads.map((ad, i) => <PreviewAd data={ad} />)
         ) : (
-          <p>Aucune annonce...</p>
+          <p>Aucune annonce à afficher...</p>
         )}
     </div>
   )
