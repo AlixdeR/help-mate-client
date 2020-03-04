@@ -11,9 +11,14 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
   const [ads, setAds] = useState([]);
   const [locations, setLocations] = useState([]);
   const [toggleMap, setToggleMap] = useState(false);
+  const [toggleFilters, setToggleFilters] = useState(false)
   const displayMap = ()=> {
     setToggleMap(!toggleMap)
   }
+  function displayFilters(){
+    setToggleFilters(!toggleFilters)
+  }
+  
   // useEffect(()=>{
   //   APIHandler.get("/ads")
   //     .then(apiRes => setAds(apiRes.data))
@@ -53,18 +58,20 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
  
   return (
     <div>
-        <TabsAd mapActive={toggleMap} toggle= {displayMap}/>
+        <TabsAd mapActive={toggleMap} filtersActive={toggleFilters} toggleFilters={displayFilters} toggle={displayMap}/>
         <LoadScript
         id="script-loader"
         googleMapsApiKey={process.env.REACT_APP_GOOGLE_APIKEY}
         >
         {toggleMap && <Map locations={locations} />}
         </LoadScript>
+        <div className={toggleFilters?"withfilters ads-preview-container": "nofilter ads-preview-container"}>
         {Boolean(ads.length) ? (
           ads.map((ad, i) => <PreviewAd data={ad} />)
         ) : (
           <p>Aucune annonce à afficher...</p>
         )}
+        </div>
     </div>
   )
 })
