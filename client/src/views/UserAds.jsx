@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import APIHandler from "../../src/api/APIHandler";
 import PreviewAd from "../components/ad/PreviewAd";
+import { Redirect } from "react-router-dom";
+import { useAuth } from "../auth/useAuth";
+
 
 export default class UserAds extends Component {
+
     state = {
         ads: []
     };
@@ -23,17 +27,16 @@ export default class UserAds extends Component {
       APIHandler
       .delete("/ads", id)
       .then(apiRes => {
-        const updatedAds = apiRes.data.ads;
-        const result = updatedAds.filter( ad => ad != id);
-        this.setState({ads : result})
+        this.fetchData();
       })
       .catch(apiErr => console.log(apiErr))
     }
 
-
     render() {
         return (
+
             <React.Fragment>
+
                 <h1 className="title">Toutes mes annonces</h1>
                 {Boolean((this.state.ads).length) ? 
                 this.state.ads.map((ad, i) => (

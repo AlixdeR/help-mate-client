@@ -62,3 +62,28 @@
 }
 
 
+.centered-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.location-button {
+  margin-bottom: 3vh;
+}
+
+.panel {
+  width: 50vh;
+  padding: 2vh;
+  background-color: white;
+  position: absolute;
+  bottom: 18vh;
+}
+
+.withfilters {
+  /* background-color: violet; */
+  padding-left: 55vh;
+}
+.nofilter {
+  /* background-color: violet; */
+}

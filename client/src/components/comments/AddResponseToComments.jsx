@@ -1,20 +1,21 @@
 import React, { Component } from "react";
 import APIHandler from "../../api/APIHandler";
 
-export default class AddComment extends Component {
+export default class AddResponseToComments extends Component {
   state = {
-      rate: 0,
-      text: "",
+    response: "",
+    currentResponseId:this.props.currentResponseId
   };
 
+  
+
   handleState = e => {
-    // if (e.target.name === "image") return;
-    // if (e.target.type === "radio") this.setState({ adType: e.target.value });
     this.setState({ [e.target.name]: e.target.value });
   };
 
   submitForm = e => {
     e.preventDefault();
+    console.log(this.state)
     APIHandler.post(`/comments/${this.props.userId}`, this.state)
       .then(apiRes =>
         this.setState({
@@ -43,31 +44,28 @@ export default class AddComment extends Component {
   };
 
   render() {
- 
+    console.log("hey je suis l'ID d'un comment", this.props.currentResponseId);
 
     return (
       <div>
         {this.state.msg && this.state.msg}
-
+      
         <form
           className="center-content"
           onSubmit={this.submitForm}
           onChange={this.handleState}
         >
           <div className="field">
-            <input type="number" name="rate"/>
-          </div>
-          <div className="field">
-            <label className="label">Votre message</label>
+            <label className="label">Votre réponse à ce commentaire</label>
             <textarea
               className="textarea"
               name="text"
               placeholder="Votre commentaire"
             ></textarea>
           </div>
-
+          <input type="text" name="currentResponseId" id="" value={this.state.currentResponseId}/>
           <button className="button is-primary is-rounded" type="submit">
-            Poster mon commentaire
+            Poster ma réponse
           </button>
         </form>
       </div>
