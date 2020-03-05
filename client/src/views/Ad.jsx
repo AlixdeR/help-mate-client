@@ -14,11 +14,12 @@ export default function Ad({match}) {
         APIHandler.get(`/ads/${match.params.id}`)
         .then(apiRes => {
             setAd(apiRes.data);
+            setUserInfos(apiRes.data.author)
         })
         .catch(err => console.error(err));
-        APIHandler.get(`/users/${currentUser._id}`)
-         .then(apiRes => setUserInfos(apiRes.data))
-         .catch(apiErr => console.error(apiErr))
+        // APIHandler.get(`/users/${currentUser._id}`)
+        //  .then(apiRes => setUserInfos(apiRes.data))
+        //  .catch(apiErr => console.error(apiErr))
     }, [])
     return (
         <div className='profile-page'>

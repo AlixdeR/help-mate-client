@@ -20,6 +20,7 @@ import NotFound from "./views/NotFound";
 import NavBar from './components/NavBar'
 import EditAd from "./views/EditAd"
 import Footer from './components/Footer'
+import Conversation from './components/messages/Conversation'
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
       <main id="content_main">
          <Switch>
               <Route exact path="/" component={Home} />
+              <Route exact path="/message/:to_id" component={Conversation} />
               <Route exact path="/profil/:id" component={UserPublicProfile} />
               <Route path="/profil/:id/modifier-mon-compte" component={UserEditProfile} />
               <Route path="/profil/:id/annonces" component={UserAds} />

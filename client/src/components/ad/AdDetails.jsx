@@ -3,6 +3,7 @@ import APIHandler from "../../api/APIHandler";
 import PreviewAd from "../../components/ad/PreviewAd";
 import Map from "../../components/map/Map";
 import { LoadScript } from "@react-google-maps/api";
+import { Link } from "react-router-dom";
 
 export default function AdDetails({ data }) {
   console.log('data', data);
@@ -20,6 +21,7 @@ export default function AdDetails({ data }) {
         <p className="ad-details">{data.zipCode}</p>
         <p className="ad-details">{data.city}</p>
       </div>
+      <Link to={`/messages/${data.author._id}`> <div className='button is-rounded is-primary'> Contacter {data.author.name}</div>
       <LoadScript
         id="script-loader"
         googleMapsApiKey={process.env.REACT_APP_GOOGLE_APIKEY}
