@@ -22,16 +22,28 @@ export default function TabsAds({getUserlocation, toggle,maxDistance, mapActive,
           </li>
 
           <li>
-            <a id='Bricolage' onClick={setCategorySelected}>Bricolage</a>
+            <a id='Administratif' onClick={setCategorySelected}>Administratif</a>
           </li>
           <li>
-            <a id='Visites' onClick={setCategorySelected}>Visites</a>
+            <a id='Aide-Ménagère' onClick={setCategorySelected}>Aide Ménagère</a>
+          </li>
+          <li>
+            <a id='Bricolage' onClick={setCategorySelected}>Bricolage</a>
           </li>
           <li>
             <a id='Courses' onClick={setCategorySelected}>Courses</a>
           </li>
           <li>
-            <a id='Ménage' onClick={setCategorySelected}>Ménage</a>
+            <a id='Cours-Particuliers' onClick={setCategorySelected}>Cours Particuliers</a>
+          </li>
+          <li>
+            <a id='Dons' onClick={setCategorySelected}>Don(s)</a>
+          </li>
+          <li>
+            <a id='Transport/Déménagement' onClick={setCategorySelected}>Transport/Déménagement</a>
+          </li>
+          <li>
+            <a id='Visites-de-Courtoisie' onClick={setCategorySelected}>Visite de Courtoisie</a>
           </li>
         </ul>
             <div onClick={toggle} className={mapActive===false ?"button is-active" : "button"}>

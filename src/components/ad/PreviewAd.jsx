@@ -16,9 +16,8 @@ export default function PreviewAd ({ data, mode, handleDelete }) {
       state: {
         id: data._id
       }}}>
-    <figure class="image is-96x96">
-      <img src={data.image} alt="image"/>
-    </figure>
+    <div className="image is-96x96" style={{backgroundImage : `url(${data.image})`, backgroundSize : 'cover' }}>
+    </div>
     <h3 className="ad-title">" {data.title}"</h3>
     <p className="ad-date">Postée le : <Moment format="DD/MM/YYYY">
       {data.date}

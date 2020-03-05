@@ -13,7 +13,7 @@ export default class FormAd extends Component {
         redirect: false,
         title: "",
         recipient: "",
-        categories: ["Bricolage", "Ménage", "Visites de courtoisie", "Courses"],
+        categories: ['Administratif','Aide Ménagère','Bricolage','Courses','Cours Particuliers','Don(s)', 'Transport/Déménagement', 'Visite(s) de Courtoisie' ],
         category: "",
         description: "",
         adType: "",

@@ -24,7 +24,9 @@
     text-align: center;
 }
 
-figure.image.is-96x96 {
+div.image.is-96x96 {
+    background-repeat: no-repeat;
+    background-position: center;
     border: 1px solid darkslategrey;
     display: flex;
     margin-top: 3%;

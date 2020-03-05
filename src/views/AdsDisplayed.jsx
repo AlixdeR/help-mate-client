@@ -21,7 +21,7 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
   const [inputAddress, setInputAddress] = useState("Paris");
   const [latitude, setLatitude] = useState(48.8534);
   const [longitude, setLongitude] = useState(2.3488);
-  const [maxDistance, setMaxDistance] = useState(10);
+  const [maxDistance, setMaxDistance] = useState(50);
 
   const isHome = location.pathname === '/';
 
