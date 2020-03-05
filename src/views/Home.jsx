@@ -56,7 +56,7 @@ export default function Home({ handleTypeHome }) {
   <div class="hero-body">
     <div class="container">
       <div className="title-and-img">
-      <h1 class="title">Toutes les annonces :</h1>
+      <Link to="/annonces"><h1 className="title">Toutes les annonces</h1></Link>
       <img className="img-services" src="/O2-emploi-services-à-la-personn-e.png" alt=""/>
       </div>
       
