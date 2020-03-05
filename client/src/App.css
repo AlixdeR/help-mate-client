@@ -93,14 +93,14 @@
 }
 .me {
 float: right;
-clear: right;
+clear: both;
 color: turquoise;
 text-align: right;
 }
 .you {
 float: left;
 color: tomato;
-clear: left;
+clear: both;
 }
 .messages-container{
   height: 70vh;

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useAuth } from "../../auth/useAuth";
+import { faAccessibleIcon } from '@fortawesome/free-brands-svg-icons';
 
 
 export default function OneMessage({message}) {

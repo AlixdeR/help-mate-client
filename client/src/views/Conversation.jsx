@@ -5,7 +5,7 @@ import MesConv from "../components/messages/MesConv";
 import APIHandler from "../api/APIHandler";
 import { useAuth } from "../auth/useAuth";
 
-export default function Conversation({match}) {
+export default function Conversation({match, location}) {
 
     const { isLoading, currentUser } = useAuth();
     console.log('curentUser', currentUser )
@@ -20,7 +20,7 @@ export default function Conversation({match}) {
         APIHandler.get(`/messages/${match.params.to_id}`)
         .then(apiRes => setMessages(apiRes.data))
         .catch()
-    },[newMsg])
+    },[newMsg, location])
 
     useEffect(()=>{
         console.log('héhooo')
@@ -29,7 +29,7 @@ export default function Conversation({match}) {
             console.log('yoooooo');
             setConversations(apiRes.data)})
         .catch()
-    },[currentUser])
+    },[currentUser, location])
 
     const handleChange = e =>{
         setText(e.target.value)

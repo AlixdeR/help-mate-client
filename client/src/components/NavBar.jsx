@@ -9,6 +9,7 @@ import SearchBar from "./SearchBar";
 export default function NavBar({ searchClbk }) {
   const { isLoading, currentUser } = useAuth();
 
+
   if (isLoading) return null;
 
   return (
@@ -80,7 +81,11 @@ export default function NavBar({ searchClbk }) {
                       Mes annonces
                     </Link>
                   </div>
-                  <div className="navbar-item">Mes messages</div>
+                  <div className="navbar-item">
+                  <Link to={`/mes-messages/${currentUser._id}/`}>
+                      Mes messages
+                    </Link>
+                  </div>
                   <hr className="navbar-divider" />
                   <div className="navbar-item">Se déconnecter</div>
                 </div>
