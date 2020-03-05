@@ -10,10 +10,10 @@ export default function Home({ handleTypeHome }) {
                 <div className="hero-body">
                     <div className="container has-text-centered">
                     <p className="title">
-                        "Quand chacun s'aide, personne ne se tue."
+                        "Un service rendu, un chaton sauvé"
                     </p>
                     <p className="subtitle">
-                        "Dans notre société, les écarts de richesse se creusent, mais un phénomène est peut-être en train d'inverser la tendance, la solidarité !"
+                        "Toi aussi sauve des chatons et rends des services à la communauté"
                     </p>
                     </div>
                 </div>
@@ -36,22 +36,6 @@ export default function Home({ handleTypeHome }) {
 
 <hr/>
 
-<section class="hero is-primary is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">A propos de :</h1>
-      <h2 class="subtitle">HelpMate</h2>
-      <div className="content">
-        Nous avons tous déjà eu recours à l'entraide dans notre vie, et cette notion est bien plus présente dans notre quotidien que nous le pensons. En effet, elle entre en jeu dans notre vie de tous les jours, dans notre vie privée, au sein de notre famille, au travail, etc..
-        L'entraide ne date pas d'hier, l'être humain était autrefois l’espèce la plus coopérative du monde vivant, cela à cause de (ou grâce à) toutes les contraintes auxquelles il était exposé. C’est notre vulnérabilité qui nous a rendu forts, qui nous a obligé à prendre soin des autres, à nous réunir en clans, à coopérer.
-        L’entraide est profondément ancrée en nous. Nous sommes une espèce "ultrasociale".
-        Sauf que cette fois, la possibilité même d’entraide semble nous filer entre les doigts ! 
-        C'est pourquoi nous avons pensé à développer HelpMate afin de mobilier les citoyens...
-        </div>
-    </div>
-  </div>
-</section>
-<hr/>
 <section class="hero is-primary is-light all-annonces">
   <div class="hero-body">
     <div class="container">
@@ -66,16 +50,13 @@ export default function Home({ handleTypeHome }) {
     </div>
   </div>
 </section>
-<hr/>
-<section class="hero is-primary is-danger">
+
+<section id="end-box" class="hero">
   <div class="hero-body">
     <div class="container">
-      <h1 class="title">Comment ça marche HelpMate ?</h1>
+      <h1 class="title">Helpmate c'est quoi ? </h1>
       <div className="content">
-            <p>1ere étape</p>
-            <p>2eme étape</p>
-            <p>3eme étape</p>
-        </div>
+Helpmate est un site dédié à l'entraide. L'idée est toute simple : vous avez besoin d'un coup de main ? Postez une annonce. Trop de tomates dans votre jardin ? Postez une annonce et partagez avec la communauté.       </div>
     </div>
   </div>
 </section>
