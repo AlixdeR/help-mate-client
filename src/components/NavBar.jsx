@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../auth/useAuth";
 import AdsDisplayed from "../views/AdsDisplayed"
+import SignOut from "../auth/SignOut"
 
 import '../styles/navBar.css'
 import SearchBar from "./SearchBar";
@@ -89,7 +90,7 @@ export default function NavBar({ searchClbk }) {
                     </Link>
                   </div>
                   <hr className="navbar-divider" />
-                  <div className="navbar-item">Se déconnecter</div>
+                  <div onClick={handleSignout} className="navbar-item">Se déconnecter</div>
                 </div>
               </div>
             )}
