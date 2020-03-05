@@ -7,7 +7,7 @@ import 'bulma-divider';
 // import 'bulma-slider';
 // import 'bulma';
 
-export default function Filters({setTypeSelected, handleinput, handleSubmit, changeMaxDistance}) {
+export default function Filters({setTypeSelected,maxDistance, handleinput, handleSubmit, changeMaxDistance, getUserlocation}) {
   return (
     <div className="panel">
     <div>
@@ -24,13 +24,13 @@ export default function Filters({setTypeSelected, handleinput, handleSubmit, cha
   </div>
   <div className="is-divider " data-content="OU"></div>
   <div className='centered-content'>
-  <div className='location-button is-centered button is-rounded is-primary'><span><FontAwesomeIcon
+  <div onClick={getUserlocation} className='location-button is-centered button is-rounded is-primary'><span><FontAwesomeIcon
               icon={faLocationArrow }
             /></span>{"   "}Utiliser ma position</div>
     </div>
     </div>
     <div>
-    <div><p className='title is-6'>Distance :</p> <strong>0km</strong></div>
+    <div><p className='title is-6'>Distance :</p> <strong>{maxDistance}km</strong></div>
     <input className="slider is-circle" step="1" min="0" max="50" onChange={changeMaxDistance} type="range"></input>
     </div>
     <div>

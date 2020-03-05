@@ -29,7 +29,6 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
   }
   const handleinput =e =>{
     setInputAddress (e.target.value)
-    console.log('value',e.target.value)
   }
 
   const handleSubmit =e=>{
@@ -51,8 +50,38 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
         }
   })
 }
-
+  function getUserlocation (){
+    console.log('youhou je veux ta localisation')
+    var infoWindow;
+    infoWindow = new window.google.maps.InfoWindow;
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        setLatitude(position.coords.latitude);
+        setLongitude(position.coords.longitude);
+        infoWindow.setPosition(pos);
+        infoWindow.setContent('Location found.');
+        console.log("voici ta localisation bitch",position.coords.latitude,",", position.coords.longitude)
+        // infoWindow.open(map);
+        // map.setCenter(pos);
+      }, function() {
+        window.handleLocationError(true);
+        // map.getCenter()
+      });
+    } else {
+      // Browser doesn't support Geolocation
+      window.handleLocationError(false);
+      // map.getCenter()
+    }
+  }
   function distance(lat1, lon1, lat2, lon2) {
+    console.log('lat voulue', lat1);
+    console.log('lat comparée', lat2);
+    console.log('lng voulue', lon1);
+    console.log('lng comparée', lon2);
     if ((lat1 == lat2) && (lon1 == lon2)) {
       return 0;
     }
@@ -111,11 +140,12 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
   }, [location])
 
   useEffect(()=>{
-
+    console.log('setlatitude', latitude, 'setlongitude', longitude)
+    console.log('max dist', maxDistance)
       const newArray =  apiRes.filter((ad, i)=>(ad.adType.includes(typeSelected) && ad.category.includes(categorySelected) && distance(latitude, longitude, ad.location.coordinates[1],ad.location.coordinates[0])<=maxDistance))
       // console.log('filter type',typeArray);
       setAds(newArray)
-  },[typeSelected, categorySelected, maxDistance])
+  },[typeSelected, categorySelected, maxDistance, latitude, longitude])
 
   useEffect(()=>{
     if(adsSearched && adsSearched.length!==0) {
@@ -137,7 +167,7 @@ console.log('type changed', typeSelected)
 }
   return (
     <div>
-        <TabsAd changeMaxDistance= {changeMaxDistance} handleinput={handleinput} handleSubmit={handleSubmit} setCategorySelected={handleCategories} setTypeSelected={handleType} mapActive={toggleMap} filtersActive={toggleFilters} toggleFilters={displayFilters} toggle={displayMap}/>
+        <TabsAd getUserlocation={getUserlocation} maxDistance={maxDistance} changeMaxDistance= {changeMaxDistance} handleinput={handleinput} handleSubmit={handleSubmit} setCategorySelected={handleCategories} setTypeSelected={handleType} mapActive={toggleMap} filtersActive={toggleFilters} toggleFilters={displayFilters} toggle={displayMap}/>
         <div className={toggleFilters?"withfilters": "nofilter"}>
         <LoadScript
         id="script-loader"

@@ -6,7 +6,7 @@ import { faThList} from "@fortawesome/free-solid-svg-icons";
 import { faSlidersH} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom"
 
-export default function TabsAds({toggle, mapActive, toggleFilters, changeMaxDistance,  filtersActive, setTypeSelected, setCategorySelected, handleinput, handleSubmit}) {
+export default function TabsAds({getUserlocation, toggle,maxDistance, mapActive, toggleFilters, changeMaxDistance,  filtersActive, setTypeSelected, setCategorySelected, handleinput, handleSubmit}) {
   return (
     <div>
       <Link to="/annonces"><h1 className="title">Toutes les annonces</h1></Link>
@@ -46,7 +46,7 @@ export default function TabsAds({toggle, mapActive, toggleFilters, changeMaxDist
             />
             </div>
       </div>
-      {filtersActive && <Filters changeMaxDistance= {changeMaxDistance} handleSubmit={handleSubmit} handleinput={handleinput} setTypeSelected={setTypeSelected}/>}
+      {filtersActive && <Filters maxDistance={maxDistance} getUserlocation={getUserlocation} changeMaxDistance= {changeMaxDistance} handleSubmit={handleSubmit} handleinput={handleinput} setTypeSelected={setTypeSelected}/>}
     </div>
   );
 }
