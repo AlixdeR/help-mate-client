@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Acme|Nunito|Open+Sans+Condensed:300|Oswald|PT+Sans+Narrow|Patua+One|Paytone+One|Philosopher|Press+Start+2P|Quattrocento+Sans&display=swap');
 .App {
   text-align: center;
 }
@@ -53,14 +52,9 @@
   z-index: 0;
 }
 .comment {
-  background-color: rgb(104, 29, 104);
+  background-color: rgb(49, 10, 49);
   height: 10vh;
 }
-
-.buttons .button {
-  font-weight: bolder;
-}
-
 
 .centered-content {
   display: flex;
@@ -86,4 +80,37 @@
 }
 .nofilter {
   /* background-color: violet; */
+}
+.conversation-page{
+  display: flex;
+}
+.post-message-container{
+  height: 20vh;
+  background-color: grey;
+}
+.msg{
+  margin: 1vh
+}
+.me {
+float: right;
+clear: both;
+color: turquoise;
+text-align: right;
+}
+.you {
+float: left;
+color: tomato;
+clear: both;
+}
+.messages-container{
+  height: 70vh;
+  overflow: scroll;
+  margin: 1vh;
+}
+.conversation-placeholder{
+  width: 60%;
+  background-color: rgb(224, 240, 211);
+}
+.mes-conv-placeholder {
+  width: 40%;
 }

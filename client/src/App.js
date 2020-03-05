@@ -20,6 +20,8 @@ import NotFound from "./views/NotFound";
 import NavBar from './components/NavBar'
 import EditAd from "./views/EditAd"
 import Footer from './components/Footer'
+import Conversation from './views/Conversation'
+import MesMessages from './views/MesMessages'
 import { ProtectedRoute } from "./auth/ProtectedRoute";
 
 
@@ -53,6 +55,8 @@ function App() {
       <main id="content_main">
          <Switch>
               <Route exact path="/" component={Home} />
+              <Route exact path="/mes-messages/:mon_id" component={MesMessages} />
+              <Route exact path="/messages/:to_id" component={Conversation} />
               <Route exact path="/profil/:id" component={UserPublicProfile} />
               <ProtectedRoute path="/profil/:id/modifier-mon-compte" component={UserEditProfile} />
               <Route path="/profil/:id/annonces" component={UserAds} />

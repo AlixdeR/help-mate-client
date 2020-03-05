@@ -6,7 +6,7 @@ import { faThList} from "@fortawesome/free-solid-svg-icons";
 import { faSlidersH} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom"
 
-export default function TabsAds({toggle, mapActive, toggleFilters, filtersActive, handleCategories}) {
+export default function TabsAds({getUserlocation, toggle,maxDistance, mapActive, toggleFilters, changeMaxDistance,  filtersActive, setTypeSelected, setCategorySelected, handleinput, handleSubmit}) {
   return (
     <div>
       <Link to="/annonces"><h1 className="title">Toutes les annonces</h1></Link>
@@ -18,16 +18,20 @@ export default function TabsAds({toggle, mapActive, toggleFilters, filtersActive
         </div>
         <ul>
           <li className="is-active">
-            <div onClick={handleCategories} id="bricolage">Bricolage</div>
+            <a id='' onClick={setCategorySelected}>Tout</a>
+          </li>
+
+          <li>
+            <a id='Bricolage' onClick={setCategorySelected}>Bricolage</a>
           </li>
           <li>
-          <div onClick={handleCategories} id="visites">Visites</div>
+            <a id='Visites' onClick={setCategorySelected}>Visites</a>
           </li>
           <li>
-          <div onClick={handleCategories} id="courses">Courses</div>
+            <a id='Courses' onClick={setCategorySelected}>Courses</a>
           </li>
           <li>
-            <a>Free Hugs</a>
+            <a id='Ménage' onClick={setCategorySelected}>Ménage</a>
           </li>
         </ul>
             <div onClick={toggle} className={mapActive===false ?"button is-active" : "button"}>
@@ -42,7 +46,7 @@ export default function TabsAds({toggle, mapActive, toggleFilters, filtersActive
             />
             </div>
       </div>
-      {filtersActive && <Filters />}
+      {filtersActive && <Filters maxDistance={maxDistance} getUserlocation={getUserlocation} changeMaxDistance= {changeMaxDistance} handleSubmit={handleSubmit} handleinput={handleinput} setTypeSelected={setTypeSelected}/>}
     </div>
   );
 }
