@@ -23,10 +23,6 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
   const [longitude, setLongitude] = useState(2.3488);
   const [maxDistance, setMaxDistance] = useState(10);
 
-<<<<<<< HEAD
-  const isHome = location.pathname === '/';
-  console.log('ads', ads)
-=======
   const changeMaxDistance = e => {
     setMaxDistance(e.target.value)
     console.log('max dist',e.target.value)
@@ -106,7 +102,6 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
       return dist;
     }
   }
->>>>>>> 2e4460df226ed670833ed9c707c237d9eaa427d1
 
   const displayMap = ()=> {
     setToggleMap(!toggleMap)
@@ -164,27 +159,6 @@ console.log('type changed', typeSelected)
 }
   return (
     <div>
-<<<<<<< HEAD
-      {
-        !isHome && <TabsAd
-          mapActive={toggleMap}
-          filtersActive={toggleFilters}
-          toggleFilters={displayFilters}
-          toggle={displayMap}
-        />
-      }
-      
-      <div className={toggleFilters?"withfilters": "nofilter"}>
-        {
-          !isHome && <LoadScript
-            id="script-loader"
-            googleMapsApiKey={process.env.REACT_APP_GOOGLE_APIKEY}
-          >
-            {toggleMap && <Map locations={locations} />}
-          </LoadScript>
-        }
-      
-=======
         <TabsAd getUserlocation={getUserlocation} maxDistance={maxDistance} changeMaxDistance= {changeMaxDistance} handleinput={handleinput} handleSubmit={handleSubmit} setCategorySelected={handleCategories} setTypeSelected={handleType} mapActive={toggleMap} filtersActive={toggleFilters} toggleFilters={displayFilters} toggle={displayMap}/>
         <div className={toggleFilters?"withfilters": "nofilter"}>
         <LoadScript
@@ -194,7 +168,6 @@ console.log('type changed', typeSelected)
         {toggleMap && <Map locations={locations} />}
         </LoadScript>
         
->>>>>>> 2e4460df226ed670833ed9c707c237d9eaa427d1
         <div className="ads-preview-container">
           {Boolean(ads.length) ? (
             ads.map((ad, i) => <PreviewAd data={ad} />)
