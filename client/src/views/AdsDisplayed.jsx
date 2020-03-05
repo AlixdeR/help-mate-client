@@ -6,7 +6,12 @@ import Map from "../components/map/Map";
 import { LoadScript } from "@react-google-maps/api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkedAlt} from "@fortawesome/free-solid-svg-icons";
+<<<<<<< HEAD
+// import '../styles/adsPreview.css'
+
+=======
 import '../styles/adsPreview.css'
+>>>>>>> e04059799a260219e7cf29d0f4cc6d18fc21b56f
 import {withRouter} from "react-router-dom";
 
 

@@ -7,8 +7,6 @@ export default class AddResponseToComments extends Component {
     currentResponseId:this.props.currentResponseId
   };
 
-  
-
   handleState = e => {
     this.setState({ [e.target.name]: e.target.value });
   };

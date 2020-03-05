@@ -77,7 +77,11 @@
   padding: 2vh;
   background-color: white;
   position: absolute;
+<<<<<<< HEAD
+  bottom: 0vh;
+=======
   bottom: 0;
+>>>>>>> e04059799a260219e7cf29d0f4cc6d18fc21b56f
 }
 
 .withfilters {
