@@ -9,7 +9,7 @@ import DeleteButton from "../DeleteButton";
 export default function PreviewAd ({ data, mode, handleDelete }) {
   console.log("data", data)
 
-  return <div>
+  return <div className="preview-ad">
   {/* <div className="preview-ad"> */}
     <Link to={{
       pathname: `/annonces/${data._id}`,
@@ -19,10 +19,11 @@ export default function PreviewAd ({ data, mode, handleDelete }) {
     <figure class="image is-96x96">
       <img src={data.image} alt="image"/>
     </figure>
-    <h3>{data.title}</h3>
-    <p>Postée le : <Moment format="DD/MM/YYYY">
+    <h3 className="ad-title">" {data.title}"</h3>
+    <p className="ad-date">Postée le : <Moment format="DD/MM/YYYY">
       {data.date}
-      </Moment>
+      </Moment> 
+      {/* par : {data.author} */}
     </p>
     </Link>
 
