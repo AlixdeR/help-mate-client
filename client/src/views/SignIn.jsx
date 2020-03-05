@@ -12,9 +12,11 @@ export default function Signin(props) {
 
   const handleSubmit = async e => {
     e.preventDefault();
+    console.log("je suis là")
     try {
       const apiRes = await APIHandler.post("/signin", { email, password });
       setCurrentUser(apiRes.data.currentUser);
+      console.log(apiRes.data.currentUser, "heyo")
       props.history.push("/annonces");
     } catch (err) {
       setCurrentUser(null);
