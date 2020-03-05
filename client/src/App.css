@@ -81,3 +81,36 @@
 .nofilter {
   /* background-color: violet; */
 }
+.conversation-page{
+  display: flex;
+}
+.post-message-container{
+  height: 20vh;
+  background-color: grey;
+}
+.msg{
+  margin: 1vh
+}
+.me {
+float: right;
+clear: right;
+color: turquoise;
+text-align: right;
+}
+.you {
+float: left;
+color: tomato;
+clear: left;
+}
+.messages-container{
+  height: 70vh;
+  overflow: scroll;
+  margin: 1vh;
+}
+.conversation-placeholder{
+  width: 60%;
+  background-color: rgb(224, 240, 211);
+}
+.mes-conv-placeholder {
+  width: 40%;
+}
