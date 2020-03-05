@@ -125,9 +125,7 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
     const query = location.search.replace("?search=", "");
     APIHandler.get(`ads/search?q=${query}`)
     .then(apiRes => {
-      
-      
-      console.log('he hop un autre appel api', 'apires==', apiRes)
+
       if (max) {
         const adsFiltered = apiRes.data.dbRes.filter((ad,i) => i < max )
         setAds(adsFiltered)
