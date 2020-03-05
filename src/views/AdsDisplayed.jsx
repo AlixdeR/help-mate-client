@@ -23,6 +23,8 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
   const [longitude, setLongitude] = useState(2.3488);
   const [maxDistance, setMaxDistance] = useState(10);
 
+  const isHome = location.pathname === '/';
+
   const changeMaxDistance = e => {
     setMaxDistance(e.target.value)
    
@@ -157,14 +159,31 @@ console.log('type changed', typeSelected)
 }
   return (
     <div>
-        <TabsAd getUserlocation={getUserlocation} maxDistance={maxDistance} changeMaxDistance= {changeMaxDistance} handleinput={handleinput} handleSubmit={handleSubmit} setCategorySelected={handleCategories} setTypeSelected={handleType} mapActive={toggleMap} filtersActive={toggleFilters} toggleFilters={displayFilters} toggle={displayMap}/>
+      { 
+        !isHome && <TabsAd 
+          getUserlocation={getUserlocation} 
+          maxDistance={maxDistance} 
+          changeMaxDistance= {changeMaxDistance} 
+          handleinput={handleinput} 
+          handleSubmit={handleSubmit} 
+          setCategorySelected={handleCategories} 
+          setTypeSelected={handleType} 
+          mapActive={toggleMap} 
+          filtersActive={toggleFilters} 
+          toggleFilters={displayFilters} 
+          toggle={displayMap}
+          /> 
+      }
+
         <div className={toggleFilters?"withfilters": "nofilter"}>
-        <LoadScript
+        { 
+        !isHome && <LoadScript
         id="script-loader"
         googleMapsApiKey={process.env.REACT_APP_GOOGLE_APIKEY}
         >
         {toggleMap && <Map locations={locations} />}
         </LoadScript>
+        }
         
         <div className="ads-preview-container">
           {Boolean(ads.length) ? (
