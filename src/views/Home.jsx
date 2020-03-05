@@ -3,7 +3,7 @@ import AdsDisplayed from "../views/AdsDisplayed";
 import { Link } from "react-router-dom";
 import '../styles/home.css'
 
-export default function Home() {
+export default function Home({ handleTypeHome }) {
     return (
         <>
             <section className="hero is-info is-large">
@@ -22,11 +22,11 @@ export default function Home() {
                     <nav className="tabs is-boxed is-fullwidth">
                     <div className="container">
                         <ul>
-                        <li className="is-active">
-                            <Link to="/annonces?type=helper">Je veux aider</Link>
+                        <li className="is-active" >
+                            <Link to="/annonces" id="service" onClick={handleTypeHome}>Je veux aider</Link>
                         </li>
-                        <li>
-                            <Link to="/annonces?type=miskine">J'ai besoin d'aide</Link>
+                        <li id="demande" onClick={handleTypeHome}>
+                            <Link to="/annonces" id="demande" onClick={handleTypeHome}>J'ai besoin d'aide</Link>
                         </li>
                         </ul>
                     </div>
