@@ -9,9 +9,9 @@ import AddResponseToComments from "../components/comments/AddResponseToComments"
 export default function UserPublicProfile({ match }) {
   const [userInfos, setUserInfos] = useState(null);
   const [currentResponseId, setCurrentResponseId] = useState(null);
-
   const handleResponse = (e, id) => {
     setCurrentResponseId(id);
+
   };
 
   useEffect(() => {
@@ -35,9 +35,9 @@ export default function UserPublicProfile({ match }) {
       {userInfos && (
         <DisplayComments clbk={handleResponse} comments={userInfos.comments} />
       )}
-      {!currentResponseId && <AddComment userId={match.params.id} />}
+      {!currentResponseId && <AddComment handleUserUpdate={setUserInfos} userId={match.params.id} />}
       {currentResponseId && (
-        <AddResponseToComments userId={match.params.id} currentResponseId={currentResponseId} />
+        <AddResponseToComments handleUserUpdate={setUserInfos} userId={match.params.id} currentResponseId={currentResponseId} />
       )}
     </div>
   );
