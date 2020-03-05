@@ -4,6 +4,8 @@ import PostMessage from "../components/messages/PostMessage";
 import MesConv from "../components/messages/MesConv";
 import APIHandler from "../api/APIHandler";
 import { useAuth } from "../auth/useAuth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCommentDots} from "@fortawesome/free-regular-svg-icons";
 
 export default function Conversation({match}) {
 
@@ -34,6 +36,14 @@ export default function Conversation({match}) {
     return (
         <div className='conversation-page'>
         <MesConv currentUser= {currentUser} conversations={conversations} />
+        <div className='conversation-placeholder mes-messages-placeholder'>
+        <FontAwesomeIcon
+        className="is-clickable"
+        size="10x"
+        color='rgba(128, 128, 128, 0.3)'
+        icon={faCommentDots}/>
+        <div className='title' style={{color:'rgba(128, 128, 128, 0.3)'}}>Discutez avec la communauté</div>
+        </div>
         </div>
     )
 }
