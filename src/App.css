@@ -13,35 +13,59 @@
 }
 
 .aside-user-infos{
+  margin: 0 2vh 6vh;
   padding : 2vh;
   height: 60vh;
-  box-shadow:2px 2px 2px grey;
-  background-color: white;
+  border-radius: 10px;
+  /* box-shadow: 2px 2px 2px grey; */
+  background-color: #abf2e7;
 }
 
-.add-comment {
+.form-comment {
   border-radius: 10px;
-  height: 10vh;
-  width: 60%;
-  background-color: indianred;
-  margin: 2vh auto;
-  display : flex;
-  align-items: center;
+  margin: 6vh auto;
+  background-color: #abf2e7;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  opacity: 0.9;
+  
 }
+
+.inside-form {
+  margin: 2vh;
+}
+
+/* 00d1b2 */
 
 .display-comments {
   border-radius: 10px;
   height: 60vh;
-  background-color: rgb(106, 106, 219);
-  margin: 2vh;
+  background-color: whitesmoke;
+  margin: 4vh 10vh 1vh 1vh;
   padding: 2vh;
   z-index: 1;
+  opacity: 0.9;
 }
+
 .display-ads{
-  background-color: #00d1b2;
-  height: 40vh;
+  background-color:whitesmoke;
   padding : 2vh;
+  margin: 3vh 2vh;
+  opacity: 0.9;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 1vh 1vh 2vh 1vh;
+  opacity: 0.9;
 }
 
 .profile-page{
@@ -53,8 +77,9 @@
   left: 0;
   z-index: 0;
 }
+
 .comment {
-  background-color: rgb(49, 10, 49);
+  background-color: white;
   height: 10vh;
 }
 
@@ -115,4 +140,8 @@ clear: both;
 }
 .mes-conv-placeholder {
   width: 40%;
+}
+
+.button{
+  margin: 2vh;
 }

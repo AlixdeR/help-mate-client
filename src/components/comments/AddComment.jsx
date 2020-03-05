@@ -32,20 +32,25 @@ export default class AddComment extends Component {
         {this.state.msg && this.state.msg}
 
         <form
-          className="center-content"
+          className="center-content form-comment"
           onSubmit={this.submitForm}
           onChange={this.handleState}
-        >
+
+        > 
+        <h3 className="title-3">Un commentaire?</h3>
+        
+        <div className="inside-form">
           <div className="field">
-            <input type="number" name="rate" />
+            <input className="input" type="number" name="rate" placeholder="Notez l'utilisateur" />
           </div>
           <div className="field">
-            <label className="label">Votre message</label>
+            {/* <label className="label">Votre message</label> */}
             <textarea
               className="textarea"
               name="text"
-              placeholder="Votre commentaire"
+              placeholder="Vtre commentaire?"
             ></textarea>
+          </div>
           </div>
 
           <button className="button is-primary is-rounded" type="submit">
