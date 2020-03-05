@@ -23,10 +23,8 @@ export default function Conversation({match, location}) {
     },[newMsg, location])
 
     useEffect(()=>{
-        console.log('héhooo')
         APIHandler.get(`/messages/all/${currentUser._id}`)
         .then(apiRes => {
-            console.log('yoooooo');
             setConversations(apiRes.data)})
         .catch()
     },[currentUser, location])
@@ -38,8 +36,7 @@ export default function Conversation({match, location}) {
     const handleSubmit = e =>{
     
         e.preventDefault();
-        textarea.current.value =''
-        
+        textarea.current.value ='';
         APIHandler.post(`/messages/${match.params.to_id}`, {text})
         .then(apiRes => {setNewMsg(true)
         })

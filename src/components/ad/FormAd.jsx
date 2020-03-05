@@ -5,6 +5,7 @@ import APIHandler from "../../api/APIHandler";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import { geocodeByAddress } from "react-google-places-autocomplete";
 import UserContext from "../../auth/UserContext";
+// import AdImage from "../../components/";
 
 
 export default class FormAd extends Component {
@@ -77,11 +78,9 @@ export default class FormAd extends Component {
             <div>
 
                 {this.state.redirect===true && <Redirect to="/annonces" />}   
-
                 {this.state.msg && this.state.msg}
-                
                 <form className="center-content" onSubmit={this.submitForm} onChange={this.handleState}>
-
+                  {/* <AdImage /> */}
                   <div className='field'>
                     <label className="label">Titre</label>
                     <input className="input" type="text" name="title"/>

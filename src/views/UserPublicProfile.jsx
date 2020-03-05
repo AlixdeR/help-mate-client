@@ -30,7 +30,7 @@ export default function UserPublicProfile({ match }) {
     <div className="profile-page">
       <div className="profile-aside">
         <UserInfos userInfos={userInfos} />
-        <DisplayAds ads={userInfos && userInfos.ads} />
+        <DisplayAds max={2} ads={userInfos && userInfos.ads} />
       </div>
       {userInfos && (
         <DisplayComments clbk={handleResponse} comments={userInfos.comments} />

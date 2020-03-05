@@ -13,35 +13,69 @@
 }
 
 .aside-user-infos{
+  margin: 0 2vh 6vh;
   padding : 2vh;
   height: 60vh;
-  box-shadow:2px 2px 2px grey;
+  /* border-radius: 10px; */
+  /* box-shadow: 2px 2px 2px grey; */
+  /* background-color: #abf2e7; */
+  box-shadow:2px 2px 2px rgba(128, 128, 128, 0.445);
   background-color: white;
 }
 
-.add-comment {
+.form-comment {
   border-radius: 10px;
-  height: 10vh;
-  width: 60%;
-  background-color: indianred;
-  margin: 2vh auto;
-  display : flex;
-  align-items: center;
+  margin: 6vh auto;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  opacity: 0.9;
 }
+
+.inside-form {
+  margin: 2vh;
+}
+
+/* 00d1b2 */
 
 .display-comments {
   border-radius: 10px;
-  height: 60vh;
-  background-color: rgb(106, 106, 219);
-  margin: 2vh;
+  background-color: whitesmoke;
+  margin: 4vh 10vh 1vh 1vh;
   padding: 2vh;
   z-index: 1;
+  opacity: 0.9;
+  display: flex;
+  flex-direction: column;
 }
-.display-ads{
-  background-color: rgb(52, 52, 223);
+
+.display-ads {
+  background-color:whitesmoke;
   padding : 2vh;
+  margin: 3vh 2vh;
+  opacity: 0.9;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
 }
+
+.title-3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 1vh 1vh 2vh 1vh;
+  opacity: 0.9;
+  text-align: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
 .profile-page{
   padding-left: 25em;
 }
@@ -51,9 +85,35 @@
   left: 0;
   z-index: 0;
 }
+
+.center-content.form-comment.border-form {
+  background-color: white;
+  border: 1px solid #00d1b2;
+
+}
+
 .comment {
-  background-color: rgb(49, 10, 49);
-  height: 10vh;
+  background-color:white;
+  border-radius: 10px;
+}
+
+.comment-element {
+  margin-bottom: 2vh;
+}
+
+.btn-comment {
+  border-radius: 10px;
+}
+
+.reponse {
+  background-color:white;
+  margin: 1vh 10vh;
+  border-radius: 10px;
+}
+
+.see-response {
+  font-size: 0.8rem;
+  margin: 1vh;
 }
 
 .centered-content {
@@ -85,8 +145,25 @@
   display: flex;
 }
 .post-message-container{
-  height: 20vh;
-  background-color: grey;
+  padding: 2em;
+  height: 15vh;
+  background-color: rgba(128, 128, 128, 0.479);
+  margin: 0 auto;
+
+}
+.message-form{
+  display: flex;
+  align-items: center;
+}
+
+.msg-btn{
+  height: 8vh;
+  width: 8vh;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin:1em
 }
 .msg{
   margin: 1vh
@@ -103,14 +180,38 @@ color: tomato;
 clear: both;
 }
 .messages-container{
+  box-sizing: border-box;
   height: 70vh;
   overflow: scroll;
   margin: 1vh;
 }
 .conversation-placeholder{
   width: 60%;
-  background-color: rgb(224, 240, 211);
+  height: 90vh;
+  background-color: rgba(228, 224, 224, 0.055)
 }
 .mes-conv-placeholder {
+  padding-top: 4vh;
   width: 40%;
+}
+
+.button{
+  margin: 2vh;
+}
+
+.profile-page {
+  height: 100vh;
+}
+.one-conv{
+  background-color: white;
+}
+.mes-messages-placeholder{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.mes-messages-placeholder .title {
+  margin-top: 1.5em;
 }

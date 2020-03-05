@@ -24,9 +24,9 @@ export default function Ad({match}) {
     return (
         <div className='profile-page'>
             <div className='profile-aside'>
-                {userInfos && <UserInfos userInfos={userInfos}/>}
+                {userInfos && <UserInfos userInfos={userInfos} isAdsDetails={true}/>}
             </div>
-            {ad && <AdDetails data={ad}/>}
+            {ad && <AdDetails isAdsDetails={true} data={ad}/>}
         </div>
     )
 }

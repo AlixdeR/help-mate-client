@@ -60,6 +60,16 @@ const formHandler = async  e => {
       function convertDate(str) {
         return moment(str, moment.ISO_8601).format("YYYY-MM-DD")
       }
+
+      const handleDeleteUser = e => {
+        apiHandler.delete("/users", user._id)
+        .then(apiRes => {
+          console.log(apiRes);
+          history.push("/")
+        })
+        .catch(err => console.log(err))
+      }
+
     return (
         <div className='center-content'>
             {/* <Avatar/> */}
@@ -119,7 +129,10 @@ const formHandler = async  e => {
                             </select>
                           </div>
                     <div>
-                    <button className='button is-primary is-rounded'>Soumettre</button>
+                    <br></br>
+                    {mode === "create" ? (<button className='button is-primary is-rounded'>Soumettre</button>
+                    ) : ( <button className='button is-primary is-rounded'>Modifier</button>)} {"           "}
+                    {mode === "edit" && <button className='button is-primary is-rounded red' onClick={handleDeleteUser}>Supprimer</button>}
                     </div>
                     </div>
                     </div>

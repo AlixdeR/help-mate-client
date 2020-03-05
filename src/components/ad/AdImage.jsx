@@ -16,6 +16,7 @@ export default function Avatar({ clbk, avatar}) {
       <FontAwesomeIcon
         onClick={handleClick}
         className="is-clickable"
+        
         icon={faEdit}/>
       <input
         ref={fileInput}

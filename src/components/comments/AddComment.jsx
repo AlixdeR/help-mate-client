@@ -17,9 +17,6 @@ export default class AddComment extends Component {
       .then(apiRes => {
         console.log(apiRes.data,"this is data")
         this.props.handleUserUpdate(apiRes.data);
-        this.setState({
-          msg: <div className="msg-fail">Commentaire posté!</div>
-        });
       })
       .catch(apiErr =>
         this.setState({ msg: <div className="msg-fail">Erreur!</div> })
@@ -32,23 +29,28 @@ export default class AddComment extends Component {
         {this.state.msg && this.state.msg}
 
         <form
-          className="center-content"
+          className="center-content form-comment border-form"
           onSubmit={this.submitForm}
           onChange={this.handleState}
-        >
+
+        > 
+        <h3 className="title-3">Un commentaire?</h3>
+        
+        <div className="inside-form">
           <div className="field">
-            <input type="number" name="rate" />
+            <input className="input" type="number" name="rate" placeholder="Notez l'utilisateur" />
           </div>
           <div className="field">
-            <label className="label">Votre message</label>
+            {/* <label className="label">Votre message</label> */}
             <textarea
               className="textarea"
               name="text"
-              placeholder="Votre commentaire"
+              placeholder="Votre commentaire?"
             ></textarea>
           </div>
+          </div>
 
-          <button className="button is-primary is-rounded" type="submit">
+          <button className="button is-primary is-rounded lighter" type="submit">
             Poster mon commentaire
           </button>
         </form>

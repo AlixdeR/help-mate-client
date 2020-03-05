@@ -12,6 +12,11 @@
     color: white;
 }
 
+.button.is-rounded.red {
+    background-color: #fc555b;
+    color: white;
+  }
+
 .navbar.is-primary .navbar-end .navbar-link,
 .navbar.is-primary .navbar-end a {
     color: rgba(0, 0, 0, 0.7);
