@@ -7,7 +7,7 @@ import DeleteButton from "../DeleteButton";
 
 
 export default function PreviewAd ({ data, mode, handleDelete }) {
-  console.log("data", data)
+
 
   return <div>
   {/* <div className="preview-ad"> */}

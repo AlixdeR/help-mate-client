@@ -6,7 +6,7 @@ import { faThList} from "@fortawesome/free-solid-svg-icons";
 import { faSlidersH} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom"
 
-export default function TabsAds({toggle, mapActive, toggleFilters, filtersActive, handleCategories}) {
+export default function TabsAds({toggle, mapActive, toggleFilters, filtersActive, handleCategories, handleType}) {
   return (
     <div>
       <Link to="/annonces"><h1 className="title">Toutes les annonces</h1></Link>
@@ -18,13 +18,13 @@ export default function TabsAds({toggle, mapActive, toggleFilters, filtersActive
         </div>
         <ul>
           <li className="is-active">
-            <div onClick={handleCategories} id="bricolage">Bricolage</div>
+            <div onClick={handleCategories} id="Bricolage">Bricolage</div>
           </li>
           <li>
-          <div onClick={handleCategories} id="visites">Visites</div>
+          <div onClick={handleCategories} id="Visites de courtoisie">Visites</div>
           </li>
           <li>
-          <div onClick={handleCategories} id="courses">Courses</div>
+          <div onClick={handleCategories} id="Courses">Courses</div>
           </li>
           <li>
             <a>Free Hugs</a>
@@ -42,7 +42,7 @@ export default function TabsAds({toggle, mapActive, toggleFilters, filtersActive
             />
             </div>
       </div>
-      {filtersActive && <Filters />}
+      {filtersActive && <Filters handleType={handleType} />}
     </div>
   );
 }

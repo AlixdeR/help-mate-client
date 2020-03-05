@@ -16,8 +16,9 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
   const [locations, setLocations] = useState([]);
   const [toggleMap, setToggleMap] = useState(false);
   const [toggleFilters, setToggleFilters] = useState(false);
+  const [cat, setCat] = useState('');
+  const [type, setType] = useState('');
 
- console.log('ads', ads)
 
   const displayMap = ()=> {
     setToggleMap(!toggleMap)
@@ -32,11 +33,20 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
       console.log(adsFiltered)
       setAds(adsFiltered)
     }
+    // const cat = location.search.replace("?&category=", "")
+    console.log(location.search)
+    let query;
+    if(adsSearched) { 
+      console.log("existe")
+      query = location.search.replace("?search=", "")
+    } else { 
+      console.log("existe pas")
+      query = ""
+    };
 
-    const query = location.search.replace("?search=", "");
-    APIHandler.get(`ads/search?q=${query}`)
+  console.log("query", query)
+    APIHandler.get(`ads/search?q=${query}&category=${cat}&type=${type}`)
     .then(apiRes => {
-      console.log("apiRes", apiRes.data)
       if (max) {
         const adsFiltered = apiRes.data.dbRes.filter((ad,i) => i < max )
         console.log(adsFiltered)
@@ -59,21 +69,27 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
     setLocations(locationsArray)
   }, [ads, adsSearched])
 
-  // const handleCategories = e => {
-  //         let catSelected = e.target.id;
-  //         console.log(catSelected)
-  //         let loc = location.search;
-  //         history.push({
-  //             pathname: "/annonces",
-  //             search: `${loc}&category=${catSelected}`
-  //         });
-  // }
+  const handleCategories =  e => {
+        setCat(e.target.id);
+        let loc = location.search;
+          history.push({
+              pathname: "/annonces",
+              search: `${loc}&category=${e.target.id}`
+          });
+  }
 
-  console.log(ads)
+  const handleType = e => {
+    setType(e.target.value);
+    let loc = location.search;
+          history.push({
+              pathname: "/annonces",
+              search: `${loc}&type=${e.target.value}`
+          });
+  }
  
   return (
     <div>
-        <TabsAd  mapActive={toggleMap} filtersActive={toggleFilters} toggleFilters={displayFilters} toggle={displayMap}/>
+        <TabsAd handleType={handleType} handleCategories={handleCategories} mapActive={toggleMap} filtersActive={toggleFilters} toggleFilters={displayFilters} toggle={displayMap}/>
         <div className={toggleFilters?"withfilters": "nofilter"}>
         <LoadScript
         id="script-loader"

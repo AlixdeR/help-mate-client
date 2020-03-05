@@ -7,7 +7,7 @@ import 'bulma-divider';
 // import 'bulma-slider';
 // import 'bulma';
 
-export default function Filters() {
+export default function Filters({ handleType }) {
   return (
     <div className="panel">
     <div>
@@ -40,7 +40,9 @@ export default function Filters() {
           class="is-checkradio"
           id="toutes"
           type="radio"
-          name="toutes"
+          name="type"
+          value=""
+          onChange={handleType}
         />
         <label for="toutes">Toutes les annonces</label>
       </div>
@@ -50,7 +52,9 @@ export default function Filters() {
           class="is-checkradio"
           id="exampleRadioSuccess"
           type="radio"
-          name="exampleRadioSuccess"
+          name="type"
+          value="demande"
+          onChange={handleType}
         />
         <label for="exampleRadioSuccess">Demande d'aide</label>
       </div>
@@ -60,7 +64,9 @@ export default function Filters() {
           class="is-checkradio"
           id="exampleRadioWarning"
           type="radio"
-          name="exampleRadioWarning"
+          name="type"
+          value="service"
+          onChange={handleType}
         />
         <label for="exampleRadioWarning">Proposition d'aide</label>
       </div>
