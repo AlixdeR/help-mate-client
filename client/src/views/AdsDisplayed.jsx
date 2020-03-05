@@ -15,6 +15,65 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
   const [locations, setLocations] = useState([]);
   const [toggleMap, setToggleMap] = useState(false);
   const [toggleFilters, setToggleFilters] = useState(false)
+  const [categorySelected, setCategorySelected] = useState('')
+  const [typeSelected, setTypeSelected]= useState('')
+  const [apiRes, setApiRes]= useState([])
+  const [inputAddress, setInputAddress] = useState("Paris");
+  const [latitude, setLatitude] = useState(48.8534);
+  const [longitude, setLongitude] = useState(2.3488);
+  const [maxDistance, setMaxDistance] = useState(10);
+
+  const changeMaxDistance = e => {
+    setMaxDistance(e.target.value)
+    console.log('max dist',e.target.value)
+  }
+  const handleinput =e =>{
+    setInputAddress (e.target.value)
+    console.log('value',e.target.value)
+  }
+
+  const handleSubmit =e=>{
+    console.log('add', inputAddress)
+    e.preventDefault();
+    const geocoder = new window.google.maps.Geocoder();
+      geocoder.geocode({ address: inputAddress }, (results, status)=> {
+        if (status == "OK") {
+          console.log(results, "this is results");
+          const lat = results[0].geometry.location.lat();
+          const lng = results[0].geometry.location.lng();
+          console.log('results',lat, lng);
+          setLatitude(lat);
+          setLongitude(lng);
+        } else {
+          alert(
+            "Geocode was not successful for the following reason: " + status
+          );
+        }
+  })
+}
+
+  function distance(lat1, lon1, lat2, lon2) {
+    if ((lat1 == lat2) && (lon1 == lon2)) {
+      return 0;
+    }
+    else {
+      var radlat1 = Math.PI * lat1/180;
+      var radlat2 = Math.PI * lat2/180;
+      var theta = lon1-lon2;
+      var radtheta = Math.PI * theta/180;
+      var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+      if (dist > 1) {
+        dist = 1;
+      }
+      dist = Math.acos(dist);
+      dist = dist * 180/Math.PI;
+      dist = dist * 60 * 1.1515;
+      dist = dist * 1.609344
+      console.log('dist',dist)
+      return dist;
+    }
+  }
+
   const displayMap = ()=> {
     setToggleMap(!toggleMap)
   }
@@ -31,37 +90,54 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
   useEffect(() => {
     if (max) {
       const adsFiltered = ads.filter((ad,i) => i < max )
-      console.log(adsFiltered)
       setAds(adsFiltered)
     }
+    
     const query = location.search.replace("?search=", "");
     APIHandler.get(`ads/search?q=${query}`)
     .then(apiRes => {
+      
+      
+      console.log('he hop un autre appel api', 'apires==', apiRes)
       if (max) {
         const adsFiltered = apiRes.data.dbRes.filter((ad,i) => i < max )
-        console.log(adsFiltered)
         setAds(adsFiltered)
       } else {
         setAds(apiRes.data.dbRes)
+        setApiRes(apiRes.data.dbRes)
       }
-      
     })
     .catch(err => console.error(err))
   }, [location])
 
   useEffect(()=>{
 
+      const newArray =  apiRes.filter((ad, i)=>(ad.adType.includes(typeSelected) && ad.category.includes(categorySelected) && distance(latitude, longitude, ad.location.coordinates[1],ad.location.coordinates[0])<=maxDistance))
+      // console.log('filter type',typeArray);
+      setAds(newArray)
+  },[typeSelected, categorySelected, maxDistance])
+
+  useEffect(()=>{
     if(adsSearched && adsSearched.length!==0) {
       setAds(adsSearched)
     }
-  
+    
     const locationsArray = ads.map((ad, i)=>(ad.location.coordinates))
     setLocations(locationsArray)
-  }, [ads, adsSearched])
+  }, [adsSearched, ads])
  
+ 
+  const handleCategories =  e => {
+    setCategorySelected(e.target.id);
+    console.log('categorychanged', categorySelected)
+}
+const handleType = e => {
+setTypeSelected(e.target.value);
+console.log('type changed', typeSelected)
+}
   return (
     <div>
-        <TabsAd mapActive={toggleMap} filtersActive={toggleFilters} toggleFilters={displayFilters} toggle={displayMap}/>
+        <TabsAd changeMaxDistance= {changeMaxDistance} handleinput={handleinput} handleSubmit={handleSubmit} setCategorySelected={handleCategories} setTypeSelected={handleType} mapActive={toggleMap} filtersActive={toggleFilters} toggleFilters={displayFilters} toggle={displayMap}/>
         <div className={toggleFilters?"withfilters": "nofilter"}>
         <LoadScript
         id="script-loader"
