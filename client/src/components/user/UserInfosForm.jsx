@@ -3,6 +3,8 @@ import { withRouter } from "react-router-dom";
 import Avatar from './Avatar'
 import apiHandler from '../../api/APIHandler'
 import moment from "moment"
+import '../../styles/form.css'
+
 
 function UserInfosForm({mode , user, history, match}) {
     const [formValues, setFormValues] = useState({});

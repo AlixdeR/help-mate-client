@@ -60,3 +60,30 @@ font-size: 1em;
 .tile.is-ancestor {
     padding: 25px 15px;
 }
+
+section.hero {
+    margin: 1%;
+}
+
+section.hero.is-primary.is-light.all-annonces {
+    background-color: whitesmoke;
+}
+
+section.hero.is-primary.is-light.all-annonces .title {
+    color: darkslategrey;
+    margin-bottom: 0;
+}
+
+.title-and-img {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px 20px 20px;
+    align-items: center;
+}
+
+.img-services {
+    align-items: center;
+    width: 25%;
+    margin-top: -7px;
+    margin-bottom: 0;
+}

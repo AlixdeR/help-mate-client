@@ -91,11 +91,11 @@ export default class FormAd extends Component {
                     <label className="label">Type</label>
                     <label className="radio" htmlFor="demande">
                       <input type="radio" name="adType" value="demande"/>
-                      Je demande de l'aide
-                    </label>
+                      {'  '}Je demande de l'aide
+                    </label> {'  '}
                     <label className="radio" htmlFor="demande">
                       <input type="radio" name="adType" value="service"/>
-                      Je propose mon aide
+                      {'  '}Je propose mon aide
                     </label>
                   </div>
 

@@ -11,13 +11,13 @@ import {withRouter} from "react-router-dom";
 
 
 export default withRouter(function AdsDisplayed({ history, location, match, adsSearched, max }) {
-
   const [ads, setAds] = useState([]);
   const [locations, setLocations] = useState([]);
   const [toggleMap, setToggleMap] = useState(false);
   const [toggleFilters, setToggleFilters] = useState(false);
 
- console.log('ads', ads)
+  const isHome = location.pathname === '/';
+  console.log('ads', ads)
 
   const displayMap = ()=> {
     setToggleMap(!toggleMap)
@@ -73,24 +73,34 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
  
   return (
     <div>
-        <TabsAd  mapActive={toggleMap} filtersActive={toggleFilters} toggleFilters={displayFilters} toggle={displayMap}/>
-        <div className={toggleFilters?"withfilters": "nofilter"}>
-        <LoadScript
-        id="script-loader"
-        googleMapsApiKey={process.env.REACT_APP_GOOGLE_APIKEY}
-        >
-        {toggleMap && <Map locations={locations} />}
-        </LoadScript>
-        
+      {
+        !isHome && <TabsAd
+          mapActive={toggleMap}
+          filtersActive={toggleFilters}
+          toggleFilters={displayFilters}
+          toggle={displayMap}
+        />
+      }
+      
+      <div className={toggleFilters?"withfilters": "nofilter"}>
+        {
+          !isHome && <LoadScript
+            id="script-loader"
+            googleMapsApiKey={process.env.REACT_APP_GOOGLE_APIKEY}
+          >
+            {toggleMap && <Map locations={locations} />}
+          </LoadScript>
+        }
+      
         <div className="ads-preview-container">
-        {Boolean(ads.length) ? (
-          ads.map((ad, i) => <PreviewAd data={ad} />)
-        ) : (
-          <p>Aucune annonce à afficher...</p>
-        )}
+          {Boolean(ads.length) ? (
+            ads.map((ad, i) => <PreviewAd data={ad} />)
+          ) : (
+            <p>Aucune annonce à afficher...</p>
+          )}
         </div>
 
-        </div>
+      </div>
     </div>
   )
 })
