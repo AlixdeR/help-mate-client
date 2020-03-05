@@ -10,8 +10,7 @@ import '../styles/adsPreview.css'
 import {withRouter} from "react-router-dom";
 
 
-export default withRouter(function AdsDisplayed({ history, location, match, adsSearched, max }) {
-
+export default withRouter(function AdsDisplayed({ history, location, match, adsSearched, max, typeFromHome }) {
   const [ads, setAds] = useState([]);
   const [locations, setLocations] = useState([]);
   const [toggleMap, setToggleMap] = useState(false);
@@ -26,22 +25,22 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
 
   const changeMaxDistance = e => {
     setMaxDistance(e.target.value)
-    console.log('max dist',e.target.value)
+   
   }
   const handleinput =e =>{
     setInputAddress (e.target.value)
   }
 
   const handleSubmit =e=>{
-    console.log('add', inputAddress)
+   
     e.preventDefault();
     const geocoder = new window.google.maps.Geocoder();
       geocoder.geocode({ address: inputAddress }, (results, status)=> {
         if (status == "OK") {
-          console.log(results, "this is results");
+        
           const lat = results[0].geometry.location.lat();
           const lng = results[0].geometry.location.lng();
-          console.log('results',lat, lng);
+          
           setLatitude(lat);
           setLongitude(lng);
         } else {
@@ -52,7 +51,6 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
   })
 }
   function getUserlocation (){
-    console.log('youhou je veux ta localisation')
     var infoWindow;
     infoWindow = new window.google.maps.InfoWindow;
     if (navigator.geolocation) {
@@ -79,10 +77,6 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
     }
   }
   function distance(lat1, lon1, lat2, lon2) {
-    console.log('lat voulue', lat1);
-    console.log('lat comparée', lat2);
-    console.log('lng voulue', lon1);
-    console.log('lng comparée', lon2);
     if ((lat1 == lat2) && (lon1 == lon2)) {
       return 0;
     }
@@ -125,9 +119,12 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
         const adsFiltered = apiRes.data.dbRes.filter((ad,i) => i < max )
         setAds(adsFiltered)
       } else {
+        console.log("type from home", typeFromHome)
         setAds(apiRes.data.dbRes)
         setApiRes(apiRes.data.dbRes)
+        if(typeFromHome) setTypeSelected(typeFromHome)
       }
+
     })
     .catch(err => console.error(err))
   }, [location])
@@ -170,14 +167,14 @@ console.log('type changed', typeSelected)
         </LoadScript>
         
         <div className="ads-preview-container">
-        {Boolean(ads.length) ? (
-          ads.map((ad, i) => <PreviewAd data={ad} />)
-        ) : (
-          <p>Aucune annonce à afficher...</p>
-        )}
+          {Boolean(ads.length) ? (
+            ads.map((ad, i) => <PreviewAd data={ad} />)
+          ) : (
+            <p>Aucune annonce à afficher...</p>
+          )}
         </div>
 
-        </div>
+      </div>
     </div>
   )
 })

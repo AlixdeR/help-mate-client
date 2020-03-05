@@ -1,0 +1,13 @@
+.center-content {
+    backdrop-filter: brightness(110%) blur(10px) opacity(100%);
+    border-radius: 10px;
+    padding: 15px 25px;
+}
+
+.createForm-page {
+    background-image: url('/gettyimages-689752378-612x612.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 40px 0;
+}
