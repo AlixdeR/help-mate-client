@@ -2,6 +2,9 @@ body {
     font-family: 'Quattrocento Sans', sans-serif;
 }
 
+#end-box {
+    background-color: hsla(198, 83%, 75%, 0.8);
+}
 
 
 .hero.is-large .hero-body {
@@ -10,19 +13,27 @@ body {
     padding-top: 8rem;
 }
 
+
 .tabs {
     padding-bottom: 5em;
     /* margin: 1px; */
 }
 
 .tabs li {
-    background-color: #00d1b2;
+    background-color:white;
+    color: #dfe7ec;
+    font-weight: bolder;
+}
+
+
+
+.tabs li:active {
     color: #dfe7ec;
     font-weight: bolder;
 }
 
 .hero.is-info {
-    background-image: url('/blue-green-orange-and-red-rainbow-design-decoration-673648.jpg');
+    background-image: url('/sadcatmain.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -39,7 +50,7 @@ font-size: 1em;
 }
 
 .hero-body > .container {
-    backdrop-filter: brightness(110%) blur(10px) opacity(100%);
+    backdrop-filter: brightness(110%) blur(px) opacity(100%);
     border-radius: 10px;
     padding: 10px;
 }
@@ -66,7 +77,7 @@ section.hero {
 }
 
 section.hero.is-primary.is-light.all-annonces {
-    background-color: whitesmoke;
+    background-color: white;
 }
 
 section.hero.is-primary.is-light.all-annonces .title {

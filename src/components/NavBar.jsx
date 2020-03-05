@@ -70,7 +70,9 @@ export default function NavBar({  searchClbk }) {
               </div>
             </div>
             <div className="navbar-item">
+            {!currentUser &&
               <div className="buttons">
+            
                 <Link to="/signup">
                   <div className="button is-primary">
                     <strong>S'inscrire</strong>
@@ -79,7 +81,7 @@ export default function NavBar({  searchClbk }) {
                 <Link to="/signin">
                   <div className="button is-light">Se connecter</div>
                 </Link>
-              </div>
+              </div>}
             </div>
 
             {currentUser && (
