@@ -1,18 +1,21 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link , useHistory} from "react-router-dom";
 import APIHandler from "../api/APIHandler";
 import UserContext from "../auth/UserContext";
 import { useAuth } from "../auth/useAuth";
 import AdsDisplayed from "../views/AdsDisplayed";
 
+
+
 import "../styles/navBar.css";
 import SearchBar from "./SearchBar";
 
-export default function NavBar({ history, searchClbk }) {
+export default function NavBar({  searchClbk }) {
   const { isLoading, currentUser } = useAuth();
   const userContext = useContext(UserContext);
   const { setCurrentUser } = userContext;
-
+  const history = useHistory();
+  
   const handleSignout = () =>
     APIHandler.post("/signout").finally(() => {
       history.push("/signin");
