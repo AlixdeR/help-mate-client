@@ -59,9 +59,11 @@ export default function NavBar({ searchClbk }) {
                     <strong>S'inscrire</strong>
                   </div>
                 </Link>
-                <div className="button is-light">Se connecter</div>
+                <Link to="/signin">
+                <div className="button is-light">Se connecter</div></Link>
               </div>
             </div>
+            
             {currentUser && (
               <div className="navbar-item has-dropdown is-hoverable">
                 <div className="navbar-link">Mon Compte</div>

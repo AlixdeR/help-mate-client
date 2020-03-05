@@ -6,11 +6,12 @@ import Map from "../components/map/Map";
 import { LoadScript } from "@react-google-maps/api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkedAlt} from "@fortawesome/free-solid-svg-icons";
-// import '../styles/adsPreview.css'
+import '../styles/adsPreview.css'
 import {withRouter} from "react-router-dom";
 
 
 export default withRouter(function AdsDisplayed({ history, location, match, adsSearched, max }) {
+
   const [ads, setAds] = useState([]);
   const [locations, setLocations] = useState([]);
   const [toggleMap, setToggleMap] = useState(false);
@@ -110,12 +111,6 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
     setToggleFilters(!toggleFilters)
   }
   
-  // useEffect(()=>{
-  //   APIHandler.get("/ads")
-  //     .then(apiRes => setAds(apiRes.data))
-  //     .catch(err => console.error(err))
-  // }, [])
-
   useEffect(() => {
     if (max) {
       const adsFiltered = ads.filter((ad,i) => i < max )
@@ -174,11 +169,14 @@ console.log('type changed', typeSelected)
         {toggleMap && <Map locations={locations} />}
         </LoadScript>
         
+        <div className="ads-preview-container">
         {Boolean(ads.length) ? (
           ads.map((ad, i) => <PreviewAd data={ad} />)
         ) : (
           <p>Aucune annonce à afficher...</p>
         )}
+        </div>
+
         </div>
     </div>
   )

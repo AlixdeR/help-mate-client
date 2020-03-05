@@ -1,7 +1,7 @@
 import React from 'react'
 import StarsRating from '../user/StarsRating'
 import moment from "moment"
-// import 'moment/locale/fr';
+import 'moment/locale/fr';
 
 export default function UserInfos({userInfos}) {
   console.log('user',userInfos)
@@ -20,7 +20,7 @@ export default function UserInfos({userInfos}) {
     return (
         <div className='aside-user-infos'>
             <img alt='avatar' src={userInfos.avatar} width='200' />
-            {/* {userInfos.rates && <StarsRating n={ratesAverage(userInfos.rates)}/>} */}
+            {userInfos.rates && <StarsRating n={ratesAverage(userInfos.rates)}/>}
             <div>{userInfos.username}</div>
             <div>{userInfos.gender}</div>
             <div>Membre depuis <strong>{moment(userInfos.account_creation, moment.ISO_8601).lang("fr").fromNow(true)}</strong></div>

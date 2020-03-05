@@ -22,6 +22,7 @@ import EditAd from "./views/EditAd"
 import Footer from './components/Footer'
 import Conversation from './views/Conversation'
 import MesMessages from './views/MesMessages'
+import { ProtectedRoute } from "./auth/ProtectedRoute";
 
 
 function App() {
@@ -57,13 +58,13 @@ function App() {
               <Route exact path="/mes-messages/:mon_id" component={MesMessages} />
               <Route exact path="/messages/:to_id" component={Conversation} />
               <Route exact path="/profil/:id" component={UserPublicProfile} />
-              <Route path="/profil/:id/modifier-mon-compte" component={UserEditProfile} />
+              <ProtectedRoute path="/profil/:id/modifier-mon-compte" component={UserEditProfile} />
               <Route path="/profil/:id/annonces" component={UserAds} />
               <Route exact path="/mon-annonce" component={CreateAd} />
-              <Route exact path="/editer-mon-annonce/:id" component={EditAd} />
+              <ProtectedRoute exact path="/editer-mon-annonce/:id" component={EditAd} />
               <Route exact path="/annonces" render={(routeProps)=>(<AdsDisplayed {...routeProps} adsSearched={searchResults}/>)} />
               <Route exact path="/annonces/:id" component={Ad} />
-              {/* <Route path="/signin" component={SignIn} /> */}
+              <Route path="/signin" component={SignIn} />
               <Route path="/signup" component={SignUp} />
               {/* <Route exact path="/messagerie" component={Inbox} /> */}
               {/* <Route exact path="/admin" component={Admin} /> */}
