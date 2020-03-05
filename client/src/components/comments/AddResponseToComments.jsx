@@ -4,7 +4,7 @@ import APIHandler from "../../api/APIHandler";
 export default class AddResponseToComments extends Component {
   state = {
     response: "",
-    currentResponseId:this.props.currentResponseId
+    currentResponseId: this.props.currentResponseId
   };
 
   handleState = e => {
@@ -13,13 +13,14 @@ export default class AddResponseToComments extends Component {
 
   submitForm = e => {
     e.preventDefault();
-    console.log(this.state)
+    console.log(this.state);
     APIHandler.post(`/comments/${this.props.userId}`, this.state)
-      .then(apiRes =>
+      .then(apiRes => {
+        this.props.handleUserUpdate(apiRes.data);
         this.setState({
           msg: <div className="msg-fail">Commentaire posté!</div>
-        })
-      )
+        });
+      })
       .catch(apiErr =>
         this.setState({ msg: <div className="msg-fail">Erreur!</div> })
       );
@@ -47,7 +48,7 @@ export default class AddResponseToComments extends Component {
     return (
       <div>
         {this.state.msg && this.state.msg}
-      
+
         <form
           className="center-content"
           onSubmit={this.submitForm}
@@ -61,7 +62,12 @@ export default class AddResponseToComments extends Component {
               placeholder="Votre commentaire"
             ></textarea>
           </div>
-          <input type="text" name="currentResponseId" id="" value={this.state.currentResponseId}/>
+          <input
+            type="text"
+            name="currentResponseId"
+            id=""
+            value={this.state.currentResponseId}
+          />
           <button className="button is-primary is-rounded" type="submit">
             Poster ma réponse
           </button>

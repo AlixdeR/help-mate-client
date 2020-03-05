@@ -3,8 +3,8 @@ import APIHandler from "../../api/APIHandler";
 
 export default class AddComment extends Component {
   state = {
-      rate: 0,
-      text: "",
+    rate: 0,
+    text: ""
   };
 
   handleState = e => {
@@ -14,19 +14,19 @@ export default class AddComment extends Component {
   submitForm = e => {
     e.preventDefault();
     APIHandler.post(`/comments/${this.props.userId}`, this.state)
-      .then(apiRes =>
+      .then(apiRes => {
+        console.log(apiRes.data,"this is data")
+        this.props.handleUserUpdate(apiRes.data);
         this.setState({
           msg: <div className="msg-fail">Commentaire posté!</div>
-        })
-      )
+        });
+      })
       .catch(apiErr =>
         this.setState({ msg: <div className="msg-fail">Erreur!</div> })
       );
   };
 
   render() {
- 
-
     return (
       <div>
         {this.state.msg && this.state.msg}
@@ -37,7 +37,7 @@ export default class AddComment extends Component {
           onChange={this.handleState}
         >
           <div className="field">
-            <input type="number" name="rate"/>
+            <input type="number" name="rate" />
           </div>
           <div className="field">
             <label className="label">Votre message</label>
