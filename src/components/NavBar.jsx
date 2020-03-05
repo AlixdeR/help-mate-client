@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import APIHandler from "../api/APIHandler";
+import UserContext from "../auth/UserContext";
 import { useAuth } from "../auth/useAuth";
-import AdsDisplayed from "../views/AdsDisplayed"
-import SignOut from "../auth/SignOut"
+import AdsDisplayed from "../views/AdsDisplayed";
 
-import '../styles/navBar.css'
+import "../styles/navBar.css";
 import SearchBar from "./SearchBar";
 
-export default function NavBar({ searchClbk }) {
+export default function NavBar({ history, searchClbk }) {
   const { isLoading, currentUser } = useAuth();
+  const userContext = useContext(UserContext);
+  const { setCurrentUser } = userContext;
 
+  const handleSignout = () =>
+    APIHandler.post("/signout").finally(() => {
+      history.push("/signin");
+      setCurrentUser(null);
+    });
 
   if (isLoading) return null;
 
@@ -23,11 +31,16 @@ export default function NavBar({ searchClbk }) {
         <div className="navbar-brand">
           <Link to="/">
             <div className="navbar-item">
-              <img className="logo-helpmate" src="/e500e06b-daaa-45ae-ae0a-1f4f2a3ed090_200x200.png" alt="" width=""/>
+              <img
+                className="logo-helpmate"
+                src="/e500e06b-daaa-45ae-ae0a-1f4f2a3ed090_200x200.png"
+                alt=""
+                width=""
+              />
             </div>
           </Link>
 
-          <SearchBar searchClbk={searchClbk}/>
+          <SearchBar searchClbk={searchClbk} />
 
           <div
             role="button"
@@ -61,18 +74,17 @@ export default function NavBar({ searchClbk }) {
                   </div>
                 </Link>
                 <Link to="/signin">
-                <div className="button is-light">Se connecter</div></Link>
+                  <div className="button is-light">Se connecter</div>
+                </Link>
               </div>
             </div>
-            
+
             {currentUser && (
               <div className="navbar-item has-dropdown is-hoverable">
                 <div className="navbar-link">Mon Compte</div>
                 <div className="navbar-dropdown">
                   <div className="navbar-item">
-                    <Link to={`/profil/${currentUser._id}/`}>
-                      Mon profil
-                    </Link>
+                    <Link to={`/profil/${currentUser._id}/`}>Mon profil</Link>
                   </div>
                   <div className="navbar-item">
                     <Link to={`/profil/${currentUser._id}/modifier-mon-compte`}>
@@ -85,12 +97,14 @@ export default function NavBar({ searchClbk }) {
                     </Link>
                   </div>
                   <div className="navbar-item">
-                  <Link to={`/mes-messages/${currentUser._id}/`}>
+                    <Link to={`/mes-messages/${currentUser._id}/`}>
                       Mes messages
                     </Link>
                   </div>
                   <hr className="navbar-divider" />
-                  <div onClick={handleSignout} className="navbar-item">Se déconnecter</div>
+                  <div onClick={handleSignout} className="navbar-item">
+                    Se déconnecter
+                  </div>
                 </div>
               </div>
             )}
