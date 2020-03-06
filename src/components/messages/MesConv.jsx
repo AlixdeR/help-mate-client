@@ -18,7 +18,7 @@ function MesConv({conversations, currentUser, history}) {
     }
     return (
         <div className='mes-conv-placeholder list is-hoverable'>
-             {conversations.length && conversations.map((conv,i)=>(
+             {conversations.map((conv,i)=>(
                  
                 <div className={isConvActive(conv) ? 'list-item is-large one-conv is-active':'list-item one-conv'} onClick={()=>(changePage (conv))}> <p style={{'font-size' :'1.5em'}}>{whatUser(conv).name}</p></div>
                 
