@@ -255,3 +255,23 @@ clear: both;
 
 
 
+.ad-details {
+  margin-top: 10vh
+}
+.ad-title > * {
+ margin-left : 2em
+}
+
+.details{
+  width: 70%;
+}
+.details > *{
+margin-bottom : 2em
+}
+.ad-description{
+  border:1px solid rgba(128, 128, 128, 0.246) ;
+  border-radius: 0.5em;
+  width: 70%;
+  padding : 2em;
+  margin-top : 2em
+}

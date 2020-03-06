@@ -48,8 +48,12 @@ export default function Signin(props) {
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
+<<<<<<< HEAD
+        <button className="center-con">ok</button>
+=======
         <br></br><br></br>
         <button className="button is-rounded is-primary">Je me connecte</button>
+>>>>>>> 5b0e6480a595ed19da0b0d192acec8f374682a35
       </form>
       <br></br>
       <p className="center-content">
