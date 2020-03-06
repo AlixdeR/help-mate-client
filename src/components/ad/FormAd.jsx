@@ -8,71 +8,65 @@ import UserContext from "../../auth/UserContext";
 // import AdImage from "../../components/";
 
 export default class FormAd extends Component {
-  state = {
-    msg: "",
-    redirect: false,
-    title: "",
-    recipient: "",
-    categories: [
-      "Administratif",
-      "Aide Ménagère",
-      "Bricolage",
-      "Courses",
-      "Cours Particuliers",
-      "Don(s)",
-      "Transport/Déménagement",
-      "Visite(s) de Courtoisie"
-    ],
-    category: "",
-    description: "",
-    adType: "",
-    street: "",
-    zipCode: 0,
-    city: "",
-    image: "",
-    availability: "",
-    lng: null,
-    lat: null
-  };
+      state = {
+        msg: "",
+        redirect: false,
+        title: "",
+        recipient: "",
+        categories: ['Administratif','Aide Ménagère','Bricolage','Courses','Cours Particuliers','Don(s)'],
+        category: "",
+        description: "",
+        adType: "",
+        street: "",
+        zipCode: 0,
+        city: "",
+        image: "",
+        availability: "",
+        lng:null,
+        lat:null,
+    }
 
-  handleState = e => {
-    if (e.target.name === "image") return;
-    if (e.target.type === "radio") this.setState({ adType: e.target.value });
-    this.setState({ [e.target.name]: e.target.value });
-  };
+    handleState = e => {
+      if (e.target.name === "image") return
+      if (e.target.type === 'radio') this.setState({adType: e.target.value})
+      this.setState({ [e.target.name]: e.target.value });
+    }
 
-  handleFile = e => {
-    this.setState({ image: e.target.files[0] });
-  };
+    handleFile = e => {
+      this.setState({ image: e.target.files[0] });
+    }
 
-  submitForm = e => {
-    e.preventDefault();
-    const { street, zipCode, city } = this.state;
-    const addressStr = street + ", " + zipCode + ", " + city;
-    const geocoder = new window.google.maps.Geocoder();
-    geocoder.geocode({ address: addressStr }, (results, status) => {
-      if (status == "OK") {
-        console.log(results, "this is results");
-        const lat = results[0].geometry.location.lat();
-        const lng = results[0].geometry.location.lng();
-        this.setState({ lng: lng, lat: lat });
-        console.log(lat, lng);
-        const fd = new FormData();
-        fd.append("image", this.state.image);
-        fd.append("title", this.state.title);
-        fd.append("category", this.state.category);
-        fd.append("description", this.state.description);
-        fd.append("availability", this.state.availability);
-        fd.append("adType", this.state.adType);
-        fd.append("street", this.state.street);
-        fd.append("zipCode", this.state.zipCode);
-        fd.append("city", this.state.city);
-        fd.append("lng", this.state.lng);
-        fd.append("lat", this.state.lat);
-        APIHandler.post("/ads", fd)
-          .then(apiRes => this.setState({ redirect: true }))
-          .catch(apiErr =>
-            this.setState({ msg: <div className="msg-fail">Erreur!</div> })
+    submitForm = e => {
+      e.preventDefault();
+      const {street, zipCode, city} = this.state
+      const addressStr = street + ", " + zipCode + ", " + city;
+      const geocoder = new window.google.maps.Geocoder();
+      geocoder.geocode({ address: addressStr }, (results, status)=> {
+        if (status == "OK") {
+          console.log(results, "this is results");
+          const lat = results[0].geometry.location.lat();
+          const lng = results[0].geometry.location.lng();
+          this.setState({lng : lng, lat : lat})
+          console.log(lat, lng);
+          const fd = new FormData();
+          fd.append("image", this.state.image);
+          fd.append("title", this.state.title);
+          fd.append("category", this.state.category);
+          fd.append("description", this.state.description);
+          fd.append("availability", this.state.availability);
+          fd.append("adType", this.state.adType);
+          fd.append("street", this.state.street);
+          fd.append("zipCode", this.state.zipCode);
+          fd.append("city", this.state.city);
+          fd.append("lng", this.state.lng);
+          fd.append("lat", this.state.lat);
+            APIHandler
+            .post("/ads", fd)
+            .then(apiRes => this.setState({redirect: true}))
+            .catch(apiErr => this.setState({msg: <div className="msg-fail">Erreur!</div>}));
+        } else {
+          alert(
+            "Geocode was not successful for the following reason: " + status
           );
       } else {
         alert("Geocode was not successful for the following reason: " + status);

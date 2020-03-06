@@ -17,7 +17,7 @@ export default function EditButton({ data }) {
                       address: data.address,
                       image: data.image
                 }}}> 
-                <button>MODIFIER ANNONCE</button>
+                <button className="button is-primary is-rounded small">Modifier</button>
                 </Link>
         </div>
     )

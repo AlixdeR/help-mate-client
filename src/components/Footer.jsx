@@ -6,9 +6,8 @@ import "../styles/footer.css";
 const LinkedinIcon = <FontAwesomeIcon icon={faLinkedin} />;
 
 const Footer = () => (
-  <div>
-    <footer className="footer">
-      <div className="content has-text-centered">
+  <div className="footerBottom">
+    <footer>
         <p>
           <strong>HelpMate</strong>
           { ' by ' }
@@ -28,7 +27,6 @@ const Footer = () => (
               Wendy { LinkedinIcon }
           </a>.
         </p>
-      </div>
     </footer>
   </div>
 )

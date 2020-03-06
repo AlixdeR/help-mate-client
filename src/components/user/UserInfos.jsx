@@ -17,27 +17,8 @@ export default function UserInfos({userInfos, isAdsDetails}) {
     if(!userInfos) {return <p>Loading ...</p>}
     return (
         <div className='aside-user-infos card'>
-        <div className="card-image" >
-        <div className="image is-4by3" style={{backgroundImage : `url(${userInfos.avatar})`, backgroundSize : 'cover' }}>
-        </div>
-        <div class="card-content">
-    <div class="media">
-      <div class="media-left">
-      <div class="media-content">
-        <p class="title is-4">John Smith</p>
-        <p class="subtitle is-6">@johnsmith</p>
-      </div>
-    </div>
-
-    <div class="content">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-      <a href="#">#css</a> <a href="#">#responsive</a>
-      <br/>
-      {userInfos.ads && <div> A posté <strong>{userInfos.ads.length}</strong> annnonce(s)</div>}
-    </div>
-  </div>
-            {/* <img alt='avatar' src={userInfos.avatar} width='200' /> */}
+  
+            <img alt='avatar' src={userInfos.avatar} width='200' />
             {userInfos.rates && <StarsRating n={ratesAverage(userInfos.rates)}/>}
             <div>{userInfos.username}</div>
             <div>{userInfos.gender}</div>
@@ -46,8 +27,7 @@ export default function UserInfos({userInfos, isAdsDetails}) {
             {userInfos.ads && <div> A posté <strong>{userInfos.ads.length}</strong> annnonce(s)</div>}
             { isAdsDetails && <Link to={`/profil/${userInfos._id}`} ><button className='is-rounded is-primary button'> Voir Profil</button></Link>}
         </div>
-        </div>
-        </div>
+
     )
 }
 
