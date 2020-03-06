@@ -74,9 +74,9 @@ export default function NavBar({  searchClbk }) {
               <div className="buttons">
             
                 <Link to="/signup">
-                  <div className="button is-primary">
-                    <strong>S'inscrire</strong>
-                  </div>
+
+                  <div className="button is-light">S'inscrire</div>
+                  
                 </Link>
                 <Link to="/signin">
                   <div className="button is-light">Se connecter</div>
@@ -86,7 +86,7 @@ export default function NavBar({  searchClbk }) {
 
             {currentUser && (
               <div className="navbar-item has-dropdown is-hoverable">
-                <div className="navbar-link">Mon Compte</div>
+                <div className="navbar-link button is-light">Mon Compte</div>
                 <div className="navbar-dropdown">
                   <div className="navbar-item">
                     <Link to={`/profil/${currentUser._id}/`}>Mon profil</Link>

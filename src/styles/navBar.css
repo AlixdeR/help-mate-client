@@ -22,12 +22,6 @@
     color: rgba(0, 0, 0, 0.7);
 }
 
-.navbar-link {
-    margin-top: 2.5vh;
-    background-color: whitesmoke;
-    height: 8vh;
-    margin-right: 1vh
-}
 .searchBar {
     display: flex;
     width: 35vw;
@@ -61,5 +55,15 @@
     font-weight: bolder;
 }
 
+.button.is-light {
+    margin: 0 1vh;
+}
 
+.navbar-link.button.is-light {
+  margin-top: 4.5vh;
+    margin-right: 4vh;
+}
 
+.logo-helpmate {
+    margin-top: 2vh
+}

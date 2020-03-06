@@ -2,12 +2,13 @@ import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import "../styles/footer.css";
+import UserPublicProfile from "../views/UserPublicProfile";
 
 const LinkedinIcon = <FontAwesomeIcon icon={faLinkedin} />;
 
 const Footer = () => (
-  <div className="footerBottom">
-    <footer>
+  <div>
+    <footer className={{UserPublicProfile} ? "footerBottom is-hidden" : "footerBottom"} >
         <p>
           <strong>HelpMate</strong>
           { ' by ' }
