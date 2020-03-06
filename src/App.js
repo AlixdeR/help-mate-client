@@ -77,7 +77,7 @@ function App() {
               {/* <Route path="*" component={NotFound} /> */}
             </Switch>
           </main>
-          <Footer />
+      <Footer />
      </React.Fragment>
      )}
     </UserContext.Provider>

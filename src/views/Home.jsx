@@ -2,6 +2,10 @@ import React from 'react'
 import AdsDisplayed from "../views/AdsDisplayed";
 import { Link } from "react-router-dom";
 import '../styles/home.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
+
+const LinkedinIcon = <FontAwesomeIcon icon={faLinkedin} />;
 
 export default function Home({ handleTypeHome }) {
     return (
@@ -51,14 +55,34 @@ export default function Home({ handleTypeHome }) {
   </div>
 </section>
 
-<section id="end-box" class="hero">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">Helpmate c'est quoi ? </h1>
-      <div className="content">
-Helpmate est un site dédié à l'entraide. L'idée est toute simple : vous avez besoin d'un coup de main ? Postez une annonce. Trop de tomates dans votre jardin ? Postez une annonce et partagez avec la communauté.       </div>
-    </div>
-  </div>
+<section className="end-box">
+  <div className="content-end">
+    <h1 class="title"> HelpMate c'est quoi? </h1>
+    <div>HelpMate est un site dédié à l'entraide. L'idée est toute simple... Vous avez besoin d'un coup de main? Trop de tomates dans votre jardin? <br></br> Postez une annonce et partagez avec la communauté. </div>
+    
+    <br></br><br></br>
+    <div className="content-bis">
+      <p>
+          <strong>HelpMate</strong>
+          { ' by ' }
+          <a href="https://www.linkedin.com/in/alix-de-ribet-237a48119/">
+              Alix { LinkedinIcon }
+          </a>
+          {', '}
+          <a href="https://www.linkedin.com/in/camille-de-l%C3%A9pine-robinel-326925158/">
+              Camille { LinkedinIcon }
+          </a>
+          {', '}
+          <a href="https://www.linkedin.com/in/pauline-morsli/">
+              Pauline { LinkedinIcon }
+          </a>
+          {' & '} 
+          <a href="https://www.linkedin.com/in/wendy-evora-978653142/">
+              Wendy { LinkedinIcon }
+          </a>.
+        </p>
+        </div>
+      </div>
 </section>
 
         </>
