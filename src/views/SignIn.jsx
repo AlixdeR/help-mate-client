@@ -47,7 +47,7 @@ export default function Signin(props) {
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        <button className="btn">ok</button>
+        <button className="center-con">ok</button>
       </form>
       <p className="center-content">
         Pas de compte ? N'hésitez pas à{" "}
