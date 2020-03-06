@@ -112,7 +112,7 @@ export default function TabsAds({
             <a id='Visites-de-Courtoisie' onClick={setCategorySelected}>Visite de Courtoisie</a>
           </li>
         </ul>
-        <ul id="button-search">
+        {/* <ul id="button-search">
           {categories.map(c => (
             <li className={c.active ? "is-active" : ""}>
               <a
@@ -123,7 +123,7 @@ export default function TabsAds({
               </a>
             </li>
           ))}
-        </ul>
+        </ul> */}
         <div
           onClick={toggle}
           className={mapActive === false ? "button is-active" : "button"}

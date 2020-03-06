@@ -116,7 +116,6 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
     const query = location.search.replace("?search=", "");
     APIHandler.get(`ads/search?q=${query}`)
     .then(apiRes => {
-
       if (max) {
         const adsFiltered = apiRes.data.dbRes.filter((ad,i) => i < max )
         setAds(adsFiltered)
@@ -132,10 +131,13 @@ export default withRouter(function AdsDisplayed({ history, location, match, adsS
   }, [location])
 
   useEffect(()=>{
-    console.log('setlatitude', latitude, 'setlongitude', longitude)
-    console.log('max dist', maxDistance)
-      const newArray =  apiRes.filter((ad, i)=>(ad.adType.includes(typeSelected) && ad.category.includes(categorySelected) && distance(latitude, longitude, ad.location.coordinates[1],ad.location.coordinates[0])<=maxDistance))
-      // console.log('filter type',typeArray);
+    // console.log('setlatitude', latitude, 'setlongitude', longitude)
+    // console.log('max dist', maxDistance)
+      const newArray =  apiRes.filter((ad, i) => (
+        ad.adType.includes(typeSelected)
+        && ad.category.includes(categorySelected)
+        && distance(latitude, longitude, ad.location.coordinates[1],ad.location.coordinates[0])<=maxDistance // location should be [latitude, longitude]
+      ))
       setAds(newArray)
   },[typeSelected, categorySelected, maxDistance, latitude, longitude])
 
