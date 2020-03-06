@@ -73,7 +73,6 @@ const formHandler = async  e => {
     return (
         <div>
             {/* <Avatar/> */}
-            <h1 className='title center-content'>Créer un compte</h1>
           
             <form  className="center-content" onSubmit={formHandler} onChange={handleChange} encType="multipart/form-data">
                     <Avatar clbk={handleAvatar} avatar={avatarPreview}/>
