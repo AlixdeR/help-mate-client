@@ -84,7 +84,7 @@ export default function TabsAds({
   return (
     <div>
       <Link to="/annonces">
-        <h1 className="title">Toutes les annonces</h1>
+        <h1 className="title title-1">Toutes les annonces</h1>
       </Link>
       <div className="tabs is-centered">
         <div onClick={toggleFilters} className="button is-rounded">

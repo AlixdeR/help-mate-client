@@ -7,7 +7,7 @@ export default function DeleteButton({ data, handleDelete }) {
     return (
 
         <div>
-            <button onClick={() => handleDelete(data._id)}>Supprimer mon annonce</button>
+            <button className="button is-primary is-rounded small red" onClick={() => handleDelete(data._id)}>Supprimer</button>
         </div>
     )
 }

@@ -18,7 +18,7 @@ export default function PreviewAd ({ data, mode, handleDelete }) {
       }}}>
     <div className="image is-96x96" style={{backgroundImage : `url(${data.image})`, backgroundSize : 'cover' }}>
     </div>
-    <h3 className="ad-title">" {data.title}"</h3>
+    <h3 className="titleAd">"{data.title}"</h3>
     <p className="ad-date">Postée le : <Moment format="DD/MM/YYYY">
       {data.date}
       </Moment> 
@@ -26,8 +26,10 @@ export default function PreviewAd ({ data, mode, handleDelete }) {
     </p>
     </Link>
 
-    {mode==="mes annonces" && <EditButton data={data}/>}
+    <div  className="buttons-edit">
+    {mode==="mes annonces" && <EditButton data={data} />}
     {mode==="mes annonces" && <DeleteButton handleDelete={handleDelete} data={data}/>}
+    </div>
     {/* <IconFav/> */}
   {/* </div> */}
   </div>

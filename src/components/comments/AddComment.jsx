@@ -38,7 +38,7 @@ export default class AddComment extends Component {
         
         <div className="inside-form">
           <div className="field">
-            <input className="input" type="number" name="rate" placeholder="Notez l'utilisateur" />
+            <input className="input" type="number" min="0" max="5" name="rate" placeholder="Notez l'utilisateur" />
           </div>
           <div className="field">
             {/* <label className="label">Votre message</label> */}
