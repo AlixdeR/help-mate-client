@@ -24,7 +24,7 @@ export default function UserPublicProfile({ match }) {
       .catch(apiErr => console.error(apiErr));
   }, []);
 
-  console.log(userInfos);
+  console.log(userInfos,"this is user infos whooo");
 
   return (
     <div className="profile-page">
