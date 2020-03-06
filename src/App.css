@@ -195,7 +195,11 @@ clear: both;
 }
 
 .button{
-  margin: 2vh;
+  margin-top: 3vh;
+}
+
+.select {
+  margin-bottom: 1vh;
 }
 
 .profile-page {
