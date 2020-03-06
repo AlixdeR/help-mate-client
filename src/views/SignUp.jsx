@@ -9,10 +9,9 @@ export default function SignUp() {
 
     return (
         <div className="createForm-page">
-            <div className="form-container">
-                <h1 className='title is-3'>Créer un compte</h1>
+            {/* <div className="form-container"> */}
                 <UserInfosForm mode='create' />
-            </div>
+            {/* </div> */}
         </div>
     )
 }

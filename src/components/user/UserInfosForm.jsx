@@ -42,7 +42,7 @@ const formHandler = async  e => {
         try {
           if (mode === "create") await apiHandler.post("/signup", fd);
           else await apiHandler.patch(`/users/${user._id}`, fd);
-          history.push("/");
+          history.push("/signin");
         } catch (apiErr) {
           console.error(apiErr);
         }
@@ -71,12 +71,14 @@ const formHandler = async  e => {
       }
 
     return (
-        <div className='center-content'>
+        <div>
             {/* <Avatar/> */}
-            <form  onSubmit={formHandler} onChange={handleChange} className='form' encType="multipart/form-data">
+            <h1 className='title center-content'>Créer un compte</h1>
+          
+            <form  className="center-content" onSubmit={formHandler} onChange={handleChange} encType="multipart/form-data">
                     <Avatar clbk={handleAvatar} avatar={avatarPreview}/>
                     <div className='field'>
-                      <label className='label input is-rounded is-primary lighterGreen' htmlFor="name">Pseudo</label>
+                      <label className='label' htmlFor="name">Pseudo</label>
                       <input className='input is-rounded is-primary lighterGreen' name="username" type ="text" id="username" placeholder="Ex : Jojo du 52" defaultValue={user && user.username} required/>
                     </div>
                     <div className='field'>

@@ -5,7 +5,7 @@ import UserContext from "../auth/UserContext";
 import APIHandler from "../api/APIHandler";
 
 export default function Signin(props) {
-  const [email, setEmail] = useState("monemail");
+  const [email, setEmail] = useState("Email");
   const [password, setPassword] = useState("1234");
   const userContext = useContext(UserContext);
   const { setCurrentUser } = userContext;
@@ -15,7 +15,7 @@ export default function Signin(props) {
     try {
       const apiRes = await APIHandler.post("/signin", { email, password });
       setCurrentUser(apiRes.data.currentUser);
-      props.history.push("/annonces");  
+      props.history.push("/annonces");
     } catch (err) {
       setCurrentUser(null);
     }
@@ -23,34 +23,43 @@ export default function Signin(props) {
 
   return (
     <React.Fragment>
-      <form className="form" onSubmit={handleSubmit}>
-        <h1 className="title">Signin</h1>
+    <br/>
+    <br/>
+    <h1 className="title center-content">Se connecter</h1>
+      <form className="center-content" onSubmit={handleSubmit}>
         <label className="label" htmlFor="email">
-          email
+          Email
         </label>
         <input
-          className="input"
+          className="input is-rounded is-primary"
           id="email"
           type="email"
           value={email}
           onChange={e => setEmail(e.target.value)}
         />
+        <br></br><br></br>
         <label className="label" htmlFor="password">
-          password
+          Mot de passe
         </label>
         <input
-          className="input"
+          className="input is-rounded is-primary"
           id="password"
           type="password"
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        <button className="btn">ok</button>
+<<<<<<< HEAD
+        <button className="center-con">ok</button>
+=======
+        <br></br><br></br>
+        <button className="button is-rounded is-primary">Je me connecte</button>
+>>>>>>> 5b0e6480a595ed19da0b0d192acec8f374682a35
       </form>
-      <p className="parag">
-        No account yet ? please{" "}
+      <br></br>
+      <p className="center-content">
+        Pas de compte? N'hésitez pas à{" "}
         <Link to="/signup" className="link">
-          signup
+          vous inscrire!
         </Link>
       </p>
     </React.Fragment>

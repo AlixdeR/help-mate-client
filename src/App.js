@@ -61,8 +61,8 @@ function App() {
       <main id="content_main">
          <Switch>
               <Route exact path="/" render={(routeProps)=>(<Home {...routeProps} handleTypeHome={handleTypeHome}/>)} /> />
-              <Route exact path="/mes-messages/:mon_id" component={MesMessages} />
-              <Route exact path="/messages/:to_id" component={Conversation} />
+              <ProtectedRoute exact path="/mes-messages/:mon_id" component={MesMessages} />
+              <ProtectedRoute exact path="/messages/:to_id" component={Conversation} />
               <Route exact path="/profil/:id" component={UserPublicProfile} />
               <ProtectedRoute path="/profil/:id/modifier-mon-compte" component={UserEditProfile} />
               <Route path="/profil/:id/annonces" component={UserAds} />
