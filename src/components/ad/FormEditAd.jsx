@@ -12,7 +12,7 @@ export default class FormEditAd extends Component {
         redirect: false,
         title: this.props.data.title,
         // recipient: "",
-        categories: ["Bricolage", "Ménage", "Visites de courtoisie", "Courses"],
+        categories: ['Administratif','Aide Ménagère','Bricolage','Courses','Cours Particuliers','Don(s)'],
         category: this.props.data.category,
         description: this.props.data.description,
         adType: this.props.data.adType,

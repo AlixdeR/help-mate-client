@@ -16,12 +16,14 @@
     box-shadow: 0px 0px 4px 0px rgba(3, 24, 27, 0.767);
     border-radius: 5px;
     width: 17vw;
+    margin: 2vh;
 }
 
-.preview h3.ad-title {
+.preview h3.titleAd {
     margin: 0;
     padding: 5px 10px;
     text-align: center;
+    color: black;
 }
 
 div.image.is-96x96 {

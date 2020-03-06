@@ -16,11 +16,10 @@
   margin: 0 2vh 6vh;
   padding : 2vh;
   height: 60vh;
-  /* border-radius: 10px; */
-  /* box-shadow: 2px 2px 2px grey; */
-  /* background-color: #abf2e7; */
-  box-shadow:2px 2px 2px rgba(128, 128, 128, 0.445);
-  background-color: white;
+  border-radius: 10px;
+  background-color: #abf2e7;
+  /* box-shadow:2px 2px 2px rgba(128, 128, 128, 0.445);
+  background-color: white; */
 }
 
 .form-comment {
@@ -61,7 +60,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 60vh;
 }
 
 .title-3 {
@@ -83,7 +81,8 @@
   position: absolute;
   width: 20em;
   left: 0;
-  z-index: 0;
+  margin-bottom: 10vh;
+ 
 }
 
 .center-content.form-comment.border-form {
@@ -214,4 +213,21 @@ clear: both;
 
 .mes-messages-placeholder .title {
   margin-top: 1.5em;
+}
+
+.button.is-primary.is-rounded.small {
+  width: 5vw;
+  height: 2vw;
+  font-size: 0.5rem;
+}
+
+.buttons-edit {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-1 {
+  margin: 3vh;
 }
