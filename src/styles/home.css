@@ -3,7 +3,7 @@ body {
 }
 
 #end-box {
-    background-color: hsla(198, 83%, 75%, 0.8);
+    background-color: rgba(16, 223, 192, 0.5);
 }
 
 
@@ -27,7 +27,7 @@ body {
 
 
 
-.tabs li:active {
+.tabs li {
     color: #dfe7ec;
     font-weight: bolder;
 }
@@ -41,12 +41,16 @@ body {
 
 .hero.is-info .title,
 .hero.is-info .subtitle {
-    color: rgba(0, 0, 0, 0.705);
+    color: white(0, 0, 0, 0.705);
     text-shadow: white;
 }
 
 .subtitle {
 font-size: 1em;
+}
+
+.nav-element {
+color: blue
 }
 
 .hero-body > .container {
@@ -63,8 +67,8 @@ font-size: 1em;
     opacity: 0.8;
 }
 
-.hero.is-info .tabs.is-boxed ul li:first-child a,
-.hero.is-info .tabs.is-boxed ul li:first-child a:hover {
+.hero.is-info .tabs.is-boxed ul li a,
+.hero.is-info .tabs.is-boxed ul li a:hover {
     color: #00d1b2;
 }
 

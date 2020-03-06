@@ -76,24 +76,24 @@ const formHandler = async  e => {
             <form  onSubmit={formHandler} onChange={handleChange} className='form' encType="multipart/form-data">
                     <Avatar clbk={handleAvatar} avatar={avatarPreview}/>
                     <div className='field'>
-                      <label className='label' htmlFor="name">Pseudo</label>
-                      <input className='input' name="username" type ="text" id="username" placeholder="Ex : Jojo du 52" defaultValue={user && user.username} required/>
+                      <label className='label input is-rounded is-primary lighterGreen' htmlFor="name">Pseudo</label>
+                      <input className='input is-rounded is-primary lighterGreen' name="username" type ="text" id="username" placeholder="Ex : Jojo du 52" defaultValue={user && user.username} required/>
                     </div>
                     <div className='field'>
                       <label className='label' htmlFor="lastName">Nom</label>
-                      <input className='input' type="text" name="lastName" id="lastName" placeholder="" defaultValue={user && user.lastName} required/>
+                      <input className='input is-rounded is-primary lighterGreen' type="text" name="lastName" id="lastName" placeholder="" defaultValue={user && user.lastName} required/>
                     </div>
                     <div className='field'>
                       <label className='label' htmlFor="name">Prénom</label>
-                      <input className='input' type="text" name="name" id="name" placeholder="" defaultValue={user && user.name} required/>
+                      <input className='input is-rounded is-primary lighterGreen' type="text" name="name" id="name" placeholder="" defaultValue={user && user.name} required/>
                     </div>
                     <div className='field'>
                       <label className='label' htmlFor="birthday">Date de naissance</label>
-                      <input className='input' type="date" name="birthday" id="birthday" value={user && convertDate(user.birthday)} required/>
+                      <input className='input is-rounded is-primary lighterGreen' type="date" name="birthday" id="birthday" value={user && convertDate(user.birthday)} required/>
                     </div>
                     <div className="field">
                     <label className='label' htmlFor="status">Genre</label>
-                          <div className='select'>
+                          <div className='select is-rounded is-primary lighterGreen'>
                             <select id="gender" name="gender" required>
                               <option value="">Choisir une option</option>
                               <option value="homme" selected={user && 'homme'===  user.gender }>Homme</option>
@@ -104,23 +104,23 @@ const formHandler = async  e => {
                     <div>
                     <div className='field'>
                       <label className='label' htmlFor="name">Description</label>
-                      <input className='input' name="description" type ="text" id="description" placeholder="Dites nous tout sur vous ..." defaultValue={user && user.description} required/>
+                      <input className='input is-rounded is-primary lighterGreen' name="description" type ="text" id="description" placeholder="Dites nous tout sur vous ..." defaultValue={user && user.description} required/>
                     </div>
                     <div className='field'>
                       <label className='label' htmlFor="email">Email</label>
-                      <input className='input' name="email" type ="email" id="email" placeholder="" defaultValue={user && user.email} required/>
+                      <input className='input is-rounded is-primary lighterGreen' name="email" type ="email" id="email" placeholder="" defaultValue={user && user.email} required/>
                     </div>
                     {mode==='create' && <div className='field'>
                       <label className='label' htmlFor="password">Mot de passe</label>
-                      <input className='input' name="password" type ="password" id="password" required/>
+                      <input className='input is-rounded is-primary lighterGreen' name="password" type ="password" id="password" required/>
                     </div>}
                     <div className='field'>
                       <label className='label' htmlFor="phone">Téléphone</label>
-                      <input className='input' name="phone" type ="phone" id="phone" placeholder="" defaultValue={user && user.phone} required/>
+                      <input className='input is-rounded is-primary lighterGreen' name="phone" type ="phone" id="phone" placeholder="" defaultValue={user && user.phone} required/>
                     </div>
                     <div className="field">
                     <label className='label' htmlFor="status">Vous êtes ...</label>
-                          <div className='select'>
+                          <div id="statut" className='select is-rounded is-primary lighterGreen'>
                             <select id="status" name="status" required>
                               <option value="">Choisir une option</option>
                               <option value="particulier" selected={user && 'particulier'=== user.status }>un particulier</option>

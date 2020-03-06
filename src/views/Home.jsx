@@ -22,10 +22,10 @@ export default function Home({ handleTypeHome }) {
                     <nav className="tabs is-boxed is-fullwidth">
                     <div className="container">
                         <ul>
-                        <li className="is-active" >
+                        <li className="nav-element">
                             <Link to="/annonces" id="service" onClick={handleTypeHome}>Je veux aider</Link>
                         </li>
-                        <li id="demande" onClick={handleTypeHome}>
+                        <li className="nav-element" onClick={handleTypeHome}>
                             <Link to="/annonces" id="demande" onClick={handleTypeHome}>J'ai besoin d'aide</Link>
                         </li>
                         </ul>

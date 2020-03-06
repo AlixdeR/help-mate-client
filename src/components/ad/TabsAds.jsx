@@ -27,11 +27,15 @@ export default function TabsAds({
       active: true
     },
     {
-      name: "Bricolage",
+      name: "Administratif",
       active: false
     },
     {
-      name: "Visites",
+      name: "Aide Ménagère",
+      active: false
+    },
+    {
+      name: "Bricolage",
       active: false
     },
     {
@@ -39,7 +43,11 @@ export default function TabsAds({
       active: false
     },
     {
-      name: "Ménages",
+      name: "Cours particuliers",
+      active: false
+    },
+    {
+      name: "Dons",
       active: false
     }
   ]);
@@ -82,37 +90,7 @@ export default function TabsAds({
         <div onClick={toggleFilters} className="button is-rounded">
           <FontAwesomeIcon icon={faSlidersH} />
         </div>
-        <ul>
-          <li className="is-active">
-            <a id='' onClick={setCategorySelected}>Tout</a>
-          </li>
-
-          <li>
-            <a id='Administratif' onClick={setCategorySelected}>Administratif</a>
-          </li>
-          <li>
-            <a id='Aide-Ménagère' onClick={setCategorySelected}>Aide Ménagère</a>
-          </li>
-          <li>
-            <a id='Bricolage' onClick={setCategorySelected}>Bricolage</a>
-          </li>
-          <li>
-            <a id='Courses' onClick={setCategorySelected}>Courses</a>
-          </li>
-          <li>
-            <a id='Cours-Particuliers' onClick={setCategorySelected}>Cours Particuliers</a>
-          </li>
-          <li>
-            <a id='Dons' onClick={setCategorySelected}>Don(s)</a>
-          </li>
-          <li>
-            <a id='Transport/Déménagement' onClick={setCategorySelected}>Transport/Déménagement</a>
-          </li>
-          <li>
-            <a id='Visites-de-Courtoisie' onClick={setCategorySelected}>Visite de Courtoisie</a>
-          </li>
-        </ul>
-        {/* <ul id="button-search">
+        <ul id="button-search">
           {categories.map(c => (
             <li className={c.active ? "is-active" : ""}>
               <a
@@ -123,7 +101,7 @@ export default function TabsAds({
               </a>
             </li>
           ))}
-        </ul> */}
+        </ul>
         <div
           onClick={toggle}
           className={mapActive === false ? "button is-active" : "button"}

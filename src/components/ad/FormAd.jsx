@@ -7,7 +7,6 @@ import { geocodeByAddress } from "react-google-places-autocomplete";
 import UserContext from "../../auth/UserContext";
 // import AdImage from "../../components/";
 
-
 export default class FormAd extends Component {
       state = {
         msg: "",
@@ -69,71 +68,116 @@ export default class FormAd extends Component {
           alert(
             "Geocode was not successful for the following reason: " + status
           );
-        }
-    })
-    };
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  };
 
-    render() {
-        return (
-            <div>
+  render() {
+    return (
+      <div>
+        {this.state.redirect === true && <Redirect to="/annonces" />}
+        {this.state.msg && this.state.msg}
+        <form
+          className="center-content"
+          onSubmit={this.submitForm}
+          onChange={this.handleState}
+        >
+          {/* <AdImage /> */}
+          <div className="field">
+            <label className="label">Titre</label>
+            <input
+              className="input is-rounded is-primary"
+              type="text"
+              name="title"
+            />
+          </div>
 
-                {this.state.redirect===true && <Redirect to="/annonces" />}   
-                {this.state.msg && this.state.msg}
-                <form className="center-content" onSubmit={this.submitForm} onChange={this.handleState}>
-                  {/* <AdImage /> */}
-                  <div className='field'>
-                    <label className="label">Titre</label>
-                    <input className="input" type="text" name="title"/>
-                  </div>
-                
-                  <div className='field'>
-                    <label className="label">Type</label>
-                    <label className="radio" htmlFor="demande">
-                      <input type="radio" name="adType" value="demande"/>
-                      {'  '}Je demande de l'aide
-                    </label> {'  '}
-                    <label className="radio" htmlFor="demande">
-                      <input type="radio" name="adType" value="service"/>
-                      {'  '}Je propose mon aide
-                    </label>
-                  </div>
+          <div className="field">
+            <label className="label">Type</label>
+            <label className="radio" htmlFor="demande">
+              <input type="radio" name="adType" value="demande" />
+              {"  "}Je demande de l'aide
+            </label>{" "}
+            {"  "}
+            <label className="radio" htmlFor="demande">
+              <input type="radio" name="adType" value="service" />
+              {"  "}Je propose mon aide
+            </label>
+          </div>
 
-                  <div className='field'>
-                    <label className="label">Catégorie</label>
-                    <div className='select'>
-                      <select name="category">
-                      <option defaultSelected>Choisir une catégorie</option>
-                        {this.state.categories.map((category,i) => (<option key={i} value={category}>{category}</option>))};
-                      </select>
-                    </div>
-                  </div>
-
-                  <div className='field'>
-                    <label className="label">Description</label>
-                    <textarea className="textarea" name="description" placeholder="Dites nous en plus sur votre annoce..."></textarea>
-                  </div>
-
-                  <div className='field'>
-                    <label className="label">Disponibilité(s)</label>
-                    <textarea className="textarea" name="availability" placeholder="A quelle fréquence? A quelle(s) date(s)?"/>
-                  </div>
-
-                  <div className='field'>
-                    <label className="label">Localisation</label>
-                    <input className="input" type="text" name="street" placeholder="Adresse (ne sera pas rendue publique dans l'annonce)"/>
-                    <input className="input" type="number" name="zipCode" placeholder="Code Postal"/>
-                    <input className="input" type="text" name="city" placeholder="Ville"/>
-                  </div>
-
-                  <div className='field'>
-                    <label className="label">Image</label>
-                    <input onChange={this.handleFile} className="input" type="file" name="image"/>
-                  </div>
-
-                    <button className="button is-primary is-rounded" type="submit">Poster mon annonce</button>
-
-                </form>
-
+          <div className="field">
+            <label className="label">Catégorie</label>
+            <div className="select is-primary is-rounded">
+              <select name="category">
+                <option defaultSelected>Choisir une catégorie</option>
+                {this.state.categories.map((category, i) => (
+                  <option key={i} value={category}>
+                    {category}
+                  </option>
+                ))}
+                ;
+              </select>
             </div>
+          </div>
 
-)}}
+          <div className="field">
+            <label className="label">Description</label>
+            <textarea
+              className="textarea is-primary"
+              name="description"
+              placeholder="Dites nous en plus sur votre annoce..."
+            ></textarea>
+          </div>
+
+          <div className="field">
+            <label className="label">Disponibilité(s)</label>
+            <textarea
+              className="textarea is-primary"
+              name="availability"
+              placeholder="A quelle fréquence? A quelle(s) date(s)?"
+            />
+          </div>
+
+          <div className="field">
+            <label className="label">Localisation</label>
+            <input
+              id="street-id"
+              className="input is-rounded is-primary"
+              type="text"
+              name="street"
+              placeholder="Adresse (ne sera pas rendue publique dans l'annonce)"
+            />
+            <input
+              className="input is-rounded is-primary"
+              type="number"
+              name="zipCode"
+              placeholder="Code Postal"
+            />
+            <input
+              className="input is-rounded is-primary"
+              type="text"
+              name="city"
+              placeholder="Ville"
+            />
+          </div>
+
+          <div className="field">
+            <label className="label">Image</label>
+            <input
+              onChange={this.handleFile}
+              className="input is-rounded is-primary"
+              type="file"
+              name="image"
+            />
+          </div>
+
+          <button className="button is-primary is-rounded" type="submit">
+            Poster mon annonce
+          </button>
+        </form>
+      </div>
+    );
+  }
+}
