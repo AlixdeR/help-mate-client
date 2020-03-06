@@ -68,9 +68,7 @@ export default class FormAd extends Component {
           alert(
             "Geocode was not successful for the following reason: " + status
           );
-      } else {
-        alert("Geocode was not successful for the following reason: " + status);
-      }
+      } 
     });
   };
 
