@@ -30,9 +30,18 @@ function SearchBar({ history,match,params, searchClbk}) {
     }
 
       return (
-        <div>
-            <input onChange={handleChange} className="input" type="text" placeholder="Recherche..." value={input}></input>
-            <button onClick={handleClick}>GO!</button>
+        <div className="searchBar">
+            <input 
+                onChange={handleChange} 
+                className="inputSearch" 
+                type="text" 
+                placeholder="Recherche..." 
+                value={input}>
+            </input>           
+            <span><button 
+                className="btnSearch" 
+                onClick={handleClick}> GO 
+            </button></span>
         </div>
       );
     }
