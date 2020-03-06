@@ -10,18 +10,23 @@ export default function AdDetails({ data }) {
   return (
     <>
       <div className='ad-details'>
-        <h2>{data.title}</h2>
+       <div className='ad-title'>
+        <span className='title'>{data.title}</span> <span className="tag is-primary">{data.category}</span>
+        </div>
+        <div>
+        <div className='ad-description'>
         <img src={data.image} alt="image-annonce" width='300'/>
-        <p className="ad-details">{data.availability}</p>
-        <p className="ad-details">{data.category}</p>
-        <p className="ad-details">{data.description}</p>
-        <p className="ad-details">{data.adType}</p>
-        <p className="ad-details">{data.availability}</p>
-        <p className="ad-details">{data.street}</p>
-        <p className="ad-details">{data.zipCode}</p>
-        <p className="ad-details">{data.city}</p>
+        <div className='details'>
+        <p className=""><strong>Disponibilités : </strong>{data.availability}</p>
+        <p className=""><strong>Description : </strong>{data.description}</p>
+        </div>
+        </div>
+        <p className="">{data.street}</p>
+        <p className="">{data.zipCode}</p>
+        <p className="">{data.city}</p>
+        </div>
       </div>
-      <Link to={`/messages/${data.author._id}`}> <div className='button is-rounded is-primary'> Contacter {data.author.name}</div></Link>
+      <Link to={`/messages/${data.author._id}`}> <div className='button is-rounded is-info'> Contacter {data.author.name}</div></Link>
       <LoadScript
         id="script-loader"
         googleMapsApiKey={process.env.REACT_APP_GOOGLE_APIKEY}
