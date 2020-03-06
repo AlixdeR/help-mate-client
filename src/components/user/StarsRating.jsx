@@ -7,9 +7,9 @@ export default function StarsRating({n}) {
     return (
         <>
         <div>{[...Array(n)].map((e, i) => <span key={i}><FontAwesomeIcon
-            icon={faStar} color='yellow'/></span>)}
+            icon={faStar} color='gold'/></span>)}
         {[...Array(5-n)].map((e, i) => <span key={i}><FontAwesomeIcon
-            icon={farStar} color='yellow'/></span>)}
+            icon={farStar} color='gold'/></span>)}
         </div>
         </>
     )

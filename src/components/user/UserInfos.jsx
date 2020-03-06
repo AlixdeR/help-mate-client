@@ -17,16 +17,30 @@ export default function UserInfos({userInfos, isAdsDetails}) {
     if(!userInfos) {return <p>Loading ...</p>}
     return (
         <div className='aside-user-infos card'>
-  
-            <img alt='avatar' src={userInfos.avatar} width='200' />
-            {userInfos.rates && <StarsRating n={ratesAverage(userInfos.rates)}/>}
-            <div>{userInfos.username}</div>
-            <div>{userInfos.gender}</div>
+          <div class="card">
+  <div class="card-image">
+  <figure class="image">
+      <img src={userInfos.avatar} alt="Placeholder image" />
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-content">
+        <p class="title is-4">{userInfos.username}</p>
+        <p>{userInfos.rates && <StarsRating n={ratesAverage(userInfos.rates)}/>}</p>
+      </div>
+    </div>
+    <div class="content">
+    <div>{userInfos.gender}</div>
             <div>Membre depuis <strong>{moment(userInfos.account_creation, moment.ISO_8601).lang("fr").fromNow(true)}</strong></div>
             <div>Age : {moment(userInfos.birthday, moment.ISO_8601).fromNow(true)}</div>
             {userInfos.ads && <div> A posté <strong>{userInfos.ads.length}</strong> annnonce(s)</div>}
             { isAdsDetails && <Link to={`/profil/${userInfos._id}`} ><button className='is-rounded is-primary button'> Voir Profil</button></Link>}
-        </div>
+    </div>
+  </div>
+</div>
+</div>
+
 
     )
 }

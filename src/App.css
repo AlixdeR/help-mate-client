@@ -14,11 +14,9 @@
 
 .aside-user-infos{
   margin: 0 2vh 6vh;
-  padding : 2vh;
-  height: 60vh;
-  border-radius: 10px;
-  background-color: #abf2e7;
-  /* box-shadow:2px 2px 2px rgba(128, 128, 128, 0.445);
+  /*padding : 2vh;
+  height: 60vh; 
+   box-shadow:2px 2px 2px rgba(128, 128, 128, 0.445);
   background-color: white; */
 }
 
@@ -255,4 +253,8 @@ margin-bottom : 2em
   width: 70%;
   padding : 2em;
   margin-top : 2em
+}
+
+.contactez {
+  margin-bottom : 2em
 }

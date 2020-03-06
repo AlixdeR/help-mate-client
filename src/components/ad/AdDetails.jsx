@@ -26,7 +26,7 @@ export default function AdDetails({ data }) {
         <p className="">{data.city}</p>
         </div>
       </div>
-      <Link to={`/messages/${data.author._id}`}> <div className='button is-rounded is-info'> Contacter {data.author.name}</div></Link>
+      <Link to={`/messages/${data.author._id}`}> <div className='button is-rounded is-info contactez'> Contacter {data.author.name}</div></Link>
       <LoadScript
         id="script-loader"
         googleMapsApiKey={process.env.REACT_APP_GOOGLE_APIKEY}

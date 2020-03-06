@@ -187,13 +187,13 @@ console.log('type changed', typeSelected)
         </LoadScript>
         }
         
-        <div className="ads-preview-container">
+        {!toggleMap && <div className="ads-preview-container">
           {Boolean(ads.length) ? (
             ads.map((ad, i) => <PreviewAd data={ad} />)
           ) : (
             <p>Aucune annonce à afficher...</p>
           )}
-        </div>
+        </div>}
 
       </div>
     </div>
