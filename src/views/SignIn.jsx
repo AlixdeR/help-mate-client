@@ -5,7 +5,7 @@ import UserContext from "../auth/UserContext";
 import APIHandler from "../api/APIHandler";
 
 export default function Signin(props) {
-  const [email, setEmail] = useState("monemail");
+  const [email, setEmail] = useState("Email");
   const [password, setPassword] = useState("1234");
   const userContext = useContext(UserContext);
   const { setCurrentUser } = userContext;
@@ -25,8 +25,8 @@ export default function Signin(props) {
     <React.Fragment>
     <br/>
     <br/>
+    <h1 className="title center-content">Se connecter</h1>
       <form className="center-content" onSubmit={handleSubmit}>
-        <h1 className="title">Se connecter</h1>
         <label className="label" htmlFor="email">
           Email
         </label>
@@ -37,6 +37,7 @@ export default function Signin(props) {
           value={email}
           onChange={e => setEmail(e.target.value)}
         />
+        <br></br><br></br>
         <label className="label" htmlFor="password">
           Mot de passe
         </label>
@@ -47,12 +48,18 @@ export default function Signin(props) {
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
+<<<<<<< HEAD
         <button className="center-con">ok</button>
+=======
+        <br></br><br></br>
+        <button className="button is-rounded is-primary">Je me connecte</button>
+>>>>>>> 5b0e6480a595ed19da0b0d192acec8f374682a35
       </form>
+      <br></br>
       <p className="center-content">
-        Pas de compte ? N'hésitez pas à{" "}
+        Pas de compte? N'hésitez pas à{" "}
         <Link to="/signup" className="link">
-          vous inscrire !
+          vous inscrire!
         </Link>
       </p>
     </React.Fragment>

@@ -40,14 +40,13 @@ function SearchBar({ history,match,params, searchClbk}) {
                 placeholder="Recherche..." 
                 value={input}>
             </input>           
-            <span><button 
+            <div 
                 className="btnSearch" 
                 onClick={handleClick}>
                 <FontAwesomeIcon
-                onClick={handleClick}
                 icon={faSearch}
-                size="s" /> 
-            </button></span>
+                size="m" /> 
+            </div>
         </div>
       );
     }
